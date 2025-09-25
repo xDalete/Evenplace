@@ -1,0 +1,22 @@
+@use "@/styles/Variables.scss" as variables;
+
+.loginForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.forgotPassword {
+  font-size: variables.$font-size-sm;
+  text-align: right;
+}
+
+.createAccount {
+  font-size: variables.$font-size-md;
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
+  display: inline-block;
+}

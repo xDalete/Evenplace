@@ -1,0 +1,32 @@
+@use "@/styles/Variables.scss" as variables;
+@use "sass:color";
+
+@each $variant, $color in variables.$variants {
+  .#{$variant} {
+    $button-color: $color;
+    &.button {
+      color: variables.$bg-dark;
+      background-color: $button-color;
+      border-radius: variables.$border-radius;
+      font-size: variables.$font-size-md;
+      padding: variables.$padding-md;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      transition:
+        background-color variables.$transition-duration,
+        box-shadow variables.$transition-duration;
+      &:hover {
+        background-color: oklch(from $button-color calc(l + 0.05) c h);
+        box-shadow: variables.$box-shadow;
+      }
+      &:disabled {
+        color: invert(variables.$text, $space: oklch);
+        background-color: oklch(
+          from $button-color calc(l - 0.1) calc(c - 0.05) h
+        );
+        cursor: not-allowed;
+      }
+    }
+  }
+}

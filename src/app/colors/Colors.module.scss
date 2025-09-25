@@ -1,0 +1,118 @@
+@use "@/styles/Variables.scss" as variables;
+
+.container {
+  min-height: 100vh;
+  background-color: variables.$bg-dark;
+  padding: 2rem;
+}
+
+.main {
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: variables.$text;
+}
+
+.colorSection {
+  margin-bottom: 2rem;
+}
+
+.colorSection h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: variables.$text;
+}
+
+.colorGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.colorSwatch {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 8rem;
+}
+
+.colorSwatch span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: variables.$bg-dark;
+}
+
+.bgDark {
+  background-color: variables.$bg-dark;
+}
+.bg {
+  background-color: variables.$bg;
+}
+.bgLight {
+  background-color: variables.$bg-light;
+  color: variables.$text;
+}
+.text {
+  background-color: variables.$text;
+  color: variables.$bg-dark;
+}
+.textMuted {
+  background-color: variables.$text-muted;
+  color: variables.$bg-dark;
+}
+.highlight {
+  background-color: variables.$highlight;
+  color: variables.$bg-dark;
+}
+.border {
+  background-color: variables.$border;
+  color: variables.$bg-dark;
+}
+.borderMuted {
+  background-color: variables.$border-muted;
+  color: variables.$bg-dark;
+}
+.primary {
+  background-color: variables.$primary;
+  color: variables.$bg-dark;
+}
+.secondary {
+  background-color: variables.$secondary;
+  color: variables.$bg-dark;
+}
+.danger {
+  background-color: variables.$danger;
+  color: variables.$bg-dark;
+}
+.warning {
+  background-color: variables.$warning;
+  color: variables.$bg-dark;
+}
+.success {
+  background-color: variables.$success;
+  color: variables.$bg-dark;
+}
+.info {
+  background-color: variables.$info;
+  color: variables.$bg-dark;
+}

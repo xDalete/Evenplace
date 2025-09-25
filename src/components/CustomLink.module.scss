@@ -1,0 +1,10 @@
+@use "@/styles/Variables.scss" as variables;
+
+.customLink {
+  color: variables.$primary;
+  font-size: variables.$font-size-md;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

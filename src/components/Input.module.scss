@@ -1,0 +1,49 @@
+@use "@/styles/Variables.scss" as variables;
+
+.inputContainer {
+  width: 100%;
+}
+
+.input {
+  background-color: variables.$bg-light;
+  color: variables.$text;
+  padding: variables.$padding-md;
+  font-size: variables.$font-size-md;
+  border: 1px solid variables.$border-muted;
+  border-radius: variables.$border-radius;
+  width: 100%;
+  box-sizing: border-box;
+  transition:
+    border-color variables.$transition-duration,
+    box-shadow variables.$transition-duration;
+}
+
+.error {
+  border-color: variables.$danger;
+}
+
+.input:focus {
+  border-color: variables.$primary;
+  outline: none;
+  box-shadow: 0 0 4px variables.$primary;
+}
+
+.label {
+  color: variables.$text;
+  font-weight: 600;
+  margin-bottom: variables.$margin-sm;
+  display: block;
+  width: 100%;
+}
+
+.helperText {
+  margin-top: 4px;
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+}
+
+.errorText {
+  color: variables.$danger;
+  font-size: variables.$font-size-xs;
+  margin-top: 4px;
+}

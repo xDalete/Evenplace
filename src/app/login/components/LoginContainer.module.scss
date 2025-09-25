@@ -1,0 +1,38 @@
+@use "@/styles/Variables.scss" as variables;
+
+.loginHeader {
+  margin-bottom: 40px;
+  width: 100%;
+  > h1 {
+    font-size: variables.$title-font-size;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  > h2 {
+    font-size: variables.$font-size-lg;
+    color: variables.$text-muted;
+  }
+}
+
+.loginFooter {
+  margin-top: 60px;
+  font-size: variables.$font-size-sm;
+  color: variables.$text-muted;
+  text-align: center;
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  > * {
+    width: 60%;
+  }
+}
+
+@media (max-width: variables.$max-width-lg) {
+  .loginContainer > * {
+    width: 80%;
+  }
+}

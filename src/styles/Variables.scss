@@ -1,0 +1,74 @@
+// colors
+$bg-dark: var(--bg-dark);
+$bg: var(--bg);
+$bg-light: var(--bg-light);
+
+$text: var(--text);
+$text-muted: var(--text-muted);
+$highlight: var(--highlight);
+
+$border: var(--border);
+$border-muted: var(--border-muted);
+
+$primary: var(--primary);
+$secondary: var(--secondary);
+
+$danger: var(--danger);
+$warning: var(--warning);
+$success: var(--success);
+$info: var(--info);
+
+$transparent: var(--transparent);
+
+$variants: (
+  primary: $primary,
+  secondary: $secondary,
+  danger: $danger,
+  warning: $warning,
+  success: $success,
+  info: $info,
+);
+
+// font
+$font-family: Arial, Helvetica, sans-serif;
+
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 20px;
+
+$title-font-size: 32px;
+$subtitle-font-size: 24px;
+$heading-font-size: 18px;
+$body-font-size: 16px;
+$caption-font-size: 12px;
+$small-font-size: 10px;
+
+$border-radius: 12px;
+
+$padding-sm: 8px;
+$padding-md: 12px;
+$padding-lg: 16px;
+
+$container-padding: 16px;
+
+$margin-sm: 8px;
+$margin-md: 12px;
+$margin-lg: 16px;
+
+$box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+$box-shadow-hover: 0 4px 4px rgba(0, 0, 0, 0.15);
+
+$transition-duration: 0.3s;
+$transition-ease: ease-in-out;
+$transition: all $transition-duration $transition-ease;
+
+// breakpoints
+$max-width-sm: 600px;
+$max-width-md: 900px;
+$max-width-lg: 1200px;
+$max-width-xl: 1400px;
