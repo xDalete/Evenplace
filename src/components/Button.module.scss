@@ -4,7 +4,7 @@
 @each $variant, $color in variables.$variants {
   .#{$variant} {
     $button-color: $color;
-    &.button {
+    &.button { 
       color: variables.$bg-dark;
       background-color: $button-color;
       border-radius: variables.$border-radius;
