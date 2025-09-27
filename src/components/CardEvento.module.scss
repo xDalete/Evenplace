@@ -1,0 +1,37 @@
+@use "@/styles/Variables.scss" as variables;
+
+.cardEvento{
+    width: 400px !important;
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    transition: transform 0.2s;
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+}
+.title{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.icon{
+    border-radius: variables.$border-radius;
+    width: "100%";
+    height: "70%";
+}
+.eventInfo{
+    font-size: 15px;
+    display: flex;
+    padding: 5px;
+    flex-direction: column;
+    gap: 3px;
+}
+.rowInfo{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;}
