@@ -26,11 +26,11 @@ $variants: (
   danger: $danger,
   warning: $warning,
   success: $success,
-  info: $info,
+  info: $info
 );
 
 // font
-$font-family: Arial, Helvetica, sans-serif;
+$font-family: Poppins, Arial, sans-serif;
 
 $font-weight-normal: 400;
 $font-weight-semibold: 600;
@@ -40,35 +40,79 @@ $font-size-xs: 12px;
 $font-size-sm: 14px;
 $font-size-md: 16px;
 $font-size-lg: 20px;
+$font-size-xl: 24px;
 
-$title-font-size: 32px;
-$subtitle-font-size: 24px;
-$heading-font-size: 18px;
-$body-font-size: 16px;
-$caption-font-size: 12px;
-$small-font-size: 10px;
+$font-sizes: (
+  xs: $font-size-xs,
+  sm: $font-size-sm,
+  md: $font-size-md,
+  lg: $font-size-lg,
+  xl: $font-size-xl
+);
 
-$border-radius: 12px;
-
-$padding-sm: 8px;
-$padding-md: 12px;
-$padding-lg: 16px;
-
-$container-padding: 16px;
-
+$margin-xs: 4px;
 $margin-sm: 8px;
 $margin-md: 12px;
 $margin-lg: 16px;
+$margin-xl: 24px;
 
-$box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-$box-shadow-hover: 0 4px 4px rgba(0, 0, 0, 0.15);
+$margin-sizes: (
+  xs: $margin-xs,
+  sm: $margin-sm,
+  md: $margin-md,
+  lg: $margin-lg,
+  xl: $margin-xl
+);
+
+$padding-xs: 4px;
+$padding-sm: 8px;
+$padding-md: 12px;
+$padding-lg: 16px;
+$padding-xl: 24px;
+
+$padding-sizes: (
+  xs: $padding-xs,
+  sm: $padding-sm,
+  md: $padding-md,
+  lg: $padding-lg,
+  xl: $padding-xl
+);
+
+$gap-xs: 4px;
+$gap-sm: 8px;
+$gap-md: 16px;
+$gap-lg: 24px;
+$gap-xl: 32px;
+
+$gap-sizes: (
+  xs: $gap-xs,
+  sm: $gap-sm,
+  md: $gap-md,
+  lg: $gap-lg,
+  xl: $gap-xl
+);
+
+// breakpoints
+$min-width: 0px;
+$min-width-sm: 601px;
+$min-width-md: 901px;
+$min-width-lg: 1201px;
+$min-width-xl: 1401px;
+
+$breakpoints: (
+  xs: $min-width,
+  sm: $min-width-sm,
+  md: $min-width-md,
+  lg: $min-width-lg,
+  xl: $min-width-xl
+);
+
+$grid-columns: 12;
+
+$border-radius: 12px;
 
 $transition-duration: 0.3s;
 $transition-ease: ease-in-out;
-$transition: all $transition-duration $transition-ease;
 
-// breakpoints
-$max-width-sm: 600px;
-$max-width-md: 900px;
-$max-width-lg: 1200px;
-$max-width-xl: 1400px;
+$box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+$box-shadow-hover: 0 4px 4px rgba(0, 0, 0, 0.15);

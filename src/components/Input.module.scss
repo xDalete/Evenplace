@@ -30,14 +30,14 @@
 
 .label {
   color: variables.$text;
-  font-weight: 600;
+  font-weight: variables.$font-weight-semibold;
   margin-bottom: variables.$margin-sm;
   display: block;
   width: 100%;
 }
 
 .helperText {
-  margin-top: 4px;
+  margin-top: variables.$margin-xs;
   font-size: variables.$font-size-xs;
   color: variables.$text-muted;
 }
@@ -45,5 +45,5 @@
 .errorText {
   color: variables.$danger;
   font-size: variables.$font-size-xs;
-  margin-top: 4px;
+  margin-top: variables.$margin-xs;
 }

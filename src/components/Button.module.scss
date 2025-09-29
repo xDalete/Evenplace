@@ -22,9 +22,7 @@
       }
       &:disabled {
         color: invert(variables.$text, $space: oklch);
-        background-color: oklch(
-          from $button-color calc(l - 0.1) calc(c - 0.05) h
-        );
+        background-color: oklch(from $button-color calc(l - 0.1) calc(c - 0.05) h);
         cursor: not-allowed;
       }
     }

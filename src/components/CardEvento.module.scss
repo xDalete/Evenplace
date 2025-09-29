@@ -1,0 +1,33 @@
+@use "@/styles/Variables.scss" as variables;
+
+.eventName {
+  margin-top: variables.$margin-lg;
+  margin-bottom: variables.$margin-lg;
+  text-align: center;
+}
+
+.eventImage {
+  border-radius: variables.$border-radius;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 10/7;
+  object-fit: cover;
+}
+
+.eventInfo {
+  display: flex;
+  flex-direction: column;
+  font-size: variables.$font-size-md;
+  padding: variables.$padding-sm;
+  gap: variables.$gap-xs;
+}
+
+.rowInfo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.infoIcon {
+  margin-right: variables.$margin-xs;
+}

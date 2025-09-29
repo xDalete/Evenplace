@@ -5,17 +5,17 @@ import ThemeToggle from "@/components/ThemeToggle";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
-  subsets: ["latin"],
+  subsets: ["latin"]
 });
 
 //TODO: Melhorar SEO com mais detalhes
 export const metadata: Metadata = {
   title: "Evenplace - Gestão de Eventos & Ingressos",
-  description: "Gestão de Eventos & Ingressos",
+  description: "Gestão de Eventos & Ingressos"
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
