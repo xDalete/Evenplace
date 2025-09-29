@@ -8,19 +8,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   InputContainerProps?: HtmlHTMLAttributes<HTMLDivElement>;
 }
 
-const Input: React.FC<InputProps> = ({
-  label,
-  error,
-  helperText,
-  InputContainerProps,
-  ...props
-}) => (
+const Input: React.FC<InputProps> = ({ label, error, helperText, InputContainerProps, ...props }) => (
   <div className={styles.inputContainer} {...InputContainerProps}>
     {label && <label className={`${styles.label}`}>{label}</label>}
-    <input
-      {...props}
-      className={`${styles.input} ${error ? styles.Error : ""}`}
-    />
+    <input {...props} className={`${styles.input} ${error ? styles.Error : ""}`} />
     {error ? (
       <span className={`${styles.errorText}`}>{error}</span>
     ) : (

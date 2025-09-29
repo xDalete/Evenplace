@@ -3,62 +3,49 @@ import styles from "./CardEvento.module.scss";
 import Card from "./Card";
 import Divider from "./Divider";
 import { FaTicketAlt, FaMoneyBillWave, FaUsers } from "react-icons/fa";
+import Image from "next/image";
+import { EventWithInfo } from "@/lib/Types/EventTypes";
+import { formatDate, formatHours } from "@/lib/utils/format";
 
 type CardEventoProps = {
-    title: string;
-    date: string;
-    ticketsAvailable: number;
-    ticketPrice: number;
-    hour: string;
-    placesAvailable: number;
-    location: string;
+  evento: EventWithInfo;
 };
 
 const CardEvento: React.FC<CardEventoProps> = ({
-    title,
-    date,
-    ticketsAvailable,
-    ticketPrice,
-    placesAvailable,
-    location,
-    hour,
+  evento: { name, startDate, ticketsAvailable, attendeesCount, attendeesLimit, ticketsPrice, location }
 }) => {
-    return (
-        <Card className={styles.cardEvento}>
-            <img
-                src="https://galile.com.br/wp-content/uploads/2023/08/Copia-de-Copia-de-Copia-de-Copia-de-Sem-nome-1500-%C3%97-770-px-9.jpg"
-                alt="Event Icon"
-                className={styles.icon}
-            />
-            <Divider />
-            <h2 className={styles.title}>{title}</h2>
-            <div className={styles.rowInfo}>
-                <EventInfo infoTitle="" icon={<FaTicketAlt />} info={ticketsAvailable} />
-                <EventInfo infoTitle="" icon={<FaMoneyBillWave/>} info={`R$ ${ticketPrice.toFixed(2)}`} />
-                <EventInfo infoTitle="" icon={<FaUsers />} info={placesAvailable} />
-            </div>
-            <div className={styles.eventInfo}>
-                <EventInfo infoTitle="Localização:" info={location} />
-                <EventInfo infoTitle="Data:" info={date} />
-                <EventInfo infoTitle="Horário:" info={hour} />
-            </div>
-        </Card>
-    );
+  return (
+    <Card>
+      <Image src="/image1.jpg" alt="Evento" className={styles.eventImage} width={1000} height={700} />
+      <h2 className={styles.eventName}>{name}</h2>
+      <div className={styles.rowInfo}>
+        <EventInfo icon={<FaTicketAlt />} info={ticketsAvailable} />
+        <EventInfo icon={<FaMoneyBillWave />} info={`R$ ${ticketsPrice.toFixed(2)}`} />
+        <EventInfo icon={<FaUsers />} info={attendeesLimit - attendeesCount} />
+      </div>
+      <Divider />
+      <div className={styles.eventInfo}>
+        <EventInfo infoTitle="Localização:" info={location} />
+        <EventInfo infoTitle="Data:" info={formatDate(startDate)} />
+        <EventInfo infoTitle="Horário:" info={formatHours(startDate)} />
+      </div>
+    </Card>
+  );
 };
 
 export default CardEvento;
 
 type EventInfoProps = {
-    info: number | string;
-    infoTitle: string;
-    icon?: React.ReactNode;
+  info: number | string;
+  infoTitle?: string;
+  icon?: React.ReactNode;
 };
 
 const EventInfo: React.FC<EventInfoProps> = ({ infoTitle, info, icon }) => {
-    return (
-        <p>
-            {icon && <span style={{ marginRight: "5px" }}>{icon}</span>}
-            <strong>{infoTitle}</strong> {info}
-        </p>
-    );
+  return (
+    <p>
+      {icon && <span className={styles.infoIcon}>{icon}</span>}
+      {infoTitle && <strong>{infoTitle}</strong>} {info}
+    </p>
+  );
 };

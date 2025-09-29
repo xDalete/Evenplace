@@ -1,20 +1,14 @@
-import React from 'react';
+import React from "react";
+import styles from "./Divider.module.scss";
+import { Sizes } from "@/lib/Types/Types";
 
 type DividerProps = {
-    className?: string;
-    style?: React.CSSProperties;
+  className?: string;
+  margin?: Sizes;
 };
 
-const Divider: React.FC<DividerProps> = ({ className, style }) => (
-    <hr
-        className={className}
-        style={{
-            border: 'none',
-            borderTop: '1px solid #e0e0e0',
-            margin: '16px 0',
-            ...style,
-        }}
-    />
+const Divider: React.FC<DividerProps> = ({ className, margin }) => (
+  <hr className={`${styles.divider} ${styles[`margin-${margin}`]} ${className}`} />
 );
 
 export default Divider;

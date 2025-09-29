@@ -6,11 +6,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   children: React.ReactNode;
 };
 
-const Button: React.FC<ButtonProps> = ({
-  variant = "primary",
-  children,
-  ...props
-}) => {
+const Button: React.FC<ButtonProps> = ({ variant = "primary", children, ...props }) => {
   return (
     <button className={`${styles.button} ${styles[variant]}`} {...props}>
       {children}

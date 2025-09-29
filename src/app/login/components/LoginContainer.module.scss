@@ -1,12 +1,12 @@
 @use "@/styles/Variables.scss" as variables;
 
 .loginHeader {
-  margin-bottom: 40px;
+  margin-bottom: variables.$margin-xl;
   width: 100%;
   > h1 {
-    font-size: variables.$title-font-size;
+    font-size: (variables.$font-size-md * 2);
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: variables.$margin-sm;
   }
   > h2 {
     font-size: variables.$font-size-lg;
@@ -15,7 +15,7 @@
 }
 
 .loginFooter {
-  margin-top: 60px;
+  margin-top: (variables.$margin-lg * 3);
   font-size: variables.$font-size-sm;
   color: variables.$text-muted;
   text-align: center;
@@ -27,12 +27,12 @@
   align-items: center;
   flex-direction: column;
   > * {
-    width: 60%;
+    width: 80%;
   }
 }
 
-@media (max-width: variables.$max-width-lg) {
+@media (min-width: variables.$min-width-lg) {
   .loginContainer > * {
-    width: 80%;
+    width: 60%;
   }
 }

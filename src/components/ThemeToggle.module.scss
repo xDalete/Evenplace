@@ -6,7 +6,7 @@
   right: 8px;
   z-index: 1000;
   padding: variables.$padding-sm;
-  border-radius: 50%;
+  border-radius: variables.$border-radius;
   border: 1px solid variables.$border;
   background: variables.$bg;
   color: variables.$text-muted;
@@ -15,9 +15,8 @@
   align-items: center;
   justify-content: center;
 
-  aspect-ratio: 1;
   &:hover {
-    background: oklch(from variables.$bg calc(l + 0.05) c h);
+    background: variables.$bg-light;
   }
 
   &:disabled {

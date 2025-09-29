@@ -7,20 +7,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-  background: linear-gradient(
-    to bottom,
-    variables.$primary 0%,
-    variables.$transparent 100%
-  );
+  gap: variables.$gap-md;
+  background: linear-gradient(to bottom, variables.$primary 0%, variables.$transparent 100%);
   > h1 {
-    font-size: 64px;
+    font-size: (variables.$font-size-md * 3);
     font-weight: bold;
   }
 }
 
-@media (max-width: variables.$max-width-lg) {
+@media (min-width: variables.$min-width-lg) {
   .loginImage > h1 {
-    font-size: 48px;
+    font-size: (variables.$font-size-md * 4);
   }
 }

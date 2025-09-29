@@ -2,9 +2,14 @@
 
 .customLink {
   color: variables.$primary;
-  font-size: variables.$font-size-md;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
+  }
+
+  @each $size, $font-size in (variables.$font-sizes) {
+    &.size-#{$size} {
+      font-size: $font-size;
+    }
   }
 }
