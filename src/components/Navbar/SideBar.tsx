@@ -10,14 +10,14 @@ const Sidebar: React.FC = () => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.header}>
-          <div className={styles.logo}>
+        <div className={styles.logo}>
           <Image src="/LOGO.png" alt="Logo Evenplace" width={40} height={40} className={styles.logoIcon} />
           <span className={styles.logoText}>Evenplace</span>
         </div>
         <AddEventButton />
       </div>
 
-        <Divider />
+      <Divider />
 
       <SidebarSection
         title="Principal"
@@ -30,7 +30,7 @@ const Sidebar: React.FC = () => {
         ]}
       />
 
-     <Divider />
+      <Divider />
 
       <SidebarSection
         title="Atendimento"
@@ -41,7 +41,7 @@ const Sidebar: React.FC = () => {
         ]}
       />
 
-        <Divider />
+      <Divider />
 
       <SidebarSection
         title="Conta"
