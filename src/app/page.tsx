@@ -2,6 +2,7 @@ import CustomLink from "@/components/CustomLink";
 import CardEvento from "@/components/CardEvento";
 import Grid from "@/components/Grid";
 import { EventWithInfo } from "@/lib/Types/EventTypes";
+import Sidebar from "@/components/Navbar/SideBar";
 const evento: EventWithInfo = {
   id: "1",
   name: "Trio Parada Dura",
@@ -22,6 +23,7 @@ const evento: EventWithInfo = {
 };
 export default function Home() {
   return (
+   
     <div
       style={{
         display: "flex",
@@ -31,9 +33,11 @@ export default function Home() {
         padding: "20px"
       }}
     >
+    
       <h1>Hello, Evenplace!</h1>
       <CustomLink href="/login">Login</CustomLink>
       <CustomLink href="/colors">Colors</CustomLink>
+      <Sidebar />
       <Grid xs={1} sm={2} md={3}>
         <CardEvento evento={evento} />
         <CardEvento evento={evento} />

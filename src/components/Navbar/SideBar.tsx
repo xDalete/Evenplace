@@ -1,6 +1,6 @@
 import React from "react";
 import { BarChart3, Settings, DollarSign, TrendingUp, FileText, Headphones, Bell, User, LogOut } from "lucide-react";
-import styles from "./Sidebar.module.scss";
+import styles from "./SideBar.module.scss";
 import AddEventButton from "./AddEventButton";
 import SidebarSection from "./SideBarSection";
 import Image from "next/image";
