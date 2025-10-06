@@ -1,0 +1,30 @@
+@use "@/styles/Variables.scss" as variables;
+
+
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: variables.$margin-md;
+}
+
+.rowInfo {
+  display: flex;
+  justify-content: space-between;
+  gap: variables.$gap-md;
+}
+
+.elementosEsquerda {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: variables.$gap-sm;
+}
+
+.elementosDireita {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: variables.$gap-sm;
+}

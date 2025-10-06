@@ -2,6 +2,7 @@ import CustomLink from "@/components/CustomLink";
 import CardEvento from "@/components/CardEvento";
 import Grid from "@/components/Grid";
 import { EventWithInfo } from "@/lib/Types/EventTypes";
+import CardCriarEvento from "@/components/evento/CardCriarEvento";
 const evento: EventWithInfo = {
   id: "1",
   name: "Trio Parada Dura",
@@ -31,9 +32,13 @@ export default function Home() {
         padding: "20px"
       }}
     >
+      
       <h1>Hello, Evenplace!</h1>
       <CustomLink href="/login">Login</CustomLink>
       <CustomLink href="/colors">Colors</CustomLink>
+      <Grid xs={1} sm={2} md={1}>
+        <CardCriarEvento evento={evento} />
+      </Grid>
       <Grid xs={1} sm={2} md={3}>
         <CardEvento evento={evento} />
         <CardEvento evento={evento} />
