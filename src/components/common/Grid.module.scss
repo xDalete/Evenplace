@@ -5,14 +5,12 @@
   width: 100%;
 }
 
-// Generate gap classes
 @each $size, $value in variables.$gap-sizes {
   .gap-#{$size} {
     gap: $value;
   }
 }
 
-// Generate column classes for each breakpoint
 @each $breakpoint, $min-width in variables.$breakpoints {
   @media (min-width: $min-width) {
     @for $i from 1 through variables.$grid-columns {

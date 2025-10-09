@@ -16,3 +16,10 @@ export const formatHours = (
 ) => {
   return formatDate(value, formatting);
 };
+
+export const formatCurrency = (value: number | string, currency: string = "BRL") => {
+  if (typeof value === "string") {
+    value = parseFloat(value);
+  }
+  return new Intl.NumberFormat("pt-BR", { style: "currency", currency }).format(value);
+};

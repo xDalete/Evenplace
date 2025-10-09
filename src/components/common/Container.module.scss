@@ -1,0 +1,16 @@
+@use "@/styles/Variables.scss" as variables;
+
+.container {
+  width: 100%;
+  height: 100%;
+  @each $size, $margin-size in (variables.$margin-sizes) {
+    &.margin-#{$size} {
+      margin: $margin-size 0;
+    }
+  }
+  @each $size, $padding-size in (variables.$padding-sizes) {
+    &.padding-#{$size} {
+      padding: $padding-size;
+    }
+  }
+}

@@ -3,9 +3,23 @@ $bg-dark: var(--bg-dark);
 $bg: var(--bg);
 $bg-light: var(--bg-light);
 
+$background-colors: (
+  dark: $bg-dark,
+  light: $bg-light,
+  default: $bg
+);
+
 $text: var(--text);
 $text-muted: var(--text-muted);
+$text-on-color: var(--text-on-color);
 $highlight: var(--highlight);
+
+$text-colors: (
+  default: $text,
+  muted: $text-muted,
+  on-color: $text-on-color,
+  highlight: $highlight
+);
 
 $border: var(--border);
 $border-muted: var(--border-muted);
@@ -94,10 +108,10 @@ $gap-sizes: (
 
 // breakpoints
 $min-width: 0px;
-$min-width-sm: 601px;
-$min-width-md: 901px;
-$min-width-lg: 1201px;
-$min-width-xl: 1401px;
+$min-width-sm: 600px;
+$min-width-md: 900px;
+$min-width-lg: 1200px;
+$min-width-xl: 1536px;
 
 $breakpoints: (
   xs: $min-width,
