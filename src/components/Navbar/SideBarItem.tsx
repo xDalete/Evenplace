@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./SideBar.module.scss";
+import styles from "./SideBarItem.module.scss";
+import Link from "next/link";
 
 interface SidebarItemProps {
   icon: React.ReactNode;
@@ -7,13 +8,13 @@ interface SidebarItemProps {
   href?: string;
 }
 
-const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, href = "#" }) => {
+const SideBarItem: React.FC<SidebarItemProps> = ({ icon, label, href = "#" }) => {
   return (
-    <a href={href} className={styles.navItem}>
+    <Link href={href} className={styles.navItem}>
       {icon}
       <span>{label}</span>
-    </a>
+    </Link>
   );
 };
 
-export default SidebarItem;
+export default SideBarItem;

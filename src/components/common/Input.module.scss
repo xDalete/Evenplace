@@ -14,8 +14,10 @@
   width: 100%;
   box-sizing: border-box;
   transition:
+    color variables.$transition-duration,
     border-color variables.$transition-duration,
-    box-shadow variables.$transition-duration;
+    box-shadow variables.$transition-duration,
+    background-color variables.$transition-duration;
 }
 
 .error {

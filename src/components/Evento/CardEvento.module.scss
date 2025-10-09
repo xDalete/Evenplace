@@ -26,8 +26,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-
-.infoIcon {
-  margin-right: variables.$margin-xs;
+  margin-top: variables.$margin-sm;
+  margin-bottom: variables.$margin-sm;
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: variables.$gap-sm;
+  }
 }

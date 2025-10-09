@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "./CardEvento.module.scss";
-import Card from "./Card";
-import Divider from "./Divider";
+import Card from "../common/Card";
+import Divider from "../common/Divider";
 import { FaTicketAlt, FaMoneyBillWave, FaUsers } from "react-icons/fa";
 import Image from "next/image";
 import { EventWithInfo } from "@/lib/Types/EventTypes";
-import { formatDate, formatHours } from "@/lib/utils/format";
+import { formatCurrency, formatDate, formatHours } from "@/lib/utils/format";
+import { Variants } from "@/lib/Types/Types";
+import Icon from "../common/Icon";
 
 type CardEventoProps = {
   evento: EventWithInfo;
@@ -15,13 +17,13 @@ const CardEvento: React.FC<CardEventoProps> = ({
   evento: { name, startDate, ticketsAvailable, attendeesCount, attendeesLimit, ticketsPrice, location }
 }) => {
   return (
-    <Card>
+    <Card bgColor="light">
       <Image src="/image1.jpg" alt="Evento" className={styles.eventImage} width={1000} height={700} />
       <h2 className={styles.eventName}>{name}</h2>
       <div className={styles.rowInfo}>
-        <EventInfo icon={<FaTicketAlt />} info={ticketsAvailable} />
-        <EventInfo icon={<FaMoneyBillWave />} info={`R$ ${ticketsPrice.toFixed(2)}`} />
-        <EventInfo icon={<FaUsers />} info={attendeesLimit - attendeesCount} />
+        <EventInfo icon={<Icon icon={FaMoneyBillWave} color="success" />} info={formatCurrency(ticketsPrice)} />
+        <EventInfo icon={<Icon icon={FaUsers} color="danger" />} info={attendeesLimit - attendeesCount} />
+        <EventInfo icon={<Icon icon={FaTicketAlt} color="info" />} info={ticketsAvailable} />
       </div>
       <Divider />
       <div className={styles.eventInfo}>
@@ -39,13 +41,14 @@ type EventInfoProps = {
   info: number | string;
   infoTitle?: string;
   icon?: React.ReactNode;
+  iconColor?: Variants;
 };
 
 const EventInfo: React.FC<EventInfoProps> = ({ infoTitle, info, icon }) => {
   return (
-    <p>
-      {icon && <span className={styles.infoIcon}>{icon}</span>}
-      {infoTitle && <strong>{infoTitle}</strong>} {info}
-    </p>
+    <div>
+      {icon && icon}
+      {infoTitle && <strong>{infoTitle}</strong>} <span>{info}</span>
+    </div>
   );
 };

@@ -1,56 +1,57 @@
 import React from "react";
-import { BarChart3, Settings, DollarSign, TrendingUp, FileText, Headphones, Bell, User, LogOut } from "lucide-react";
+import {
+  LuChartBar,
+  LuSettings,
+  LuDollarSign,
+  LuTrendingUp,
+  LuFileText,
+  LuHeadphones,
+  LuBell,
+  LuUser,
+  LuLogOut
+} from "react-icons/lu";
 import styles from "./SideBar.module.scss";
 import AddEventButton from "./AddEventButton";
-import SidebarSection from "./SideBarSection";
+import SideBarSection from "./SideBarSection";
 import Image from "next/image";
-import Divider from "../Divider";
+import Divider from "../common/Divider";
+import Container from "../common/Container";
+import Icon from "../common/Icon";
+import SideBarItem from "./SideBarItem";
+import Link from "next/link";
 
 const Sidebar: React.FC = () => {
   return (
-    <div className={styles.sidebar}>
-      <div className={styles.header}>
-        <div className={styles.logo}>
-          <Image src="/LOGO.png" alt="Logo Evenplace" width={40} height={40} className={styles.logoIcon} />
-          <span className={styles.logoText}>Evenplace</span>
-        </div>
-        <AddEventButton />
-      </div>
-
-      <Divider />
-
-      <SidebarSection
-        title="Principal"
-        items={[
-          { icon: <BarChart3 size={20} />, label: "Visualização de Eventos" },
-          { icon: <Settings size={20} />, label: "Configurar Eventos" },
-          { icon: <DollarSign size={20} />, label: "Ingressos" },
-          { icon: <TrendingUp size={20} />, label: "Dados Estatísticos" },
-          { icon: <FileText size={20} />, label: "Relatório" }
-        ]}
-      />
-
-      <Divider />
-
-      <SidebarSection
-        title="Atendimento"
-        items={[
-          { icon: <Headphones size={20} />, label: "Contatar Suporte" },
-          { icon: <Bell size={20} />, label: "Notificações" },
-          { icon: <Settings size={20} />, label: "Configurações" }
-        ]}
-      />
-
-      <Divider />
-
-      <SidebarSection
-        title="Conta"
-        items={[
-          { icon: <User size={20} />, label: "Usuário" },
-          { icon: <LogOut size={20} />, label: "Sair" }
-        ]}
-      />
-    </div>
+    <Container padding="md" className={styles.sidebar}>
+      <nav>
+        <Link href="/">
+          <div className={styles.logo}>
+            <Image src="/logo.png" alt="Logo Evenplace" width={40} height={40} className={styles.logoIcon} />
+            <span className={styles.logoText}>Evenplace</span>
+          </div>
+          <AddEventButton />
+        </Link>
+        <Divider margin="md" />
+        <SideBarSection title="Principal">
+          <SideBarItem icon={<Icon icon={LuChartBar} />} label={"Visualização de Eventos"} href="#" />
+          <SideBarItem icon={<Icon icon={LuSettings} />} label={"Configurar Eventos"} href="#" />
+          <SideBarItem icon={<Icon icon={LuDollarSign} />} label={"Ingressos"} href="#" />
+          <SideBarItem icon={<Icon icon={LuTrendingUp} />} label={"Dados Estatísticos"} href="#" />
+          <SideBarItem icon={<Icon icon={LuFileText} />} label={"Relatório"} href="#" />
+        </SideBarSection>
+        <Divider margin="md" />
+        <SideBarSection title="Atendimento">
+          <SideBarItem icon={<Icon icon={LuHeadphones} />} label={"Contatar Suporte"} href="#" />
+          <SideBarItem icon={<Icon icon={LuBell} />} label={"Notificações"} href="#" />
+          <SideBarItem icon={<Icon icon={LuSettings} />} label={"Configurações"} href="#" />
+        </SideBarSection>
+        <Divider margin="md" />
+        <SideBarSection title="Conta">
+          <SideBarItem icon={<Icon icon={LuUser} />} label={"Usuário"} href="#" />
+          <SideBarItem icon={<Icon icon={LuLogOut} />} label={"Sair"} href="#" />
+        </SideBarSection>
+      </nav>
+    </Container>
   );
 };
 

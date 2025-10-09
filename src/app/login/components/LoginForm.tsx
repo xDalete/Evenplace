@@ -1,7 +1,7 @@
-import Button from "@/components/Button";
-import Input from "@/components/Input";
+import Button from "@/components/common/Button";
+import Input from "@/components/common/Input";
 import styles from "./LoginForm.module.scss";
-import CustomLink from "@/components/CustomLink";
+import CustomLink from "@/components/common/CustomLink";
 
 //TODO: adicionar validação e integração com backend
 //TODO: adicionar caminho para resetar senha e criar conta
