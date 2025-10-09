@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/components/common/Container";
 import styles from "./LoginSideImage.module.scss";
 import Image from "next/image";
 
