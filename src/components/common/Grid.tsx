@@ -12,19 +12,14 @@ type GridProps = {
   className?: string;
 };
 
-const getColClass = (breakpoint: string, value?: ColumnSize) => {
-  if (!value) return "";
-  return styles[`cols-${breakpoint}-${value}`] || "";
-};
-
 const Grid: React.FC<GridProps> = ({ xs = 1, sm, md, lg, gap = "md", children, className = "" }) => {
   const classes = [
     styles.grid,
-    getColClass("xs", xs),
-    getColClass("sm", sm),
-    getColClass("md", md),
-    getColClass("lg", lg),
-    gap && styles[`gap-${gap}`],
+    xs ? styles[`cols-xs-${xs}`] : "",
+    sm ? styles[`cols-sm-${sm}`] : "",
+    md ? styles[`cols-md-${md}`] : "",
+    lg ? styles[`cols-lg-${lg}`] : "",
+    styles[`gap-${gap}`],
     className
   ].join(" ");
 

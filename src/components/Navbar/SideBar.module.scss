@@ -1,0 +1,30 @@
+@use "@/styles/Variables.scss" as variables;
+
+.sidebar {
+  height: min-content;
+  border-radius: variables.$border-radius;
+  background-color: variables.$primary;
+  color: variables.$text;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-sm;
+  margin-bottom: variables.$margin-md;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: variables.$border-radius;
+}
+
+.logoText {
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-semibold;
+  color: variables.$text-on-color;
+}

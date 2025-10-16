@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
 import "@/styles/globals.scss";
-import ThemeToggle from "@/components/theme/ThemeToggle";
-
-const poppins = Poppins({
-  weight: ["400", "600", "700"],
-  subsets: ["latin"]
-});
+import Container from "@/components/common/Container";
+import Sidebar from "@/components/Navbar/SideBar";
 
 //TODO: Melhorar SEO com mais detalhes
 export const metadata: Metadata = {
@@ -20,11 +15,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={`${poppins.className}`}>
-        <ThemeToggle />
-        {children}
-      </body>
-    </html>
+    <Container
+      style={{
+        display: "grid",
+        gridTemplateColumns: "250px 1fr",
+        padding: "12px",
+        gap: "12px"
+      }}
+    >
+      <Sidebar />
+      <Container>{children}</Container>
+    </Container>
   );
 }

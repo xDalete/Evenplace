@@ -1,0 +1,7 @@
+@use "@/styles/Variables.scss" as variables;
+
+@each $variant, $color in variables.$variants {
+  .#{$variant} {
+    color: $color;
+  }
+}

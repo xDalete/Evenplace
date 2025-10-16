@@ -5,12 +5,18 @@
   .#{$variant} {
     $button-color: $color;
     &.button {
-      color: variables.$bg-dark;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: variables.$gap-xs;
+      color: variables.$text-on-color;
       background-color: $button-color;
       border-radius: variables.$border-radius;
       font-size: variables.$font-size-md;
       padding: variables.$padding-md;
-      width: 100%;
+      &.fullwidth {
+        width: 100%;
+      }
       border: none;
       cursor: pointer;
       transition:

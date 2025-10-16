@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import styles from "./ThemeToggle.module.scss";
 import { Themes } from "@/lib/Types/Types";
+import Icon from "../common/Icon";
 
 const THEME_KEY = "theme";
 
@@ -33,14 +34,14 @@ const ThemeToggle: React.FC = () => {
   if (!isMounted) {
     return (
       <button className={styles.ThemeToggle}>
-        <MdOutlineLightMode size={24} />
+        <Icon icon={MdOutlineLightMode} size={16} />
       </button>
     );
   }
 
   return (
     <div className={styles.ThemeToggle} onClick={toggleTheme}>
-      {theme === "light" ? <MdOutlineLightMode size={16} /> : <MdOutlineDarkMode size={16} />}
+      {theme === "light" ? <Icon icon={MdOutlineLightMode} size={16} /> : <Icon icon={MdOutlineDarkMode} size={16} />}
     </div>
   );
 };
