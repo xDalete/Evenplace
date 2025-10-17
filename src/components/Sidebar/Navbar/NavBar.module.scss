@@ -1,0 +1,71 @@
+@use "@/styles/Variables.scss" as variables;
+
+.navbar {
+  width: 100%;
+  background-color: variables.$primary;
+  color: variables.$text;
+  border-radius: variables.$border-radius;
+  position: relative;
+}
+
+.navbarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-sm;
+  text-decoration: none;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: variables.$border-radius;
+}
+
+.logoText {
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-semibold;
+  color: variables.$text-on-color;
+}
+
+.menuToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: variables.$text-on-color;
+  cursor: pointer;
+  padding: variables.$padding-sm;
+  border-radius: variables.$border-radius;
+  transition: background-color variables.$transition-duration variables.$transition-ease;
+  font-size: variables.$font-size-lg;
+
+  &:hover {
+    background-color: oklch(from variables.$primary calc(l + -0.05) c h);
+  }
+}
+
+.navContent {
+  display: none;
+  flex-direction: column;
+  margin-top: variables.$margin-md;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+
+  &.open {
+    display: flex;
+    max-height: 1000px;
+  }
+}
+
+.addButtonWrapper {
+  width: 100%;
+}
