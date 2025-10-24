@@ -1,0 +1,41 @@
+// Salve este arquivo como: src/app/layout.module.scss
+
+@use "@/styles/Variables.scss" as variables;
+
+.layoutWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.navbarContainer {
+  display: block;
+  
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 12px;
+  gap: 12px;
+  flex: 1;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 250px 1fr;
+  }
+}
+
+.sidebarContainer {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.contentContainer {
+  width: 100%;
+}

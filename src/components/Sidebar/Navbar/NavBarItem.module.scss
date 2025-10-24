@@ -1,0 +1,17 @@
+@use "@/styles/Variables.scss" as variables;
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-sm;
+  padding: variables.$padding-md variables.$padding-sm;
+  border-radius: variables.$border-radius;
+  transition: background-color variables.$transition-duration;
+  color: variables.$text-on-color;
+  text-decoration: none;
+  font-size: variables.$font-size-sm;
+
+  &:hover {
+    background-color: oklch(from variables.$primary calc(l + -0.05) c h);
+  }
+}
