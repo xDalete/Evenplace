@@ -1,7 +1,5 @@
 @use "@/styles/Variables.scss" as variables;
 
-
-
 .cardHeader {
   display: flex;
   justify-content: space-between;
@@ -27,4 +25,102 @@
   justify-content: flex-end;
   align-items: center;
   gap: variables.$gap-sm;
+}
+
+body {
+  background-color: #f0f2f5; /* Cor de fundo similar à imagem */
+  font-family: 'Roboto', sans-serif;
+}
+
+.eventos-container {
+  background-color: #ffffff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin: 40px;
+  max-width: 1200px; /* Largura máxima */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-eventos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.titulo {
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+}
+
+.acoes-esquerda, .acoes-direita {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espaçamento entre os elementos */
+}
+
+.cardHeader :global(input){
+    border-radius: 8px;
+    border: 1px solid #0e3f06;
+    padding: 10px 15px;
+    font-size: 14px;
+    background-color: #ababb2;
+    color: #0e3f06;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais para botões e inputs */
+.rowInfo :global(button), 
+.rowInfo :global(select){
+  border-radius: 8px;
+  border: 1px solid #0e3f06;
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #fff;
+  cursor: pointer;
+  height: 40px;
+  box-sizing: border-box;
+}   
+.select-localizar, .filtro-status {
+  min-width: 120px;
+  color: #606c7e;
+}
+
+/* Campo de Busca */
+.campo-busca {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.campo-busca input {
+  background-color: #f0f2f5;
+  border: none;
+  border-radius: 20px; /* Bem arredondado */
+  padding-left: 40px; /* Espaço para o ícone */
+  width: 250px;
+  color: #606c7e;
+}
+
+.campo-busca input::placeholder {
+  color: #a0aec0;
+}
+
+.icone-busca {
+  position: absolute;
+  left: 15px;
+  color: #a0aec0;
+}
+
+/* Botão de Data */
+.btn-data {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #606c7e;
 }
