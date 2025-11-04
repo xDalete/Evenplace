@@ -11,8 +11,8 @@ export default function Login() {
   return (
     <div>
       <form className={styles.loginForm}>
-        <Input label="Email" type="email" placeholder="exemplo@gmail.com" />
-        <Input label="Senha" type="password" placeholder="senha" />
+        <Input fullWidth label="Email" type="email" placeholder="exemplo@gmail.com" />
+        <Input fullWidth label="Senha" type="password" placeholder="senha" />
         <CustomLink href="#" className={styles.forgotPassword}>
           Esqueci minha senha
         </CustomLink>

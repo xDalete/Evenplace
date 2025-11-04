@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.scss";
 import Container from "@/components/common/Container";
 import Sidebar from "@/components/Navbar/SideBar";
+import styles from "./layout.module.scss";
 
 //TODO: Melhorar SEO com mais detalhes
 export const metadata: Metadata = {
@@ -15,15 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Container
-      style={{
-        display: "grid",
-        gridTemplateColumns: "250px 1fr",
-        padding: "12px",
-        gap: "12px"
-      }}
-    >
-      <Sidebar />
+    <Container className={styles.layout}>
+      <div className={styles.sidebarContainer}>
+        <Sidebar />
+      </div>
       <Container>{children}</Container>
     </Container>
   );

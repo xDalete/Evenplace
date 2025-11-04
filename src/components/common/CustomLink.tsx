@@ -9,9 +9,9 @@ interface CustomLinkProps extends LinkProps {
   size?: Sizes;
 }
 
-const CustomLink: React.FC<CustomLinkProps> = ({ size = "md", children, className, ...props }) => {
+const CustomLink: React.FC<CustomLinkProps> = ({ size = "md", children, className, ...rest }) => {
   return (
-    <Link className={`${styles.customLink} ${styles[`size-${size}`]} ${className}`} {...props}>
+    <Link className={`${styles.customLink} ${styles[`size-${size}`]} ${className}`} {...rest}>
       {children}
     </Link>
   );

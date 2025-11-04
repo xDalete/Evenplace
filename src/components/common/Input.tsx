@@ -6,12 +6,20 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   helperText?: string;
   InputContainerProps?: HtmlHTMLAttributes<HTMLDivElement>;
+  fullWidth?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({ label, error, helperText, InputContainerProps, ...props }) => (
-  <div className={styles.inputContainer} {...InputContainerProps}>
+const Input: React.FC<InputProps> = ({
+  label,
+  error,
+  helperText,
+  InputContainerProps,
+  fullWidth = false,
+  ...props
+}) => (
+  <div className={`${styles.inputContainer} ${fullWidth ? styles.fullWidth : ""}`} {...InputContainerProps}>
     {label && <label className={`${styles.label}`}>{label}</label>}
-    <input {...props} className={`${styles.input} ${error ? styles.Error : ""}`} />
+    <input {...props} className={`${styles.input} ${error ? styles.error : ""}`} />
     {error ? (
       <span className={`${styles.errorText}`}>{error}</span>
     ) : (

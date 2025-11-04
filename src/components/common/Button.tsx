@@ -7,9 +7,9 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   fullWidth?: boolean;
 };
 
-const Button: React.FC<ButtonProps> = ({ variant = "primary", children, fullWidth = false, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ variant = "primary", children, fullWidth = false, ...rest }) => {
   return (
-    <button className={`${styles.button} ${fullWidth ? styles.fullWidth : ""} ${styles[variant]}`} {...props}>
+    <button className={`${styles.button} ${fullWidth ? styles.fullWidth : ""} ${styles[variant]}`} {...rest}>
       {children}
     </button>
   );

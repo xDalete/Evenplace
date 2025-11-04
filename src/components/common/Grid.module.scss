@@ -3,19 +3,26 @@
 .grid {
   display: grid;
   width: 100%;
-}
-
-@each $size, $value in variables.$gap-sizes {
-  .gap-#{$size} {
-    gap: $value;
+  grid-template-columns: repeat(12, 1fr);
+  @each $size, $value in variables.$gap-sizes {
+    &.gap-#{$size} {
+      gap: $value;
+    }
   }
 }
 
-@each $breakpoint, $min-width in variables.$breakpoints {
-  @media (min-width: $min-width) {
-    @for $i from 1 through variables.$grid-columns {
-      .cols-#{$breakpoint}-#{$i} {
-        grid-template-columns: repeat($i, 1fr);
+.gridItem {
+  @each $breakpoint, $min-width in variables.$breakpoints {
+    @media (min-width: $min-width) {
+      @for $i from 0 through variables.$grid-columns {
+        &.cols-#{$breakpoint}-#{$i} {
+          @if $i == 0 {
+            display: none;
+          } @else {
+            display: block;
+            grid-column: span $i;
+          }
+        }
       }
     }
   }

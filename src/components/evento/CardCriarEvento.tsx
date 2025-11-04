@@ -1,68 +1,46 @@
+"use client";
 import React from "react";
 import styles from "./CardCriarEvento.module.scss";
-import Card from "../Card";
-import { EventWithInfo } from "@/lib/Types/EventTypes";
-import Button from "../Button";
-import Grid from "../Grid";
+import Card from "../common/Card";
+import Button from "../common/Button";
+import Input from "../common/Input";
+import Select from "../common/Select";
+import Grid from "../common/Grid";
 
-type CardCriarEventoProps = {
-  evento: EventWithInfo;
-};
-
-const CardCriarEvento: React.FC<CardCriarEventoProps> = () => {
+const CardCriarEvento: React.FC = () => {
   return (
     <Card>
-      <Grid className={styles.cardHeader}>
-        <h1>Criar Evento</h1>
-        <input type="text" placeholder="LOCALIZAR" />
+      <Grid gap="md">
+        <Grid item xs={12} sm={6} md={4} className={styles.itemGroup}>
+          <h1>Criar Evento</h1>
+          <div className={styles.row}>
+            <Button fullWidth>Novo Evento</Button>
+            <Select fullWidth placeholder="Localizar" options={[{ value: "1", label: "Opção 1" }]} value="" />
+          </div>
+        </Grid>
+        <Grid item xs={0} md={4}></Grid>
+        <Grid item xs={12} sm={6} md={4} className={styles.itemGroup}>
+          <Input fullWidth type="text" placeholder="LOCALIZAR" />
+          <div className={styles.row}>
+            <Select
+              fullWidth
+              placeholder="Filtro"
+              options={[{ value: "1", label: "Opção 1" }]}
+              value=""
+              onChange={() => {}}
+            />
+            <Input
+              fullWidth
+              type="date"
+              placeholder="Data"
+              onChange={e => {
+                console.log(e);
+              }}
+            />
+          </div>
+        </Grid>
       </Grid>
-
-    <Grid xs={12} className={styles.rowInfo}>
-      <Grid xs={6} className={styles.elementosEsquerda}>
-        <Button>Pesquisar</Button>
-        <select className={styles["select-localizar"]}>
-          <option value="">LOCALIZAR</option>
-          {/* Adicione outras opções aqui */}
-        </select>
-      </Grid>
-      <Grid xs={6} className={styles.elementosDireita}>
-        <select className={styles["select-localizar"]}>
-          <option value="">FILTRO:  Status</option>
-          {/* Adicione outras opções aqui */}
-        </select>
-        <select className={styles["select-localizar"]}>
-          <option value="">DATA</option>
-          {/* Adicione outras opções aqui */}
-        </select>
-      </Grid>
-    </Grid>
     </Card>
-    //  <div className={styles["eventos-container"]}>
-    //   <div className={styles["header-eventos"]}>
-    //     <h1 className={styles["titulo"]}>Criar Eventos</h1>
-    //     <div className={styles["acoes-esquerda"]}>
-    //       <button className={styles["btn-novo-evento"]}>
-    //        Novo Evento
-    //       </button>
-    //       <select className={styles["select-localizar"]}>
-    //         <option value="">LOCALIZAR</option>
-    //         {/* Adicione outras opções aqui */}
-    //       </select>
-    //     </div>
-    //     <div className={styles["acoes-direita"]}>
-    //       <div className={styles["campo-busca"]}>
-    //         <input className={styles["icone-busca"]} type="text" placeholder="LOCALIZAR" />
-    //       </div>
-    //       <select className={styles["filtro-status"]}>
-    //         <option value="">FILTRO: Status</option>
-    //         {/* Adicione outras opções de status aqui */}
-    //       </select>
-    //       <button className={styles["btn-data"]}>
-    //         DATA
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
