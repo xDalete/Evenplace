@@ -15,7 +15,13 @@ const CardCriarEvento: React.FC = () => {
           <h1>Criar Evento</h1>
           <div className={styles.row}>
             <Button fullWidth>Novo Evento</Button>
-            <Select fullWidth placeholder="Localizar" options={[{ value: "1", label: "Opção 1" }]} value="" />
+            <Select
+              fullWidth
+              placeholder="Localizar"
+              options={[{ value: "1", label: "Opção 1" }]}
+              value=""
+              onChange={() => {}}
+            />
           </div>
         </Grid>
         <Grid item xs={0} md={4}></Grid>

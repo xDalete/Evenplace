@@ -11,7 +11,7 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
   value: string | number;
   error?: boolean;
   fullWidth?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   placeholder?: string;
 }
 
