@@ -181,6 +181,26 @@ export default function Home() {
     >
       <CardCriarEvento />
       <Card>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "end",
+            gap: "4px",
+            alignItems: "center"
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "red",
+              borderRadius: "100%",
+              width: "16px",
+              height: "16px"
+            }}
+          ></div>
+          <div>
+            <span>teste</span>
+          </div>
+        </div>
         <Grid gap="md">
           {eventos.map(evento => (
             <Grid item xs={12} sm={6} md={4} key={evento.id}>
