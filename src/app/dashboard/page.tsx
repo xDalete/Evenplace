@@ -3,7 +3,7 @@ import CardEvento from "@/components/Evento/CardEvento";
 import Grid from "@/components/common/Grid";
 import { EventWithInfo } from "@/lib/Types/EventTypes";
 import Card from "@/components/common/Card";
-import CardCriarEvento from "@/components/Evento/CardCriarEvento";
+import CardCriarEvento from "@/components/evento/CardCriarEvento";
 
 const eventos: EventWithInfo[] = [
   {
@@ -40,7 +40,7 @@ const eventos: EventWithInfo[] = [
     ticketsAvailable: 1800,
     ticketsSold: 700,
     ticketsPrice: 40.0,
-    status: "upcoming"
+    status: "ongoing"
   },
   {
     id: "3",
@@ -76,7 +76,7 @@ const eventos: EventWithInfo[] = [
     ticketsAvailable: 1800,
     ticketsSold: 700,
     ticketsPrice: 40.0,
-    status: "upcoming"
+    status: "cancelled"
   },
   {
     id: "5",
@@ -112,7 +112,7 @@ const eventos: EventWithInfo[] = [
     ticketsAvailable: 1800,
     ticketsSold: 700,
     ticketsPrice: 40.0,
-    status: "upcoming"
+    status: "completed"
   },
   {
     id: "7",

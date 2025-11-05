@@ -14,10 +14,10 @@ type CardEventoProps = {
 };
 
 const CardEvento: React.FC<CardEventoProps> = ({
-  evento: { name, startDate, ticketsAvailable, attendeesCount, attendeesLimit, ticketsPrice, location }
+  evento: { name, startDate, ticketsAvailable, attendeesCount, attendeesLimit, ticketsPrice, location, status }
 }) => {
   return (
-    <Card bgColor="light">
+    <Card bgColor="light" status={status}>
       <Image src="/image1.jpg" alt="Evento" className={styles.eventImage} width={1000} height={700} />
       <h2 className={styles.eventName}>{name}</h2>
       <div className={styles.rowInfo}>
