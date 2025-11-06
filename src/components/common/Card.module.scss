@@ -16,16 +16,15 @@
 
 .ongoing {
   border-left: 8px solid blue !important;
+  box-shadow: 7.5px 5px 5px grey ;
 }
 
 .upcoming {
-  border-left: 8px solid yellow !important;
+  border-left: 8px solid orange !important;
+  box-shadow: 7.5px 5px 5px grey ;
 }
 
 .completed {
-  border-left: 8px solid black !important;
-}
-
-.cancelled {
-  border-left: 8px solid red !important;
+  border-left: 8px solid green !important;
+  box-shadow: 5px 5px 5px grey ;
 }

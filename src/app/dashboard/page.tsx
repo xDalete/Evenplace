@@ -179,15 +179,15 @@ export default function Home() {
         <div className={styles.legendContainer}>
           <div className={styles.legendItem}>
             <div className={`${styles.bolaBase} ${styles.bolaCadastrados}`}></div>
-            <span>Eventos Cadastrados</span>
+            <span> Cadastrados</span>
           </div>
           <div className={styles.legendItem}>
             <div className={`${styles.bolaBase} ${styles.bolaPendentes}`}></div>
-            <span>Eventos Pendentes</span>
+            <span> Pendentes</span>
           </div>
           <div className={styles.legendItem}>
             <div className={`${styles.bolaBase} ${styles.bolaDisponiveis}`}></div>
-            <span>Eventos Disponíveis</span>
+            <span> Disponíveis</span>
           </div>
         </div>
         <Grid gap="md">

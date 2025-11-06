@@ -16,7 +16,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: smaller;
+    font-size: x-small;
   }
 
   .bolaBase {
@@ -29,10 +29,10 @@
     background-color: blue;
   }
   .bolaPendentes {
-    background-color: black;
+    background-color: orange;
   }
   .bolaDisponiveis {
-    background-color: orange;
+    background-color: green;
   }
   
   @media (max-width: 768px) {

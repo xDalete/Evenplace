@@ -1,7 +1,7 @@
 @use "@/styles/Variables.scss" as variables;
 
 .sidebar {
-  height: min-content;
+  height: 100vh;
   border-radius: variables.$border-radius;
   background-color: variables.$primary;
   color: variables.$text;
