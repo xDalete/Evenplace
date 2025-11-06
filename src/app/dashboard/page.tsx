@@ -3,7 +3,7 @@ import CardEvento from "@/components/Evento/CardEvento";
 import Grid from "@/components/common/Grid";
 import { EventWithInfo } from "@/lib/Types/EventTypes";
 import Card from "@/components/common/Card";
-import CardCriarEvento from "@/components/evento/CardCriarEvento";
+import CardCriarEvento from "@/components/Evento/CardCriarEvento";
 
 const eventos: EventWithInfo[] = [
   {
@@ -76,7 +76,7 @@ const eventos: EventWithInfo[] = [
     ticketsAvailable: 1800,
     ticketsSold: 700,
     ticketsPrice: 40.0,
-    status: "cancelled"
+    status: "ongoing"
   },
   {
     id: "5",
@@ -176,7 +176,7 @@ export default function Home() {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: "16px"
+        gap: "24px"
       }}
     >
       <CardCriarEvento />
@@ -191,14 +191,36 @@ export default function Home() {
         >
           <div
             style={{
-              backgroundColor: "red",
+              backgroundColor: "blue",
               borderRadius: "100%",
               width: "16px",
               height: "16px"
             }}
           ></div>
           <div>
-            <span>teste</span>
+            <span style={{padding: "8px"}}>Eventos Cadastrados</span>
+          </div>
+          <div
+            style={{
+              backgroundColor: "black",
+              borderRadius: "100%",
+              width: "16px",
+              height: "16px"
+            }}
+          ></div>
+          <div>
+            <span style={{padding: "8px"}}>Eventos Pendentes</span>
+          </div>
+          <div
+            style={{
+              backgroundColor: "orange",
+              borderRadius: "100%",
+              width: "16px",
+              height: "16px"
+            }}
+          ></div>
+          <div>
+            <span style={{padding: "8px"}}>Eventos Disponíveis</span>
           </div>
         </div>
         <Grid gap="md">
