@@ -3,7 +3,8 @@ import CardEvento from "@/components/Evento/CardEvento";
 import Grid from "@/components/common/Grid";
 import { EventWithInfo } from "@/lib/Types/EventTypes";
 import Card from "@/components/common/Card";
-import CardCriarEvento from "@/components/Evento/CardCriarEvento";
+import CardCriarEvento from "@/components/evento/CardCriarEvento";
+import styles from "./Home.module.scss";
 
 const eventos: EventWithInfo[] = [
   {
@@ -172,55 +173,21 @@ const eventos: EventWithInfo[] = [
 
 export default function Home() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "24px"
-      }}
-    >
+    <div className={styles.pageContainer}>
       <CardCriarEvento />
       <Card>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "end",
-            gap: "4px",
-            alignItems: "center"
-          }}
-        >
-          <div
-            style={{
-              backgroundColor: "blue",
-              borderRadius: "100%",
-              width: "16px",
-              height: "16px"
-            }}
-          ></div>
-          <div>
-            <span style={{padding: "8px"}}>Eventos Cadastrados</span>
+        <div className={styles.legendContainer}>
+          <div className={styles.legendItem}>
+            <div className={`${styles.bolaBase} ${styles.bolaCadastrados}`}></div>
+            <span>Eventos Cadastrados</span>
           </div>
-          <div
-            style={{
-              backgroundColor: "black",
-              borderRadius: "100%",
-              width: "16px",
-              height: "16px"
-            }}
-          ></div>
-          <div>
-            <span style={{padding: "8px"}}>Eventos Pendentes</span>
+          <div className={styles.legendItem}>
+            <div className={`${styles.bolaBase} ${styles.bolaPendentes}`}></div>
+            <span>Eventos Pendentes</span>
           </div>
-          <div
-            style={{
-              backgroundColor: "orange",
-              borderRadius: "100%",
-              width: "16px",
-              height: "16px"
-            }}
-          ></div>
-          <div>
-            <span style={{padding: "8px"}}>Eventos Disponíveis</span>
+          <div className={styles.legendItem}>
+            <div className={`${styles.bolaBase} ${styles.bolaDisponiveis}`}></div>
+            <span>Eventos Disponíveis</span>
           </div>
         </div>
         <Grid gap="md">

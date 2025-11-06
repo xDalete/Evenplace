@@ -1,0 +1,42 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .legendContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .legendItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: smaller;
+  }
+
+  .bolaBase {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%; 
+  }
+  
+  .bolaCadastrados {
+    background-color: blue;
+  }
+  .bolaPendentes {
+    background-color: black;
+  }
+  .bolaDisponiveis {
+    background-color: orange;
+  }
+  
+  @media (max-width: 768px) {
+    .legendContainer {
+      justify-content: flex-start;
+    }
+  }
