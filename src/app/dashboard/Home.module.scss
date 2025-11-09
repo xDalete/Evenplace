@@ -1,7 +1,7 @@
 .pageContainer {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 12px;
   }
   
   .legendContainer {
@@ -24,7 +24,8 @@
     height: 16px;
     border-radius: 50%; 
   }
-  
+
+
   .bolaCadastrados {
     background-color: blue;
   }
@@ -35,6 +36,37 @@
     background-color: green;
   }
   
+  .stickyHeader {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: var(--background-color);
+    padding-block: 1rem;
+  }
+
+  .gridContainer {
+    overflow-y: auto;
+    max-height: calc(100vh - 220px);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+    }
+  
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+  }
+
   @media (max-width: 768px) {
     .legendContainer {
       justify-content: flex-start;

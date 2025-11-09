@@ -1,9 +1,8 @@
-import CustomLink from "@/components/common/CustomLink";
 import CardEvento from "@/components/Evento/CardEvento";
 import Grid from "@/components/common/Grid";
 import { EventWithInfo } from "@/lib/Types/EventTypes";
 import Card from "@/components/common/Card";
-import CardCriarEvento from "@/components/evento/CardCriarEvento";
+import CardCriarEvento from "@/components/Evento/CardCriarEvento";
 import styles from "./Home.module.scss";
 
 const eventos: EventWithInfo[] = [
@@ -174,23 +173,31 @@ const eventos: EventWithInfo[] = [
 export default function Home() {
   return (
     <div className={styles.pageContainer}>
-      <CardCriarEvento />
-      <Card>
-        <div className={styles.legendContainer}>
-          <div className={styles.legendItem}>
-            <div className={`${styles.bolaBase} ${styles.bolaCadastrados}`}></div>
-            <span> Cadastrados</span>
+      <div className={styles.stickyHeader}>
+        <CardCriarEvento />
+      </div>
+      <Card className={styles.contentCard}>
+          <div className={styles.legendContainer}>
+            <div className={styles.legendItem}>
+              <div
+                className={`${styles.bolaBase} ${styles.bolaCadastrados}`}
+              ></div>
+              <span> Cadastrados</span>
+            </div>
+            <div className={styles.legendItem}>
+              <div
+                className={`${styles.bolaBase} ${styles.bolaPendentes}`}
+              ></div>
+              <span> Pendentes</span>
+            </div>
+            <div className={styles.legendItem}>
+              <div
+                className={`${styles.bolaBase} ${styles.bolaDisponiveis}`}
+              ></div>
+              <span> Disponíveis</span>
+            </div>
           </div>
-          <div className={styles.legendItem}>
-            <div className={`${styles.bolaBase} ${styles.bolaPendentes}`}></div>
-            <span> Pendentes</span>
-          </div>
-          <div className={styles.legendItem}>
-            <div className={`${styles.bolaBase} ${styles.bolaDisponiveis}`}></div>
-            <span> Disponíveis</span>
-          </div>
-        </div>
-        <Grid gap="md">
+        <Grid className={styles.gridContainer} gap="md">
           {eventos.map(evento => (
             <Grid item xs={12} sm={6} md={4} key={evento.id}>
               <CardEvento evento={evento} />
@@ -201,3 +208,4 @@ export default function Home() {
     </div>
   );
 }
+

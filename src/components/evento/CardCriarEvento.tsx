@@ -7,9 +7,13 @@ import Input from "../common/Input";
 import Select from "../common/Select";
 import Grid from "../common/Grid";
 
-const CardCriarEvento: React.FC = () => {
+interface CardCriarEventoProps {
+  className?: string;
+}
+
+const CardCriarEvento: React.FC<CardCriarEventoProps> = ({ className }) => {
   return (
-    <Card>
+    <Card className={className}>
       <Grid gap="md">
         <Grid item xs={12} sm={6} md={4} className={styles.itemGroup}>
           <h1>Criar Evento</h1>

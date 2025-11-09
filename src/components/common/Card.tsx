@@ -9,7 +9,7 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Card: React.FC<CardProps> = ({ children, className = "", bgColor = "default", status = "" }) => (
-  <div className={`${styles.card} ${styles[bgColor]} ${className} ${styles[status]}`}>{children}</div>
+<div className={`${styles.card} ${styles[bgColor]} ${className} ${styles[status]}`}>{children}</div>
 );
 
 export default Card;
