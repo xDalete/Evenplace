@@ -1,5 +1,9 @@
 @use "@/styles/Variables.scss" as variables;
 
+.cardEvento {
+  margin-bottom: 5px;
+}
+
 .eventName {
   margin-top: variables.$margin-lg;
   margin-bottom: variables.$margin-lg;
@@ -20,6 +24,7 @@
   font-size: variables.$font-size-md;
   padding: variables.$padding-sm;
   gap: variables.$gap-xs;
+  margin-bottom: variables.$margin-lg;
 }
 
 .rowInfo {
@@ -28,6 +33,8 @@
   align-items: center;
   margin-top: variables.$margin-sm;
   margin-bottom: variables.$margin-sm;
+  flex-wrap: wrap;
+  row-gap: variables.$margin-sm; 
   > div {
     display: flex;
     align-items: center;

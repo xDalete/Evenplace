@@ -17,7 +17,7 @@ const CardEvento: React.FC<CardEventoProps> = ({
   evento: { name, startDate, ticketsAvailable, attendeesCount, attendeesLimit, ticketsPrice, location, status }
 }) => {
   return (
-    <Card bgColor="light" status={status}>
+    <Card bgColor="light" status={status} className={styles.cardEvento}>
       <Image src="/image1.jpg" alt="Evento" className={styles.eventImage} width={1000} height={700} />
       <h2 className={styles.eventName}>{name}</h2>
       <div className={styles.rowInfo}>
