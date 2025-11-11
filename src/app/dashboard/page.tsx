@@ -204,7 +204,7 @@ export default function Home() {
             </Grid>
           ))}
         </Grid>
-      </Card>
+      </Card> 
     </div>
   );
 }

@@ -5,11 +5,13 @@
   grid-template-columns: 1fr;
   padding: variables.$padding-md;
   gap: variables.$gap-md;
-  height: 100vh !important;
+  // height: 100vh !important;
 }
 
 .sidebarContainer {
   display: none;
+  // max-height: 100vh;
+  
 }
 
 @media (min-width: variables.$min-width-lg) {
