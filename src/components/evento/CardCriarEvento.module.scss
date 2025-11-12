@@ -1,0 +1,13 @@
+@use "@/styles/Variables.scss" as variables;
+
+.itemGroup {
+  display: flex !important;
+  flex-direction: column;
+  gap: variables.$gap-md;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: variables.$gap-sm;
+}

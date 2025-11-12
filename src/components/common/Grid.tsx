@@ -3,27 +3,38 @@ import styles from "./Grid.module.scss";
 import { ColumnSize, Sizes } from "@/lib/Types/Types";
 
 type GridProps = {
-  xs?: ColumnSize;
-  sm?: ColumnSize;
-  md?: ColumnSize;
-  lg?: ColumnSize;
+  item?: false;
   gap?: Sizes;
   children: React.ReactNode;
   className?: string;
 };
+type GridItemProps = React.HTMLAttributes<HTMLDivElement> & {
+  item: true;
+  xs?: ColumnSize;
+  sm?: ColumnSize;
+  md?: ColumnSize;
+  lg?: ColumnSize;
+  xl?: ColumnSize;
+};
 
-const Grid: React.FC<GridProps> = ({ xs = 1, sm, md, lg, gap = "md", children, className = "" }) => {
-  const classes = [
-    styles.grid,
-    xs ? styles[`cols-xs-${xs}`] : "",
-    sm ? styles[`cols-sm-${sm}`] : "",
-    md ? styles[`cols-md-${md}`] : "",
-    lg ? styles[`cols-lg-${lg}`] : "",
-    styles[`gap-${gap}`],
-    className
-  ].join(" ");
-
-  return <div className={classes}>{children}</div>;
+const Grid: React.FC<GridProps | GridItemProps> = ({ children, className = "", ...rest }) => {
+  if (rest.item) {
+    const { xs = 12, sm, md, lg, xl } = rest;
+    const classes = [
+      styles.gridItem,
+      xs != undefined ? styles[`cols-xs-${xs}`] : "",
+      sm != undefined ? styles[`cols-sm-${sm}`] : "",
+      md != undefined ? styles[`cols-md-${md}`] : "",
+      lg != undefined ? styles[`cols-lg-${lg}`] : "",
+      xl != undefined ? styles[`cols-lg-${xl}`] : "",
+      className
+    ].join(" ");
+    return <div className={classes}>{children}</div>;
+  } else {
+    const { gap } = rest;
+    const classes = [styles.grid, gap ? styles[`gap-${gap}`] : "", `cols-xs-12`, className].join(" ");
+    return <div className={classes}>{children}</div>;
+  }
 };
 
 export default Grid;

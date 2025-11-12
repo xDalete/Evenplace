@@ -10,6 +10,7 @@ export default function Home() {
         padding: "20px"
       }}
     >
+      
       <h1>Hello, Evenplace!</h1>
       <CustomLink href="/login">Login</CustomLink>
       <CustomLink href="/colors">Colors</CustomLink>

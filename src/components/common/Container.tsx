@@ -7,7 +7,7 @@ type ContainerProps = React.HTMLAttributes<HTMLDivElement> & {
   padding?: Sizes;
 };
 
-const Container: React.FC<ContainerProps> = ({ margin, padding, children, className = "", ...props }) => {
+const Container: React.FC<ContainerProps> = ({ margin, padding, children, className = "", ...rest }) => {
   const classes = [
     styles.container,
     margin ? styles[`margin-${margin}`] : "",
@@ -16,7 +16,7 @@ const Container: React.FC<ContainerProps> = ({ margin, padding, children, classN
   ].join(" ");
 
   return (
-    <div className={classes} {...props}>
+    <div className={classes} {...rest}>
       {children}
     </div>
   );
