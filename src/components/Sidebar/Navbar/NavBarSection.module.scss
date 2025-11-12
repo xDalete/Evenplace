@@ -1,0 +1,18 @@
+@use "@/styles/Variables.scss" as variables;
+
+.section {
+  margin-bottom: variables.$margin-xs;
+}
+
+.sectionTitle {
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-semibold;
+  margin-bottom: variables.$margin-sm;
+  color: variables.$text-on-color;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xs;
+}
