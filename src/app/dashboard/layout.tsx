@@ -20,7 +20,7 @@ export default function RootLayout({
       <div className={styles.sidebarContainer}>
         <Sidebar />
       </div>
-      <Container>{children}</Container>
+        <Container>{children}</Container>
     </Container>
   );
 }

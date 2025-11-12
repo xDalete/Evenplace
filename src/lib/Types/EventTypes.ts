@@ -1,6 +1,6 @@
 import { StringfiedDate } from "./Types";
 
-export type EventStatus = "upcoming" | "ongoing" | "completed" | "cancelled";
+export type EventStatus = "upcoming" | "ongoing" | "completed";
 
 export type Event = {
   id: string;

@@ -5,7 +5,7 @@ import ThemeToggle from "@/components/theme/ThemeToggle";
 
 const poppins = Poppins({
   weight: ["400", "600", "700"],
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 //TODO: Melhorar SEO com mais detalhes
