@@ -1,0 +1,46 @@
+@use "@/styles/Variables.scss" as variables;
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  padding: variables.$padding-md;
+}
+
+.contentCard {
+  width: 100%;
+  max-width: variables.$content-card-max-width;
+  margin: 0 auto;
+  padding: variables.$padding-xl;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xl;
+}
+
+.seatSection {
+  display: flex;
+  gap: variables.$gap-xl;
+  flex-wrap: wrap;
+  margin-top: variables.$margin-xl;
+}
+
+.placeholderBox {
+  border: 1px solid variables.$border-muted;
+  border-radius: variables.$border-radius;
+  height: variables.$seat-allocation-height;
+  width: 100%;
+  max-width: variables.$seat-allocation-max-width;
+  background-color: variables.$bg-light;
+}
+
+@media (max-width: variables.$min-width-md) {
+  .seatSection {
+    flex-direction: column;
+  }
+
+  .placeholderBox {
+    max-width: 100%;
+  }
+}
+

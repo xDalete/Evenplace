@@ -1,0 +1,54 @@
+@use "@/styles/Variables.scss" as variables;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-sm;
+  width: 100%;
+}
+
+.label {
+  font-size: variables.$font-size-md;
+  font-weight: variables.$font-weight-semibold;
+  color: variables.$text;
+  height: variables.$icon-size-lg;
+  display: flex;
+  align-items: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: variables.$event-image-height;
+  background-color: variables.$bg-light;
+  border-radius: variables.$border-radius;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: variables.$image-opacity;
+}
+
+.editButton {
+  position: absolute;
+  top: variables.$padding-md;
+  right: calc(variables.$padding-xl + variables.$padding-md);
+  width: variables.$icon-size-md;
+  height: variables.$icon-size-md;
+  background: transparent;
+  border: 1px solid variables.$text-on-color;
+  border-radius: variables.$border-radius-xs;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform variables.$transition-duration variables.$transition-ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+

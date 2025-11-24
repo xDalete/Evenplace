@@ -1,0 +1,58 @@
+@use "@/styles/Variables.scss" as variables;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: variables.$margin-xl;
+  gap: variables.$gap-md;
+}
+
+.backButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: variables.$padding-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform variables.$transition-duration variables.$transition-ease;
+  color: variables.$text;
+
+  &:hover {
+    transform: translateX(calc(variables.$margin-xs * -1));
+  }
+}
+
+.title {
+  flex: 1;
+  margin-left: variables.$margin-lg;
+  font-size: variables.$font-size-xl;
+  font-weight: variables.$font-weight-semibold;
+  color: variables.$text;
+}
+
+.actions {
+  display: flex;
+  gap: variables.$gap-sm;
+  align-items: center;
+}
+
+@media (max-width: variables.$min-width-md) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .title {
+    margin-left: 0;
+    width: 100%;
+    order: 3;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+

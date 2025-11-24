@@ -1,0 +1,57 @@
+@use "@/styles/Variables.scss" as variables;
+
+.textareaContainer {
+  &.fullWidth {
+    width: 100%;
+  }
+}
+
+.textarea {
+  background-color: variables.$bg-light;
+  color: variables.$text;
+  padding: variables.$padding-md;
+  font-size: variables.$font-size-md;
+  border: 1px solid variables.$border-muted;
+  border-radius: variables.$border-radius;
+  box-sizing: border-box;
+  transition:
+    color variables.$transition-duration,
+    border-color variables.$transition-duration,
+    box-shadow variables.$transition-duration,
+    background-color variables.$transition-duration;
+  width: 100%;
+  min-height: 105px;
+  resize: vertical;
+  font-family: variables.$font-family;
+
+  &:focus {
+    border-color: variables.$primary;
+    outline: none;
+    box-shadow: 0 0 4px variables.$primary;
+  }
+}
+
+.error {
+  border-color: variables.$danger;
+}
+
+.label {
+  color: variables.$text;
+  font-weight: variables.$font-weight-semibold;
+  margin-bottom: variables.$margin-sm;
+  display: block;
+  width: 100%;
+}
+
+.helperText {
+  margin-top: variables.$margin-xs;
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+}
+
+.errorText {
+  color: variables.$danger;
+  font-size: variables.$font-size-xs;
+  margin-top: variables.$margin-xs;
+}
+

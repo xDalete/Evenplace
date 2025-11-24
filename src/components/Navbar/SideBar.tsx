@@ -33,8 +33,8 @@ const Sidebar: React.FC = () => {
         </Link>
         <Divider margin="md" />
         <SideBarSection title="Principal">
-          <SideBarItem icon={<Icon icon={LuChartBar} />} label={"Visualização de Eventos"} href="#" />
-          <SideBarItem icon={<Icon icon={LuSettings} />} label={"Configurar Eventos"} href="#" />
+          <SideBarItem icon={<Icon icon={LuChartBar} />} label={"Visualização de Eventos"} href="/dashboard" />
+          <SideBarItem icon={<Icon icon={LuSettings} />} label={"Configurar Eventos"} href="/dashboard/configurar-evento" />
           <SideBarItem icon={<Icon icon={LuDollarSign} />} label={"Ingressos"} href="#" />
           <SideBarItem icon={<Icon icon={LuTrendingUp} />} label={"Dados Estatísticos"} href="#" />
           <SideBarItem icon={<Icon icon={LuFileText} />} label={"Relatório"} href="#" />

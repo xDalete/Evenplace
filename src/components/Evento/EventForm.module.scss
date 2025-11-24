@@ -1,0 +1,9 @@
+@use "@/styles/Variables.scss" as variables;
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-lg;
+  width: 100%;
+}
+
