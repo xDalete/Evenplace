@@ -31,7 +31,7 @@ export default function Login() {
 
   const onSubmit = async (data: LoginFormData) => {
     setIsLoading(true);
-    login({ ...data, rememberMe: true }, err => {
+    login({ ...data, rememberMe: true }, () => {
       const errorMessage = "Email ou senha incorretos";
       setError("root", { message: errorMessage });
     });
