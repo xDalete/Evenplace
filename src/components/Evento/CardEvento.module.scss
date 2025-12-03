@@ -2,6 +2,8 @@
 
 .cardEvento {
   margin-bottom: 5px;
+  display: block;
+  width: 100%;
 }
 
 .eventName {
@@ -34,7 +36,8 @@
   margin-top: variables.$margin-sm;
   margin-bottom: variables.$margin-sm;
   flex-wrap: wrap;
-  row-gap: variables.$margin-sm; 
+  row-gap: variables.$margin-sm;
+  
   > div {
     display: flex;
     align-items: center;

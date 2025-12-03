@@ -10,10 +10,7 @@ type LocationData = {
   city: string;
   inscritos: number;
 };
-
-// Dados MOCK – substitua por dados reais quando houver API.
-// Para remover estes dados fixos, apague o array abaixo
-// e passe os dados via props futuramente.
+// SUBSTITUIR POR DADOS REAIS VINDOS DA API
 const mockData: LocationData[] = [
   { city: "Belo Horizonte", inscritos: 853 },
   { city: "Uberlândia", inscritos: 743 },
@@ -56,11 +53,22 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
 
 const LocationBarChart: React.FC<LocationBarChartProps> = ({ className }) => {
   return (
-    <div className={className} style={{ width: "100%", height: 260 }}>
+    <div 
+      className={className} 
+      style={{ 
+        width: "100%", 
+        height: 300,
+        minWidth: 0,
+        minHeight: 0
+      }}
+    >
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={mockData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+        <BarChart 
+          data={mockData} 
+          margin={{ top: 10, right: 10, left: 0, bottom: 10 }}
+        >
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="city" />
+          <XAxis dataKey="city" angle={-45} textAnchor="end" height={80} />
           <YAxis />
           <Tooltip content={<CustomTooltip />} />
           <Bar dataKey="inscritos" radius={[8, 8, 0, 0]} fill="#5046FF" />
@@ -71,5 +79,3 @@ const LocationBarChart: React.FC<LocationBarChartProps> = ({ className }) => {
 };
 
 export default LocationBarChart;
-
-

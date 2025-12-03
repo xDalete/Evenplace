@@ -1,0 +1,611 @@
+@use "@/styles/Variables.scss" as variables;
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: variables.$padding-md;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  transition: opacity variables.$transition-duration;
+}
+
+.modalContainer {
+  position: relative;
+  width: 100%;
+  max-width: 60rem;
+  max-height: 95vh;
+  overflow: hidden;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Header
+.header {
+  position: relative;
+  height: 16rem;
+  overflow: hidden;
+}
+
+.headerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.headerOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5), transparent);
+}
+
+.headerContent {
+  position: absolute;
+  inset: 0;
+  padding: variables.$padding-lg;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+.headerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: variables.$gap-lg;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(147, 51, 234, 0.9);
+  color: white;
+  padding: variables.$padding-xs variables.$padding-md;
+  border-radius: 999px;
+  font-size: variables.$font-size-xs;
+  font-weight: bold;
+  margin-bottom: variables.$margin-md;
+  backdrop-filter: blur(4px);
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 900;
+  margin-bottom: variables.$margin-lg;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: variables.$min-width-md) {
+    font-size: 1.875rem;
+  }
+}
+
+.eventDetails {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-sm;
+  font-size: variables.$font-size-sm;
+  font-weight: 500;
+}
+
+.closeButton {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border: none;
+  padding: variables.$padding-md;
+  border-radius: 999px;
+  color: white;
+  cursor: pointer;
+  transition: all variables.$transition-duration;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+  }
+}
+
+// Occupancy
+.occupancySection {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-sm;
+}
+
+.occupancyInfo {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-sm;
+  font-size: variables.$font-size-sm;
+  font-weight: 600;
+}
+
+.occupancyBar {
+  width: 100%;
+  height: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.occupancyFill {
+  height: 100%;
+  background: linear-gradient(to right, rgb(168, 85, 247), rgb(147, 51, 234));
+  transition: width 0.5s ease;
+}
+
+.occupancyWarning {
+  font-size: variables.$font-size-xs;
+  color: rgb(253, 224, 71);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-xs;
+}
+
+// Content
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: variables.$padding-xl;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xl;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.description {
+  p {
+    font-size: variables.$font-size-md;
+    line-height: 1.6;
+    color: variables.$text;
+  }
+}
+
+// Tickets
+.ticketsSection {
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: variables.$text;
+    margin-bottom: variables.$margin-lg;
+  }
+}
+
+.ticketsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: variables.$gap-md;
+
+  @media (max-width: variables.$min-width-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ticketCard {
+  position: relative;
+  padding: variables.$padding-lg;
+  border: 2px solid variables.$border;
+  border-radius: 0.75rem;
+  background: white;
+  cursor: pointer;
+  transition: all variables.$transition-duration;
+  text-align: left;
+  overflow: hidden;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &:not(:disabled):hover {
+    border-color: variables.$primary;
+    box-shadow: 0 10px 25px -5px rgba(147, 51, 234, 0.1);
+  }
+
+  &.selected {
+    border-color: variables.$primary;
+    background: oklch(from variables.$primary calc(l + 0.05) calc(c - 0.05) h / 0.1);
+    transform: scale(1.02);
+    box-shadow: 0 10px 35px -5px rgba(147, 51, 234, 0.2);
+  }
+
+  &.highlight {
+    box-shadow: inset 0 0 0 2px rgba(147, 51, 234, 0.3);
+
+    &.selected {
+      box-shadow: 0 10px 35px -5px rgba(147, 51, 234, 0.3);
+    }
+  }
+}
+
+.ticketCardGradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), transparent);
+  opacity: 0;
+  transition: opacity variables.$transition-duration;
+}
+
+.ticketCardContent {
+  position: relative;
+  z-index: 1;
+}
+
+.ticketCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: variables.$margin-sm;
+}
+
+.ticketName {
+  font-size: variables.$font-size-lg;
+  font-weight: 900;
+  color: variables.$text;
+}
+
+.ticketBadge {
+  display: inline-block;
+  background: linear-gradient(135deg, variables.$primary, oklch(from variables.$primary calc(l - 0.1) c h));
+  color: white;
+  font-size: variables.$font-size-xs;
+  font-weight: bold;
+  padding: variables.$padding-xs variables.$padding-sm;
+  border-radius: 0.5rem;
+}
+
+.ticketDescription {
+  font-size: variables.$font-size-sm;
+  color: variables.$text-muted;
+  margin-bottom: variables.$margin-md;
+}
+
+.ticketPrice {
+  padding: variables.$padding-md 0;
+  border-top: 1px solid variables.$border;
+  border-bottom: 1px solid variables.$border;
+  margin-bottom: variables.$margin-md;
+
+  p:first-child {
+    font-size: 1.875rem;
+    font-weight: 900;
+    color: variables.$primary;
+  }
+
+  p:last-child {
+    font-size: variables.$font-size-xs;
+    color: variables.$text-muted;
+    margin-top: variables.$margin-xs;
+  }
+}
+
+.ticketFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: variables.$padding-md;
+
+  p {
+    font-size: variables.$font-size-xs;
+    font-weight: bold;
+    color: variables.$text-muted;
+  }
+}
+
+.checkmark {
+  width: 1.25rem;
+  height: 1.25rem;
+  background: variables.$primary;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scaleIn 0.2s ease-out;
+
+  &::after {
+    content: "✓";
+    color: white;
+    font-size: variables.$font-size-sm;
+    font-weight: bold;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+// Quantity
+.quantitySection {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.05), rgba(59, 130, 246, 0.05));
+  padding: variables.$padding-lg;
+  border-radius: 0.75rem;
+  border: 1px solid variables.$border;
+
+  label {
+    display: block;
+    font-size: variables.$font-size-sm;
+    font-weight: bold;
+    color: variables.$text;
+    margin-bottom: variables.$margin-lg;
+  }
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-lg;
+}
+
+.quantityButton {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: white;
+  border: 2px solid variables.$border;
+  font-weight: bold;
+  font-size: variables.$font-size-lg;
+  cursor: pointer;
+  transition: all variables.$transition-duration;
+
+  &:hover {
+    border-color: variables.$primary;
+    background: variables.$bg-light;
+  }
+}
+
+.quantityInput {
+  width: 5rem;
+  height: 3rem;
+  text-align: center;
+  border: 2px solid variables.$border;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: variables.$font-size-lg;
+  transition: border-color variables.$transition-duration;
+
+  &:focus {
+    outline: none;
+    border-color: variables.$primary;
+  }
+}
+
+.quantityTotal {
+  flex: 1;
+  text-align: right;
+
+  p:first-child {
+    font-size: variables.$font-size-sm;
+    color: variables.$text-muted;
+    margin-bottom: variables.$margin-xs;
+  }
+
+  p:last-child {
+    font-size: 1.875rem;
+    font-weight: 900;
+    color: variables.$primary;
+  }
+}
+
+// Refund Policy
+.refundPolicy {
+  background: rgb(250, 250, 250);
+  border: 2px solid rgb(253, 224, 71);
+  border-radius: 0.75rem;
+  padding: variables.$padding-md;
+  display: flex;
+  gap: variables.$gap-lg;
+
+  .refundIcon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: rgb(180, 83, 9);
+  }
+
+  h4 {
+    font-size: variables.$font-size-sm;
+    font-weight: 900;
+    color: rgb(120, 53, 15);
+    margin-bottom: variables.$margin-sm;
+  }
+
+  p {
+    font-size: variables.$font-size-xs;
+    line-height: 1.5;
+    color: rgb(120, 53, 15);
+
+    strong {
+      font-weight: 700;
+    }
+  }
+}
+
+// Terms
+.termsContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: variables.$gap-lg;
+  padding: variables.$padding-md;
+  background: variables.$bg-light;
+  border-radius: 0.75rem;
+  border: 1px solid variables.$border;
+
+  input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.125rem;
+    accent-color: variables.$primary;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    flex-shrink: 0;
+  }
+
+  label {
+    font-size: variables.$font-size-sm;
+    color: variables.$text;
+    cursor: pointer;
+    line-height: 1.5;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+}
+
+// Footer
+.footer {
+  border-top: 1px solid variables.$border;
+  background: variables.$bg-light;
+  padding: variables.$padding-lg;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-lg;
+}
+
+.summary {
+  background: white;
+  padding: variables.$padding-lg;
+  border-radius: 0.75rem;
+  border: 1px solid variables.$border;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > div {
+    p:first-child {
+      font-size: variables.$font-size-sm;
+      color: variables.$text-muted;
+      margin-bottom: variables.$margin-xs;
+    }
+
+    p:last-child {
+      font-weight: bold;
+      color: variables.$text;
+    }
+  }
+
+  > div:last-child {
+    text-align: right;
+
+    p:last-child {
+      font-size: 1.875rem;
+      color: variables.$primary;
+      font-weight: 900;
+    }
+  }
+}
+
+.buttonGroup {
+  display: flex;
+  gap: variables.$gap-md;
+
+  @media (max-width: variables.$min-width-sm) {
+    flex-direction: column;
+  }
+}
+
+.buttonSecondary {
+  flex: 1;
+  padding: variables.$padding-lg;
+  border: 2px solid variables.$border;
+  border-radius: 0.75rem;
+  background: white;
+  font-weight: bold;
+  color: variables.$text;
+  cursor: pointer;
+  transition: all variables.$transition-duration;
+
+  &:hover {
+    background: variables.$bg-light;
+    border-color: variables.$text-muted;
+  }
+}
+
+.buttonPrimary {
+  flex: 1;
+  padding: variables.$padding-lg;
+  background: linear-gradient(135deg, variables.$primary, oklch(from variables.$primary calc(l - 0.05) c h));
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 900;
+  font-size: variables.$font-size-md;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: variables.$gap-sm;
+  transition: all variables.$transition-duration;
+  box-shadow: 0 10px 15px -3px rgba(147, 51, 234, 0.2);
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 20px 25px -5px rgba(147, 51, 234, 0.3);
+    transform: scale(1.02);
+  }
+
+  &:disabled {
+    background: variables.$border;
+    color: variables.$text-muted;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.helperText {
+  text-align: center;
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+}
