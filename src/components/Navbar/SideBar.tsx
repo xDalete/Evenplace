@@ -43,13 +43,13 @@ const Sidebar: React.FC = () => {
             label={"Configurar Eventos"}
             href="/dashboard/configurar-evento"
           />
-          <SideBarItem icon={<Icon icon={LuDollarSign} />} label={"Ingressos"} href="#" />
+          <SideBarItem icon={<Icon icon={LuDollarSign} />} label={"Ingressos"} href="/dashboard/ingressos" />
           <SideBarItem
             icon={<Icon icon={LuTrendingUp} />}
             label={"Dados Estatísticos"}
             href="/dashboard/dados-estatisticos"
           />
-          <SideBarItem icon={<Icon icon={LuFileText} />} label={"Relatório"} href="#" />
+          <SideBarItem icon={<Icon icon={LuFileText} />} label={"Relatório"} href="/dashboard/relatorios" />
         </SideBarSection>
         <Divider margin="md" />
         <SideBarSection title="Atendimento">

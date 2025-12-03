@@ -1,0 +1,207 @@
+@use "@/styles/Variables.scss" as variables;
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-lg;
+  width: 100%;
+  min-height: calc(100vh - 2 * variables.$padding-md);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: variables.$bg-light;
+  border-radius: variables.$border-radius;
+  padding: variables.$padding-md variables.$padding-lg;
+  box-shadow: variables.$box-shadow;
+  flex-wrap: wrap;
+  gap: variables.$gap-md;
+}
+
+.titleGroup {
+  display: flex;
+  gap: variables.$gap-md;
+  align-items: center;
+
+  h1 {
+    font-size: variables.$font-size-xl;
+    font-weight: variables.$font-weight-semibold;
+    margin: 0;
+  }
+}
+
+.subtitle {
+  font-size: variables.$font-size-xs;
+  text-transform: uppercase;
+  color: variables.$text-muted;
+  display: block;
+}
+
+.titleIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: variables.$border-radius;
+  background: variables.$bg;
+  display: grid;
+  place-items: center;
+  color: variables.$primary;
+  flex-shrink: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-md;
+  flex-wrap: wrap;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-sm;
+  padding: variables.$padding-sm variables.$padding-md;
+  background: variables.$bg;
+  border-radius: 999px;
+  color: variables.$text-muted;
+  min-width: 240px;
+  border: 1px solid variables.$border-muted;
+  transition: border-color variables.$transition-duration variables.$transition-ease;
+
+  &:focus-within {
+    border-color: variables.$primary;
+  }
+}
+
+.searchIcon {
+  flex-shrink: 0;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  color: variables.$text;
+  width: 100%;
+  font-size: variables.$font-size-sm;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: variables.$text-muted;
+  }
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-xs;
+  padding: variables.$padding-sm variables.$padding-lg;
+  border-radius: 999px;
+  border: 1px solid variables.$border;
+  background: variables.$bg;
+  color: variables.$text;
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-semibold;
+  cursor: pointer;
+  transition: all variables.$transition-duration variables.$transition-ease;
+
+  &:hover {
+    background: variables.$bg-light;
+    border-color: variables.$primary;
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.emptyState {
+  padding: variables.$padding-xl * 2;
+  text-align: center;
+}
+
+.emptyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: variables.$gap-md;
+
+  h2 {
+    font-size: variables.$font-size-lg;
+    font-weight: variables.$font-weight-semibold;
+    margin: 0;
+  }
+
+  p {
+    font-size: variables.$font-size-md;
+    color: variables.$text-muted;
+    margin: 0;
+    max-width: 500px;
+  }
+}
+
+.emptyIcon {
+  color: variables.$text-muted;
+  opacity: 0.5;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+}
+
+.sectionTitle {
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-semibold;
+  margin: 0;
+  color: variables.$text;
+}
+
+.grid {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .searchContainer {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .titleGroup {
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .searchContainer {
+    width: 100%;
+  }
+
+  .filterButton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

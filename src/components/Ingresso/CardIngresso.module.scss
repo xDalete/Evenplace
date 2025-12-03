@@ -1,0 +1,154 @@
+@use "@/styles/Variables.scss" as variables;
+
+.cardIngresso {
+  margin-bottom: 5px;
+  display: block;
+  width: 100%;
+  border-radius: variables.$border-radius;
+  transition: transform variables.$transition-duration variables.$transition-ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+}
+
+.eventImage {
+  border-radius: variables.$border-radius variables.$border-radius 0 0;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 10/7;
+  object-fit: cover;
+}
+
+.statusBadge {
+  position: absolute;
+  top: variables.$padding-sm;
+  right: variables.$padding-sm;
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-xs;
+  padding: variables.$padding-xs variables.$padding-sm;
+  background: variables.$bg-light;
+  border-radius: 999px;
+  font-size: variables.$font-size-xs;
+  font-weight: variables.$font-weight-semibold;
+  box-shadow: variables.$box-shadow;
+  backdrop-filter: blur(10px);
+}
+
+.content {
+  padding: variables.$padding-lg;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+  flex: 1;
+}
+
+.eventName {
+  margin: 0;
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-semibold;
+  text-align: center;
+  color: variables.$text;
+}
+
+.ticketInfo {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-sm;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-sm;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xs;
+  flex: 1;
+}
+
+.infoLabel {
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+  text-transform: uppercase;
+}
+
+.infoValue {
+  font-size: variables.$font-size-md;
+  font-weight: variables.$font-weight-semibold;
+  color: variables.$text;
+}
+
+.eventDetails {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-sm;
+}
+
+.detailItem {
+  display: flex;
+  align-items: flex-start;
+  gap: variables.$gap-sm;
+}
+
+.detailLabel {
+  font-size: variables.$font-size-sm;
+  color: variables.$text-muted;
+  margin-right: variables.$margin-xs;
+}
+
+.detailValue {
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-semibold;
+  color: variables.$text;
+}
+
+.barcodeContainer {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xs;
+  padding: variables.$padding-md;
+  background: variables.$bg;
+  border-radius: variables.$border-radius;
+  text-align: center;
+}
+
+.barcodeLabel {
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+  text-transform: uppercase;
+}
+
+.barcode {
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-bold;
+  font-family: "Courier New", monospace;
+  color: variables.$primary;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: variables.$padding-md;
+  }
+
+  .eventName {
+    font-size: variables.$font-size-md;
+  }
+}
+

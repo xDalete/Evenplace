@@ -1,0 +1,478 @@
+@use "@/styles/Variables.scss" as variables;
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-lg;
+  width: 100%;
+  min-height: calc(100vh - 2 * variables.$padding-md);
+}
+
+.statsGrid {
+  width: 100%;
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-md;
+  padding: variables.$padding-lg;
+  height: 100%;
+}
+
+.statIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: variables.$border-radius;
+  background: variables.$bg;
+  display: grid;
+  place-items: center;
+  color: variables.$primary;
+  flex-shrink: 0;
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xs;
+  flex: 1;
+}
+
+.statTitle {
+  font-size: variables.$font-size-sm;
+  color: variables.$text-muted;
+  text-transform: uppercase;
+}
+
+.statValue {
+  font-size: variables.$font-size-xl;
+  font-weight: variables.$font-weight-semibold;
+  color: variables.$primary;
+  margin: 0;
+}
+
+.contentGrid {
+  width: 100%;
+  align-items: stretch;
+}
+
+.chartCard {
+  padding: variables.$padding-lg;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+  height: 100%;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chartTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-xs;
+
+  h2 {
+    font-size: variables.$font-size-lg;
+    font-weight: variables.$font-weight-semibold;
+    margin: 0;
+  }
+}
+
+.chevronIcon {
+  color: variables.$text-muted;
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-xs;
+  padding: variables.$padding-sm variables.$padding-md;
+  border-radius: 999px;
+  border: 1px solid variables.$border;
+  background: variables.$bg;
+  color: variables.$text;
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-semibold;
+  cursor: pointer;
+  transition: all variables.$transition-duration variables.$transition-ease;
+
+  &:hover {
+    background: variables.$bg-light;
+    border-color: variables.$primary;
+  }
+}
+
+.chartSummary {
+  display: flex;
+  gap: variables.$gap-lg;
+  flex-wrap: wrap;
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xs;
+}
+
+.summaryLabel {
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+  text-transform: uppercase;
+}
+
+.summaryValue {
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-semibold;
+  color: variables.$primary;
+}
+
+.chartContainer {
+  flex: 1;
+  min-height: 300px;
+}
+
+.activitiesCard {
+  padding: variables.$padding-lg;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+  height: 100%;
+}
+
+.activitiesTitle {
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-semibold;
+  margin: 0;
+}
+
+.donutContent {
+  display: flex;
+  gap: variables.$gap-md;
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+}
+
+.donut {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  background: variables.$primary;
+}
+
+.donutHole {
+  position: absolute;
+  inset: 25%;
+  border-radius: 50%;
+  background: variables.$bg-light;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: variables.$gap-xs;
+  text-align: center;
+
+  span {
+    font-size: variables.$font-size-xs;
+    color: variables.$text-muted;
+  }
+
+  strong {
+    font-size: variables.$font-size-md;
+    font-weight: variables.$font-weight-semibold;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-sm;
+  width: 100%;
+}
+
+.legendItem {
+  display: flex;
+  gap: variables.$gap-sm;
+  align-items: center;
+
+  p {
+    font-weight: variables.$font-weight-semibold;
+    font-size: variables.$font-size-sm;
+    margin: 0;
+  }
+
+  small {
+    display: block;
+    color: variables.$text-muted;
+    font-size: variables.$font-size-xs;
+  }
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.bottomGrid {
+  width: 100%;
+  align-items: stretch;
+}
+
+.upcomingCard,
+.notificationsCard {
+  padding: variables.$padding-lg;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+  height: 100%;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    font-size: variables.$font-size-md;
+    font-weight: variables.$font-weight-semibold;
+    margin: 0;
+  }
+}
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-sm;
+  flex: 1;
+}
+
+.eventItem {
+  display: flex;
+  gap: variables.$gap-sm;
+  align-items: center;
+  padding: variables.$padding-sm;
+  border-radius: variables.$border-radius;
+  transition: background-color variables.$transition-duration variables.$transition-ease;
+
+  &:hover {
+    background: variables.$bg;
+  }
+}
+
+.eventImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: variables.$bg;
+  flex-shrink: 0;
+  border: 2px solid variables.$border-muted;
+}
+
+.eventInfo {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xs;
+  flex: 1;
+}
+
+.eventName {
+  font-size: variables.$font-size-sm;
+  font-weight: variables.$font-weight-semibold;
+  margin: 0;
+}
+
+.eventDate {
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+}
+
+.seeAllLink {
+  font-size: variables.$font-size-sm;
+  color: variables.$primary;
+  font-weight: variables.$font-weight-semibold;
+  text-align: center;
+  padding: variables.$padding-sm;
+  border-radius: variables.$border-radius;
+  transition: background-color variables.$transition-duration variables.$transition-ease;
+
+  &:hover {
+    background: variables.$bg;
+  }
+}
+
+.lastEventCard {
+  padding: variables.$padding-lg;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+  height: 100%;
+}
+
+.lastEventTitle {
+  font-size: variables.$font-size-md;
+  font-weight: variables.$font-weight-semibold;
+  margin: 0;
+}
+
+.eventDetails {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+}
+
+.eventInfoSection {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xs;
+}
+
+.eventDetail {
+  font-size: variables.$font-size-sm;
+  margin: 0;
+
+  strong {
+    font-weight: variables.$font-weight-semibold;
+  }
+}
+
+.seatLegend {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-xs;
+}
+
+.seatGrid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  padding: variables.$padding-md;
+  background: variables.$bg;
+  border-radius: variables.$border-radius;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.seat {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  border: 1px solid variables.$border-muted;
+  transition: all variables.$transition-duration variables.$transition-ease;
+}
+
+.seatPaid {
+  background: variables.$primary;
+  border-color: variables.$primary;
+}
+
+.seatReserved {
+  background: oklch(0.5 0.15 270);
+  border-color: oklch(0.5 0.15 270);
+}
+
+.seatAvailable {
+  background: variables.$bg-light;
+  border-color: variables.$border-muted;
+}
+
+.legendPaid {
+  background: variables.$primary;
+}
+
+.legendReserved {
+  background: oklch(0.5 0.15 270);
+}
+
+.legendAvailable {
+  background: variables.$bg-light;
+  border: 1px solid variables.$border-muted;
+}
+
+.notificationsList {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-sm;
+  flex: 1;
+}
+
+.notificationItem {
+  display: flex;
+  gap: variables.$gap-sm;
+  align-items: flex-start;
+  padding: variables.$padding-sm;
+  border-radius: variables.$border-radius;
+  transition: background-color variables.$transition-duration variables.$transition-ease;
+
+  &:hover {
+    background: variables.$bg;
+  }
+}
+
+.notificationIcon {
+  color: variables.$primary;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.notificationMessage {
+  font-size: variables.$font-size-sm;
+  margin: 0;
+  line-height: 1.5;
+  flex: 1;
+}
+
+@media (max-width: 1200px) {
+  .donutContent {
+    flex-direction: row;
+  }
+
+  .donut {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (max-width: 900px) {
+  .chartSummary {
+    flex-direction: column;
+    gap: variables.$gap-md;
+  }
+
+  .donutContent {
+    flex-direction: column;
+  }
+
+  .seatGrid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .statCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .statIcon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .chartHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: variables.$gap-sm;
+  }
+
+  .seatGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
