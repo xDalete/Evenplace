@@ -6,7 +6,6 @@ export enum EventoStatusEnum {
   FINALIZADO = "finalizado"
 }
 
-// Tipo original (Compatível com seu Backend atual/Português)
 export type Evento = {
   id: number;
   nome: string;
