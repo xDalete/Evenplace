@@ -1,7 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, AlertCircle, Lock, MapPin, Calendar, Users, Zap } from "lucide-react";
+import { useRouter } from "next/navigation"; 
+import {
+  X,
+  AlertCircle,
+  Lock,
+  MapPin,
+  Calendar,
+  Users,
+  Zap
+} from "lucide-react";
 import styles from "./EventRegistrationModal.module.scss";
 import { Evento } from "@/lib/Types/EventTypes";
 import { formatCurrency, formatDateWithHours } from "@/lib/utils/format";
@@ -9,7 +18,7 @@ import { formatCurrency, formatDateWithHours } from "@/lib/utils/format";
 interface EventRegistrationModalProps {
   isOpen: boolean;
   onClose: () => void;
-  evento?: Evento;
+  event?: Evento;
 }
 
 type TicketType = {
@@ -22,38 +31,45 @@ type TicketType = {
   highlight: boolean;
 };
 
-const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen, onClose, evento }) => {
-  const [selectedTicketType, setSelectedTicketType] = useState<number | null>(null);
+const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
+  isOpen,
+  onClose,
+  event
+}) => {
+  const router = useRouter(); // Hook de navegação
+  const [selectedTicketType, setSelectedTicketType] = useState<number | null>(
+    null
+  );
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
-  if (!isOpen || !evento) return null;
+  if (!isOpen || !event) return null;
 
   const ticketTypes: TicketType[] = [
     {
       id: 1,
       name: "Ingresso Inteira",
-      price: evento.valor_ingresso || 40.0,
+      price: event.valor_ingresso || 40.0,
       description: "Acesso completo ao evento",
-      quantity: evento.vagas_disponiveis || 100,
+      quantity: event.vagas_disponiveis || 100,
       badge: null,
       highlight: false
     },
     {
       id: 2,
       name: "Meia Entrada",
-      price: (evento.valor_ingresso || 40.0) / 2,
+      price: (event.valor_ingresso || 40.0) / 2,
       description: "Estudante, idoso, PCD",
-      quantity: evento.vagas_disponiveis || 100,
+      quantity: event.vagas_disponiveis || 100,
       badge: "ECONOMIA",
       highlight: false
     },
     {
       id: 3,
       name: "Ingresso VIP",
-      price: (evento.valor_ingresso || 40.0) * 1.5,
+      price: (event.valor_ingresso || 40.0) * 1.5,
       description: "Acesso prioritário + área exclusiva",
-      quantity: Math.floor((evento.vagas_disponiveis || 100) * 0.2),
+      quantity: Math.floor((event.vagas_disponiveis || 100) * 0.2),
       badge: "PREMIUM",
       highlight: true
     }
@@ -62,8 +78,8 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
   const selectedTicket = ticketTypes.find(t => t.id === selectedTicketType);
   const totalPrice = selectedTicket ? selectedTicket.price * quantity : 0;
 
-  const occupancy = evento.vagas_disponiveis || 0;
-  const limit = evento.quantidade_vagas || 2500;
+  const occupancy = event.vagas_disponiveis || 0;
+  const limit = event.quantidade_vagas || 2500;
   const occupancyPercent = Math.min((occupancy / limit) * 100, 100);
 
   return (
@@ -71,9 +87,8 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
       <div className={styles.backdrop} onClick={onClose} />
 
       <div className={styles.modalContainer}>
-        {/* Header */}
         <div className={styles.header}>
-          <img src="/image1.jpg" alt={evento.nome} className={styles.headerImage} />
+          <img src="/image1.jpg" alt={event.nome} className={styles.headerImage} />
 
           <div className={styles.headerOverlay} />
 
@@ -81,15 +96,15 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
             <div className={styles.headerTop}>
               <div>
                 <div className={styles.badge}>✨ EM ALTA DEMANDA</div>
-                <h1 className={styles.title}>{evento.nome}</h1>
+                <h1 className={styles.title}>{event.nome}</h1>
                 <div className={styles.eventDetails}>
                   <div className={styles.detailItem}>
                     <MapPin size={18} />
-                    <span>{evento.local}</span>
+                    <span>{event.local}</span>
                   </div>
                   <div className={styles.detailItem}>
                     <Calendar size={18} />
-                    <span>{formatDateWithHours(`${evento.data} ${evento.horario}`)}</span>
+                    <span>{formatDateWithHours(`${event.data} ${event.horario}`)}</span>
                   </div>
                 </div>
               </div>
@@ -99,7 +114,6 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
               </button>
             </div>
 
-            {/* Occupancy Bar */}
             <div className={styles.occupancySection}>
               <div className={styles.occupancyInfo}>
                 <Users size={16} />
@@ -124,7 +138,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
           {/* Description */}
           <div className={styles.description}>
             <p>
-              {evento.descricao || "Descrição do evento não disponível. Prepare-se para uma experiência inesquecível!"}
+              {event.descricao || "Descrição do evento não disponível. Prepare-se para uma experiência inesquecível!"}
             </p>
           </div>
 
@@ -256,7 +270,8 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
             <button
               onClick={() => {
                 if (selectedTicket && agreeToTerms) {
-                  alert(`Redirecionando para login com ${quantity} ${selectedTicket.name}(s)...`);
+                  // Lógica adicionada: Redirecionar para login
+                  router.push("/login");
                 }
               }}
               disabled={!selectedTicket || !agreeToTerms}

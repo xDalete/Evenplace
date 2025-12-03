@@ -55,7 +55,7 @@ const CardEvento: React.FC<CardEventoProps> = ({ evento }) => {
         </Card>
       </div>
 
-      <EventRegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} evento={evento} />
+      <EventRegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} event={evento} />
     </>
   );
 };

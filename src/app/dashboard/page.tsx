@@ -6,16 +6,19 @@ import CardCriarEvento from "@/components/Evento/CardCriarEvento";
 import styles from "./Home.module.scss";
 import { useEffect, useState } from "react";
 import { getAllEventos } from "@/api/Evento";
-import { EventWithInfo } from "@/lib/Types/EventTypes";
+// CORREÇÃO 1: Importamos 'Evento' em vez de 'EventWithInfo'
+import { Evento } from "@/lib/Types/EventTypes"; 
 import Container from "@/components/common/Container";
 import Loading from "@/components/common/Loading";
 
 export default function Home() {
-  const [eventos, setEventos] = useState<EventWithInfo[]>([]);
+  // CORREÇÃO 2: Definimos o estado como uma lista de 'Evento' (Português)
+  const [eventos, setEventos] = useState<Evento[]>([]);
 
   useEffect(() => {
     getAllEventos()
       .then(response => {
+        // Agora o TypeScript aceita, pois response.data deve ser do tipo Evento[]
         setEventos(response.data);
         console.log(response.data);
       })
@@ -46,9 +49,10 @@ export default function Home() {
         </div>
         {eventos.length > 0 ? (
           <Grid className={styles.gridContainer} gap="md">
-            {eventos.map(evento => (
-              <Grid item xs={12} sm={6} md={4} xl={3} key={evento.id}>
-                <CardEvento evento={evento} />
+            {eventos.map(item => (
+              <Grid item xs={12} sm={6} md={4} xl={3} key={item.id}>
+                {/* CORREÇÃO 3: O componente espera a prop 'evento' */}
+                <CardEvento evento={item} />
               </Grid>
             ))}
           </Grid>
