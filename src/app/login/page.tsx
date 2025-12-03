@@ -1,4 +1,4 @@
-import LoginContainer from "@/app/login/components/LoginContainer";
+import LoginContainer from "./components/LoginContainer";
 import LoginSideImage from "@/app/login/components/LoginSideImage";
 import styles from "./Login.module.scss";
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation"; 
 import {
   X,
   AlertCircle,
@@ -45,6 +46,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
   onClose,
   event
 }) => {
+  const router = useRouter(); // Hook de navegação
   const [selectedTicketType, setSelectedTicketType] = useState<number | null>(
     null
   );
@@ -95,7 +97,6 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
       <div className={styles.backdrop} onClick={onClose} />
 
       <div className={styles.modalContainer}>
-        {/* Header */}
         <div className={styles.header}>
           <img src="/image1.jpg" alt={event.name} className={styles.headerImage} />
 
@@ -135,7 +136,6 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
               </button>
             </div>
 
-            {/* Occupancy Bar */}
             <div className={styles.occupancySection}>
               <div className={styles.occupancyInfo}>
                 <Users size={16} />
@@ -321,9 +321,8 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
             <button
               onClick={() => {
                 if (selectedTicket && agreeToTerms) {
-                  alert(
-                    `Redirecionando para login com ${quantity} ${selectedTicket.name}(s)...`
-                  );
+                  // Lógica adicionada: Redirecionar para login
+                  router.push("/login");
                 }
               }}
               disabled={!selectedTicket || !agreeToTerms}

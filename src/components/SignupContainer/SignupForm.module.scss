@@ -1,0 +1,58 @@
+@use "@/styles/Variables.scss" as variables;
+
+.signupForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-md;
+  margin-bottom: variables.$margin-md;
+}
+
+.termsCheckbox {
+  display: flex;
+  align-items: flex-start;
+  gap: variables.$gap-sm;
+  margin-top: variables.$margin-sm;
+
+  input[type="checkbox"] {
+    margin-top: 4px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: variables.$primary;
+  }
+
+  label {
+    font-size: variables.$font-size-sm;
+    cursor: pointer;
+    line-height: 1.5;
+
+    strong {
+      color: variables.$primary;
+      font-weight: variables.$font-weight-semibold;
+    }
+  }
+}
+
+.errorText {
+  color: variables.$danger;
+  font-size: variables.$font-size-xs;
+  margin-top: variables.$margin-xs;
+}
+
+.loginLink {
+  font-size: variables.$font-size-md;
+  text-align: center;
+  margin-top: variables.$margin-md;
+  width: 100%;
+
+  a {
+    color: variables.$primary;
+    font-weight: variables.$font-weight-semibold;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
