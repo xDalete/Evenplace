@@ -1,74 +1,82 @@
+@use "@/styles/Variables.scss" as variables;
+
 .pageContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.legendContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: variables.$margin-md;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: x-small;
+}
+
+.bolaBase {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.bolaCadastrados {
+  background-color: blue;
+}
+.bolaPendentes {
+  background-color: orange;
+}
+.bolaDisponiveis {
+  background-color: green;
+}
+
+.stickyHeader {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--background-color);
+  padding-block: 1rem;
+}
+
+.gridContainer {
+  overflow-y: auto;
+  max-height: calc(100vh - 220px);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    width: 8px;
   }
-  
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (max-width: 768px) {
   .legendContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: 16px;
-    margin-bottom: 24px;
+    justify-content: flex-start;
   }
-  
-  .legendItem {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: x-small;
-  }
-
-  .bolaBase {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%; 
-  }
-
-
-  .bolaCadastrados {
-    background-color: blue;
-  }
-  .bolaPendentes {
-    background-color: orange;
-  }
-  .bolaDisponiveis {
-    background-color: green;
-  }
-  
-  .stickyHeader {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: var(--background-color);
-    padding-block: 1rem;
-  }
-
-  .gridContainer {
-    overflow-y: auto;
-    max-height: calc(100vh - 220px);
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-  
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-  
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.2);
-      border-radius: 4px;
-    }
-  
-    &:hover::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-  }
-
-  @media (max-width: 768px) {
-    .legendContainer {
-      justify-content: flex-start;
-    }
-  }
+}

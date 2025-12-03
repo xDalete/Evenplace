@@ -12,3 +12,31 @@ export type Themes = "light" | "dark";
 export type Variants = "primary" | "secondary" | "danger" | "warning" | "success" | "info";
 
 export type BgColors = "light" | "dark" | "default";
+
+export type ErrCallbackType = (err: { [key: string]: string }) => void;
+
+export type ErrorResponseType =
+  | string
+  | {
+      success: boolean
+      message: string
+      code: number
+    }
+
+export type MessageConversionObject = {
+  defaultMessage: string
+  [key: string]: string
+}
+
+export type ResponseType<T> = {
+  success: boolean
+  message: string
+  data: T
+}
+
+export type ArrayResponseType<T> = {
+  success: boolean
+  message: string
+  data: T[]
+  total?: number
+}

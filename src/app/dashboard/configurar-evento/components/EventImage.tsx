@@ -12,16 +12,9 @@ interface EventImageProps {
 export const EventImage: React.FC<EventImageProps> = ({ imageSrc = "/image1.jpg", onEdit }) => {
   return (
     <div className={styles.container}>
-      <label className={styles.label}>Evento</label>
+      <label className={styles.label}>Thumbnail do Evento</label>
       <div className={styles.imageWrapper}>
-        <Image
-          src={imageSrc}
-          alt="Evento"
-          width={313}
-          height={182}
-          className={styles.image}
-          priority
-        />
+        <Image src={imageSrc} alt="Evento" width={1600} height={900} className={styles.image} priority />
         <button className={styles.editButton} onClick={onEdit} type="button">
           <Icon icon={LuPencil} size={20} color="white" />
         </button>
@@ -29,4 +22,3 @@ export const EventImage: React.FC<EventImageProps> = ({ imageSrc = "/image1.jpg"
     </div>
   );
 };
-

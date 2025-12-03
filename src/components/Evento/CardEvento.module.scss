@@ -6,6 +6,21 @@
   width: 100%;
 }
 
+.ongoing {
+  border-left: 8px solid blue;
+  box-shadow: 7.5px 5px 5px grey;
+}
+
+.upcoming {
+  border-left: 8px solid orange;
+  box-shadow: 7.5px 5px 5px grey;
+}
+
+.completed {
+  border-left: 8px solid green;
+  box-shadow: 5px 5px 5px grey;
+}
+
 .eventName {
   margin-top: variables.$margin-lg;
   margin-bottom: variables.$margin-lg;
@@ -37,7 +52,7 @@
   margin-bottom: variables.$margin-sm;
   flex-wrap: wrap;
   row-gap: variables.$margin-sm;
-  
+
   > div {
     display: flex;
     align-items: center;

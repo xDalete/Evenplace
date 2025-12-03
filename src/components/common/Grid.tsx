@@ -26,13 +26,13 @@ const Grid: React.FC<GridProps | GridItemProps> = ({ children, className = "", .
       sm != undefined ? styles[`cols-sm-${sm}`] : "",
       md != undefined ? styles[`cols-md-${md}`] : "",
       lg != undefined ? styles[`cols-lg-${lg}`] : "",
-      xl != undefined ? styles[`cols-lg-${xl}`] : "",
+      xl != undefined ? styles[`cols-xl-${xl}`] : "",
       className
     ].join(" ");
     return <div className={classes}>{children}</div>;
   } else {
     const { gap } = rest;
-    const classes = [styles.grid, gap ? styles[`gap-${gap}`] : "", `cols-xs-12`, className].join(" ");
+    const classes = [styles.grid, gap ? styles[`gap-${gap}`] : "", className].join(" ");
     return <div className={classes}>{children}</div>;
   }
 };

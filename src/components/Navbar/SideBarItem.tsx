@@ -1,16 +1,14 @@
 import React from "react";
 import styles from "./SideBarItem.module.scss";
-import Link from "next/link";
-
-interface SidebarItemProps {
+import Link, { type LinkProps } from "next/link";
+type SidebarItemProps = {
   icon: React.ReactNode;
   label: string;
-  href?: string;
-}
+} & LinkProps;
 
-const SideBarItem: React.FC<SidebarItemProps> = ({ icon, label, href = "#" }) => {
+const SideBarItem: React.FC<SidebarItemProps> = ({ icon, label, ...props }) => {
   return (
-    <Link href={href} className={styles.navItem}>
+    <Link className={styles.navItem} {...props}>
       {icon}
       <span>{label}</span>
     </Link>
