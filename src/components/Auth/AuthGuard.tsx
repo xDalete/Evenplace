@@ -18,7 +18,7 @@ const AuthGuard = ({ children }: Props) => {
 
   useEffect(() => {
     if (!loading && !user && pathname.includes("/dashboard")) {
-      //router.push("/login");
+      router.push("/login");
     }
     console.log(loading, user, pathname);
     
