@@ -6,7 +6,6 @@ export enum EventoStatusEnum {
   FINALIZADO = "finalizado"
 };
 
-// Tipo original (Compatível com seu Backend atual/Português)
 export type Evento = {
   id: number;
   nome: string;
@@ -27,10 +26,7 @@ export type Evento = {
   //organizerId: number;
 };
 
-// --- ADICIONE ESTA PARTE ABAIXO ---
 
-// Tipo esperado pelo Dashboard (Inglês)
-// Estamos criando isso para o erro sumir, mas cuidado com o mapeamento de dados!
 export interface EventWithInfo {
   id: number;
   name: string;             // Dashboard espera 'name', Backend manda 'nome'
