@@ -1,0 +1,34 @@
+/* TODO: Ver se com o tempo que nos resta vamos conseguir implementar essa bomba de componente 
+@use "@/styles/Variables.scss" as variables;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: variables.$seat-grid-gap;
+  width: fit-content;
+}
+
+.seat {
+  width: variables.$seat-size;
+  height: variables.$seat-size;
+  border-radius: variables.$border-radius-sm;
+  cursor: pointer;
+  transition: transform variables.$transition-duration variables.$transition-ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.paid {
+  background-color: variables.$primary;
+}
+
+.reserved {
+  background-color: oklch(from variables.$primary calc(l - 0.1) c h);
+}
+
+.available {
+  background-color: variables.$border-muted;
+}
+*/

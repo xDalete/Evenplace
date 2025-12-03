@@ -2,7 +2,7 @@ import CardEvento from "@/components/Evento/CardEvento";
 import Grid from "@/components/common/Grid";
 import { EventWithInfo } from "@/lib/Types/EventTypes";
 import Card from "@/components/common/Card";
-import CardCriarEvento from "@/components/evento/CardCriarEvento";
+import CardCriarEvento from "@/components/Evento/CardCriarEvento";
 import styles from "./Home.module.scss";
 
 const eventos: EventWithInfo[] = [

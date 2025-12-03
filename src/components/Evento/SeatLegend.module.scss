@@ -1,0 +1,39 @@
+/* TODO: Ver se com o tempo que nos resta vamos conseguir implementar essa bomba de componente 
+@use "@/styles/Variables.scss" as variables;
+
+.container {
+  display: flex;
+  gap: variables.$gap-lg;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
+  gap: variables.$gap-sm;
+  align-items: center;
+  font-size: variables.$font-size-xs;
+  color: variables.$text;
+}
+
+.indicator {
+  width: variables.$indicator-size;
+  height: variables.$indicator-size;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.paid {
+  background-color: variables.$primary;
+}
+
+.reserved {
+  background-color: oklch(from variables.$primary calc(l - 0.1) c h);
+}
+
+.available {
+  background-color: variables.$border-muted;
+}
+*/

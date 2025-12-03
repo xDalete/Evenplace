@@ -1,0 +1,32 @@
+/* TODO: Ver se com o tempo que nos resta vamos conseguir implementar essa bomba de componente 
+@use "@/styles/Variables.scss" as variables;
+
+.container {
+  padding: variables.$padding-xl variables.$padding-xl variables.$padding-sm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: variables.$gap-lg;
+  height: variables.$seat-allocation-height;
+  width: 100%;
+  max-width: variables.$seat-allocation-max-width;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: variables.$gap-xs;
+  width: 100%;
+  max-width: variables.$seat-legend-max-width;
+}
+
+.title {
+  font-size: variables.$font-size-xl;
+  font-weight: variables.$font-weight-semibold;
+  text-align: center;
+  width: 100%;
+  color: variables.$text;
+  margin: 0;
+}
+*/

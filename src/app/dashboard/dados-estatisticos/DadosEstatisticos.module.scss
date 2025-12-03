@@ -1,0 +1,347 @@
+@use "@/styles/Variables.scss" as variables;
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-lg;
+  width: 100%;
+  min-height: calc(100vh - 2 * variables.$padding-md);
+  justify-content: center;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: variables.$bg-light;
+  border-radius: variables.$border-radius;
+  padding: variables.$padding-md variables.$padding-lg;
+  box-shadow: variables.$box-shadow;
+}
+
+.titleGroup {
+  display: flex;
+  gap: variables.$gap-md;
+  align-items: center;
+
+  h1 {
+    font-size: variables.$font-size-xl;
+    font-weight: variables.$font-weight-semibold;
+  }
+}
+
+.subtitle {
+  font-size: variables.$font-size-xs;
+  text-transform: uppercase;
+  color: variables.$text-muted;
+}
+
+.titleIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: variables.$bg;
+  display: grid;
+  place-items: center;
+  font-size: variables.$font-size-lg;
+  color: variables.$primary;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-md;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-sm;
+  padding: variables.$padding-sm variables.$padding-md;
+  background: variables.$bg;
+  border-radius: 999px;
+  color: variables.$text-muted;
+  min-width: 240px;
+
+  input {
+    border: none;
+    background: transparent;
+    color: variables.$text;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.enrolled {
+  display: flex;
+  flex-direction: column;
+  padding: variables.$padding-sm variables.$padding-lg;
+  border-radius: 999px;
+  background: variables.$bg;
+  box-shadow: inset 0 0 0 1px variables.$border-muted;
+  font-size: variables.$font-size-xs;
+
+  strong {
+    font-size: variables.$font-size-md;
+    font-weight: variables.$font-weight-semibold;
+  }
+}
+
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-xs;
+  padding: variables.$padding-sm variables.$padding-lg;
+  border-radius: 999px;
+  border: 1px solid variables.$border;
+  background: variables.$bg;
+  color: variables.$text;
+  font-weight: variables.$font-weight-semibold;
+}
+
+.contentGrid {
+  align-items: stretch;
+  width: 100%;
+}
+
+.sideCards {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-sm;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.statCard {
+  display: flex;
+  justify-content: space-between;
+  gap: variables.$gap-md;
+  padding: variables.$padding-lg;
+}
+
+.statTitle {
+  font-size: variables.$font-size-sm;
+  color: variables.$text-muted;
+  text-transform: uppercase;
+}
+
+.statValue {
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-semibold;
+  margin-top: variables.$margin-xs;
+}
+
+.statMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: variables.$gap-xs;
+  text-align: right;
+}
+
+.statMetric {
+  font-size: variables.$font-size-lg;
+  font-weight: variables.$font-weight-semibold;
+}
+
+.statChangePositive {
+  color: variables.$success;
+  font-size: variables.$font-size-xs;
+  font-weight: variables.$font-weight-semibold;
+}
+
+.statChangeNegative {
+  color: variables.$danger;
+  font-size: variables.$font-size-xs;
+  font-weight: variables.$font-weight-semibold;
+}
+
+.dataPanel {
+  background: transparent;
+  padding: 0;
+  gap: variables.$gap-md;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.histogramCard {
+  padding: variables.$padding-lg;
+  width: 100%;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: variables.$margin-md;
+
+  h2,
+  h3 {
+    font-size: variables.$font-size-md;
+    font-weight: variables.$font-weight-semibold;
+  }
+}
+
+.barChart {
+  display: flex;
+  gap: variables.$gap-md;
+}
+
+.barChartGrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+}
+
+.barChartGridLine {
+  display: flex;
+  align-items: center;
+  gap: variables.$gap-xs;
+
+  span {
+    min-width: 40px;
+  }
+}
+
+.barChartBars {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: variables.$gap-sm;
+  height: 260px;
+}
+
+.barWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: variables.$gap-xs;
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+}
+
+.bar {
+  width: 26px;
+  border-radius: variables.$border-radius;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.barInfo span {
+  color: variables.$text;
+  font-weight: variables.$font-weight-semibold;
+}
+
+.donutGrid {
+  margin-top: variables.$margin-md;
+}
+
+.donutCard {
+  padding: variables.$padding-lg;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.donutContent {
+  display: flex;
+  gap: variables.$gap-md;
+  flex: 1;
+  align-items: center;
+}
+
+.donut {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+  background: variables.$primary;
+}
+
+.donutHole {
+  position: absolute;
+  inset: 25%;
+  border-radius: 50%;
+  background: variables.$bg-light;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: variables.$gap-xs;
+  text-align: center;
+
+  span {
+    font-size: variables.$font-size-xs;
+    color: variables.$text-muted;
+  }
+
+  strong {
+    font-size: variables.$font-size-md;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: variables.$gap-sm;
+  width: 100%;
+}
+
+.legendItem {
+  display: flex;
+  gap: variables.$gap-sm;
+  align-items: center;
+
+  p {
+    font-weight: variables.$font-weight-semibold;
+  }
+
+  small {
+    display: block;
+    color: variables.$text-muted;
+  }
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+@media (max-width: 1100px) {
+  .topBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: variables.$gap-md;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 900px) {
+  .titleGroup {
+    width: 100%;
+  }
+
+  .donutContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .donut {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+
