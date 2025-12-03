@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { X, AlertCircle, Lock, MapPin, Calendar, Users, Zap } from "lucide-react";
 import styles from "./EventRegistrationModal.module.scss";
 import { Evento } from "@/lib/Types/EventTypes";
-import { formatDateWithHours } from "@/lib/utils/format";
+import { formatCurrency, formatDateWithHours } from "@/lib/utils/format";
 
 interface EventRegistrationModalProps {
   isOpen: boolean;
@@ -155,7 +155,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
                     <p className={styles.ticketDescription}>{ticket.description}</p>
 
                     <div className={styles.ticketPrice}>
-                      <p>R$ {ticket.price.toFixed(2)}</p>
+                      <p>{formatCurrency(ticket.price)}</p>
                       <p>por pessoa</p>
                     </div>
 
