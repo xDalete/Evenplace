@@ -14,3 +14,19 @@ export const getEventoById = async (id: number) => {
 
   return response.data;
 };
+
+export const createEvento = async (data: Partial<Evento>) => {
+  const response = await getAxios().post<ResponseType<Evento>>(`/eventos`, data);
+
+  return response.data;
+};
+
+export const updateEvento = async (id: number, data: FormData) => {
+  const response = await getAxios().put<ResponseType<Evento>>(`/eventos/${id}`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data"
+    }
+  });
+
+  return response.data;
+};

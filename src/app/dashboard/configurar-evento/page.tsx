@@ -6,31 +6,20 @@ import EventForm from "@/app/dashboard/configurar-evento/components/EventForm";
 //import SeatAllocation from "@/components/Evento/SeatAllocation";
 import Card from "@/components/common/Card";
 import styles from "./ConfigurarEvento.module.scss";
+import { useRouter } from "next/navigation";
 
 export default function ConfigurarEvento() {
-  const handleSave = () => {
-    console.log("Salvando evento...");
-  };
-
-  const handleInsight = () => {
-    console.log("Abrindo insights...");
-  };
+  const router = useRouter();
 
   const handleBack = () => {
-    window.history.back();
+    router.back();
   };
 
   return (
     <div className={styles.pageContainer}>
       <Card className={styles.contentCard}>
-        <EventConfigHeader onSave={handleSave} onInsight={handleInsight} onBack={handleBack} />
-
+        <EventConfigHeader onBack={handleBack} />
         <EventForm />
-
-        <div className={styles.seatSection}>
-          {/* <SeatAllocation seats={mockSeats} /> */}
-          <div className={styles.placeholderBox} />
-        </div>
       </Card>
     </div>
   );

@@ -6,3 +6,10 @@
   gap: variables.$gap-lg;
   width: 100%;
 }
+
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+}

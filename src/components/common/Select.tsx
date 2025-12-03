@@ -8,35 +8,44 @@ export interface Option {
 
 export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   options: Option[];
-  value: string | number;
   error?: boolean;
+  helperText?: string;
   fullWidth?: boolean;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   placeholder?: string;
+  label?: string;
 }
 
 const Select: React.FC<SelectProps> = ({
+  label,
   options,
-  value,
   error,
+  helperText,
   fullWidth = false,
   onChange,
   placeholder,
   ...rest
 }) => (
-  <select
-    value={value}
-    className={`${styles.select} ${error ? styles.error : ""} ${fullWidth ? styles.fullWidth : ""}`}
-    onChange={onChange}
-    {...rest}
-  >
-    {placeholder && <option value="">{placeholder}</option>}
-    {options.map(option => (
-      <option key={option.value} value={option.value} className={styles.option}>
-        {option.label}
-      </option>
-    ))}
-  </select>
+  <div>
+    {label && <label className={`${styles.label}`}>{label}</label>}
+    <select
+      className={`${styles.select} ${error ? styles.error : ""} ${fullWidth ? styles.fullWidth : ""}`}
+      onChange={onChange}
+      {...rest}
+    >
+      {placeholder && <option value="">{placeholder}</option>}
+      {options.map(option => (
+        <option key={option.value} value={option.value} className={styles.option}>
+          {option.label}
+        </option>
+      ))}
+    </select>
+    {error ? (
+      <span className={`${styles.errorText}`}>{error}</span>
+    ) : (
+      helperText && <span className={`${styles.helperText}`}>{helperText}</span>
+    )}
+  </div>
 );
 
 export default Select;

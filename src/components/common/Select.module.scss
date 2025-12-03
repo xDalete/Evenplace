@@ -25,3 +25,15 @@
   background-color: variables.$bg-light;
   color: variables.$text;
 }
+
+.helperText {
+  margin-top: variables.$margin-xs;
+  font-size: variables.$font-size-xs;
+  color: variables.$text-muted;
+}
+
+.errorText {
+  color: variables.$danger;
+  font-size: variables.$font-size-xs;
+  margin-top: variables.$margin-xs;
+}
