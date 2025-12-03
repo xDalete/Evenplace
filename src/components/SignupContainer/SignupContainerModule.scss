@@ -1,0 +1,38 @@
+@use "@/styles/Variables.scss" as variables;
+
+.signupHeader {
+  margin-bottom: variables.$margin-xl;
+  width: 100%;
+  > h1 {
+    font-size: (variables.$font-size-md * 2);
+    font-weight: bold;
+    margin-bottom: variables.$margin-sm;
+  }
+  > h2 {
+    font-size: variables.$font-size-lg;
+    color: variables.$text-muted;
+  }
+}
+
+.signupFooter {
+  margin-top: (variables.$margin-lg * 3);
+  font-size: variables.$font-size-sm;
+  color: variables.$text-muted;
+  text-align: center;
+}
+
+.signupContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  > * {
+    width: 80%;
+  }
+}
+
+@media (min-width: variables.$min-width-lg) {
+  .signupContainer > * {
+    width: 60%;
+  }
+}

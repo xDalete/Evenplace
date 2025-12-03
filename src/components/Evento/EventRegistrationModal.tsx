@@ -336,7 +336,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
 
           {(!selectedTicket || !agreeToTerms) && (
             <p className={styles.helperText}>
-              {!selectedTicket && "👆 Selecione um tipo de ingresso "}
+              {!selectedTicket && "Selecione um tipo de ingresso"}
               {selectedTicket &&
                 !agreeToTerms &&
                 "☑️ Concordar com os termos para continuar"}

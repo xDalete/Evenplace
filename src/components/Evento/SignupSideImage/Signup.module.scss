@@ -1,0 +1,28 @@
+@use "@/styles/Variables.scss" as variables;
+
+.signup {
+  background-color: variables.$bg-dark;
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  gap: variables.$gap-lg;
+  
+  > div {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.signupImageContainer {
+  display: none !important;
+}
+
+@media (min-width: variables.$min-width-md) {
+  .signupImageContainer {
+    display: block !important;
+  }
+}

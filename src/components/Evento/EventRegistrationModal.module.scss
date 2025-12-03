@@ -24,7 +24,7 @@
   max-width: 60rem;
   max-height: 95vh;
   overflow: hidden;
-  background: white;
+  background: var(--bg);
   border-radius: 1rem;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -234,7 +234,7 @@
   padding: variables.$padding-lg;
   border: 2px solid variables.$border;
   border-radius: 0.75rem;
-  background: white;
+  background: var(--bg);
   cursor: pointer;
   transition: all variables.$transition-duration;
   text-align: left;
@@ -507,7 +507,7 @@
 // Footer
 .footer {
   border-top: 1px solid variables.$border;
-  background: variables.$bg-light;
+  background: variables.$bg;
   padding: variables.$padding-lg;
   display: flex;
   flex-direction: column;
@@ -515,7 +515,7 @@
 }
 
 .summary {
-  background: white;
+  background: var(--bg-light);
   padding: variables.$padding-lg;
   border-radius: 0.75rem;
   border: 1px solid variables.$border;
@@ -561,14 +561,14 @@
   padding: variables.$padding-lg;
   border: 2px solid variables.$border;
   border-radius: 0.75rem;
-  background: white;
+  background: var(--bg-light);
   font-weight: bold;
   color: variables.$text;
   cursor: pointer;
   transition: all variables.$transition-duration;
 
   &:hover {
-    background: variables.$bg-light;
+    background: variables.$bg;
     border-color: variables.$text-muted;
   }
 }
