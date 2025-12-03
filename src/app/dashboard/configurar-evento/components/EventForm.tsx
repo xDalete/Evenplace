@@ -1,25 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
-import { EventImage } from "./EventImage";
+import React, { useEffect, useState } from "react";
 import Input from "@/components/common/Input";
 import Textarea from "@/components/common/Textarea";
 import Grid from "@/components/common/Grid";
 import styles from "./EventForm.module.scss";
+import { EventImage } from "./EventImage";
+import { EventWithInfo } from "@/lib/Types/EventTypes";
+import { getEventoById } from "@/api/Evento";
 
 export const EventForm: React.FC = () => {
-  const [eventData, setEventData] = useState({
-    name: "NOME DO EVENTO",
-    date: "2025-07-12",
-    location: "LOCAL DO EVENTO",
-    time: "19:00:00",
-    description: "INSIRA UMA DESCRIÇÃO",
-    price: "R$ 40,00",
-    totalSeats: "1200 vagas",
-    availableSeats: "523 vagas",
-    salesGoal: ""
-  });
+  const [eventData, setEventData] = useState<EventWithInfo>();
 
+  useEffect(() => {
+    getEventoById("1").then(data => {
+      setEventData(data);
+    });
+  }, []);
+  if (!eventData) {
+    return <div>Carregando...</div>;
+  }
   return (
     <div className={styles.formContainer}>
       <Grid gap="md">
@@ -41,8 +41,8 @@ export const EventForm: React.FC = () => {
               <Input
                 label="Data do Evento"
                 type="date"
-                value={eventData.date}
-                onChange={e => setEventData({ ...eventData, date: e.target.value })}
+                value={eventData.startDate}
+                onChange={e => setEventData({ ...eventData, startDate: e.target.value })}
                 fullWidth
               />
             </Grid>
@@ -59,8 +59,8 @@ export const EventForm: React.FC = () => {
               <Input
                 label="Horário do Evento"
                 type="time"
-                value={eventData.time}
-                onChange={e => setEventData({ ...eventData, time: e.target.value })}
+                value={eventData.attendeesCount}
+                onChange={e => setEventData({ ...eventData, attendeesCount: e.target.value })}
                 fullWidth
               />
             </Grid>
@@ -80,32 +80,32 @@ export const EventForm: React.FC = () => {
         <Grid item xs={12} sm={6} md={3}>
           <Input
             label="Valor do Ingresso"
-            value={eventData.price}
-            onChange={e => setEventData({ ...eventData, price: e.target.value })}
+            value={eventData.ticketsPrice}
+            onChange={e => setEventData({ ...eventData, ticketsPrice: parseFloat(e.target.value) })}
             fullWidth
           />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Input
             label="Quantidade de Vagas Totais"
-            value={eventData.totalSeats}
-            onChange={e => setEventData({ ...eventData, totalSeats: e.target.value })}
+            value={eventData.attendeesLimit}
+            onChange={e => setEventData({ ...eventData, attendeesLimit: parseInt(e.target.value) })}
             fullWidth
           />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Input
             label="Vagas disponíveis"
-            value={eventData.availableSeats}
-            onChange={e => setEventData({ ...eventData, availableSeats: e.target.value })}
+            value={eventData.attendeesCount}
+            onChange={e => setEventData({ ...eventData, attendeesCount: parseInt(e.target.value) })}
             fullWidth
           />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Input
             label="Meta de Vendas"
-            value={eventData.salesGoal}
-            onChange={e => setEventData({ ...eventData, salesGoal: e.target.value })}
+            value={eventData.ticketsAvailable}
+            onChange={e => setEventData({ ...eventData, ticketsAvailable: parseInt(e.target.value) })}
             fullWidth
           />
         </Grid>
@@ -115,4 +115,3 @@ export const EventForm: React.FC = () => {
 };
 
 export default EventForm;
-

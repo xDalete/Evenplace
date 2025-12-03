@@ -149,3 +149,33 @@ $seat-allocation-height: 317px;
 $seat-allocation-max-width: 533px;
 $seat-legend-max-width: 349px;
 $content-card-max-width: 1200px;
+
+// Animations
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+$spin: spin 1s linear infinite;

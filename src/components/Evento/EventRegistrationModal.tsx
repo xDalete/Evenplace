@@ -1,33 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  X,
-  AlertCircle,
-  Lock,
-  MapPin,
-  Calendar,
-  Users,
-  Zap
-} from "lucide-react";
+import { X, AlertCircle, Lock, MapPin, Calendar, Users, Zap } from "lucide-react";
 import styles from "./EventRegistrationModal.module.scss";
-import { StringfiedDate } from "@/lib/Types/Types";
-
-type EventData = {
-  name: string;
-  description?: string;
-  startDate: StringfiedDate;
-  location: string;
-  ticketsPrice: number;
-  ticketsAvailable: number;
-  attendeesCount?: number;
-  attendeesLimit?: number;
-};
+import { Evento } from "@/lib/Types/EventTypes";
+import { formatDateWithHours } from "@/lib/utils/format";
 
 interface EventRegistrationModalProps {
   isOpen: boolean;
   onClose: () => void;
-  event?: EventData;
+  evento?: Evento;
 }
 
 type TicketType = {
@@ -40,54 +22,48 @@ type TicketType = {
   highlight: boolean;
 };
 
-const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
-  isOpen,
-  onClose,
-  event
-}) => {
-  const [selectedTicketType, setSelectedTicketType] = useState<number | null>(
-    null
-  );
+const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen, onClose, evento }) => {
+  const [selectedTicketType, setSelectedTicketType] = useState<number | null>(null);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
-  if (!isOpen || !event) return null;
+  if (!isOpen || !evento) return null;
 
   const ticketTypes: TicketType[] = [
     {
       id: 1,
       name: "Ingresso Inteira",
-      price: event.ticketsPrice || 40.0,
+      price: evento.valor_ingresso || 40.0,
       description: "Acesso completo ao evento",
-      quantity: event.ticketsAvailable || 100,
+      quantity: evento.vagas_disponiveis || 100,
       badge: null,
       highlight: false
     },
     {
       id: 2,
       name: "Meia Entrada",
-      price: (event.ticketsPrice || 40.0) / 2,
+      price: (evento.valor_ingresso || 40.0) / 2,
       description: "Estudante, idoso, PCD",
-      quantity: event.ticketsAvailable || 100,
+      quantity: evento.vagas_disponiveis || 100,
       badge: "ECONOMIA",
       highlight: false
     },
     {
       id: 3,
       name: "Ingresso VIP",
-      price: (event.ticketsPrice || 40.0) * 1.5,
+      price: (evento.valor_ingresso || 40.0) * 1.5,
       description: "Acesso prioritário + área exclusiva",
-      quantity: Math.floor((event.ticketsAvailable || 100) * 0.2),
+      quantity: Math.floor((evento.vagas_disponiveis || 100) * 0.2),
       badge: "PREMIUM",
       highlight: true
     }
   ];
 
-  const selectedTicket = ticketTypes.find((t) => t.id === selectedTicketType);
+  const selectedTicket = ticketTypes.find(t => t.id === selectedTicketType);
   const totalPrice = selectedTicket ? selectedTicket.price * quantity : 0;
 
-  const occupancy = event.attendeesCount || 0;
-  const limit = event.attendeesLimit || 2500;
+  const occupancy = evento.vagas_disponiveis || 0;
+  const limit = evento.quantidade_vagas || 2500;
   const occupancyPercent = Math.min((occupancy / limit) * 100, 100);
 
   return (
@@ -97,7 +73,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
       <div className={styles.modalContainer}>
         {/* Header */}
         <div className={styles.header}>
-          <img src="/image1.jpg" alt={event.name} className={styles.headerImage} />
+          <img src="/image1.jpg" alt={evento.nome} className={styles.headerImage} />
 
           <div className={styles.headerOverlay} />
 
@@ -105,27 +81,15 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
             <div className={styles.headerTop}>
               <div>
                 <div className={styles.badge}>✨ EM ALTA DEMANDA</div>
-                <h1 className={styles.title}>{event.name}</h1>
+                <h1 className={styles.title}>{evento.nome}</h1>
                 <div className={styles.eventDetails}>
                   <div className={styles.detailItem}>
                     <MapPin size={18} />
-                    <span>{event.location}</span>
+                    <span>{evento.local}</span>
                   </div>
                   <div className={styles.detailItem}>
                     <Calendar size={18} />
-                    <span>
-                      {new Date(event.startDate).toLocaleDateString("pt-BR", {
-                        weekday: "long",
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric"
-                      })}{" "}
-                      às{" "}
-                      {new Date(event.startDate).toLocaleTimeString("pt-BR", {
-                        hour: "2-digit",
-                        minute: "2-digit"
-                      })}
-                    </span>
+                    <span>{formatDateWithHours(`${evento.data} ${evento.horario}`)}</span>
                   </div>
                 </div>
               </div>
@@ -144,10 +108,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
                 </span>
               </div>
               <div className={styles.occupancyBar}>
-                <div
-                  className={styles.occupancyFill}
-                  style={{ width: `${occupancyPercent}%` }}
-                />
+                <div className={styles.occupancyFill} style={{ width: `${occupancyPercent}%` }} />
               </div>
               {occupancyPercent > 80 && (
                 <p className={styles.occupancyWarning}>
@@ -163,8 +124,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
           {/* Description */}
           <div className={styles.description}>
             <p>
-              {event.description ||
-                "Descrição do evento não disponível. Prepare-se para uma experiência inesquecível!"}
+              {evento.descricao || "Descrição do evento não disponível. Prepare-se para uma experiência inesquecível!"}
             </p>
           </div>
 
@@ -172,7 +132,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
           <div className={styles.ticketsSection}>
             <h2>Escolha seu Ingresso</h2>
             <div className={styles.ticketsGrid}>
-              {ticketTypes.map((ticket) => (
+              {ticketTypes.map(ticket => (
                 <button
                   key={ticket.id}
                   onClick={() => {
@@ -182,25 +142,17 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
                   disabled={ticket.quantity === 0}
                   className={`${styles.ticketCard} ${
                     selectedTicketType === ticket.id ? styles.selected : ""
-                  } ${ticket.highlight ? styles.highlight : ""} ${
-                    ticket.quantity === 0 ? styles.disabled : ""
-                  }`}
+                  } ${ticket.highlight ? styles.highlight : ""} ${ticket.quantity === 0 ? styles.disabled : ""}`}
                 >
                   <div className={styles.ticketCardGradient} />
 
                   <div className={styles.ticketCardContent}>
                     <div className={styles.ticketCardHeader}>
                       <p className={styles.ticketName}>{ticket.name}</p>
-                      {ticket.badge && (
-                        <span className={styles.ticketBadge}>
-                          {ticket.badge}
-                        </span>
-                      )}
+                      {ticket.badge && <span className={styles.ticketBadge}>{ticket.badge}</span>}
                     </div>
 
-                    <p className={styles.ticketDescription}>
-                      {ticket.description}
-                    </p>
+                    <p className={styles.ticketDescription}>{ticket.description}</p>
 
                     <div className={styles.ticketPrice}>
                       <p>R$ {ticket.price.toFixed(2)}</p>
@@ -208,14 +160,8 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
                     </div>
 
                     <div className={styles.ticketFooter}>
-                      <p>
-                        {ticket.quantity > 0
-                          ? `${ticket.quantity} disponíveis`
-                          : "Esgotado"}
-                      </p>
-                      {selectedTicketType === ticket.id && (
-                        <div className={styles.checkmark} />
-                      )}
+                      <p>{ticket.quantity > 0 ? `${ticket.quantity} disponíveis` : "Esgotado"}</p>
+                      {selectedTicketType === ticket.id && <div className={styles.checkmark} />}
                     </div>
                   </div>
                 </button>
@@ -228,26 +174,19 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
             <div className={styles.quantitySection}>
               <label>Quantidade de Ingressos</label>
               <div className={styles.quantityControl}>
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className={styles.quantityButton}
-                >
+                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className={styles.quantityButton}>
                   −
                 </button>
                 <input
                   type="number"
                   value={quantity}
-                  onChange={(e) =>
-                    setQuantity(Math.max(1, parseInt(e.target.value) || 1))
-                  }
+                  onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
                   min="1"
                   max={selectedTicket.quantity}
                   className={styles.quantityInput}
                 />
                 <button
-                  onClick={() =>
-                    setQuantity(Math.min(selectedTicket.quantity, quantity + 1))
-                  }
+                  onClick={() => setQuantity(Math.min(selectedTicket.quantity, quantity + 1))}
                   className={styles.quantityButton}
                 >
                   +
@@ -268,13 +207,10 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
             <div>
               <h4>⚠️ Política de Reembolso Importante</h4>
               <p>
-                O <strong>gestor do evento</strong> é{" "}
-                <strong>única e exclusivamente responsável</strong> por qualquer
+                O <strong>gestor do evento</strong> é <strong>única e exclusivamente responsável</strong> por qualquer
                 política de reembolso, cancelamento ou alteração no evento. A{" "}
-                <strong>plataforma Evenplace se isenta completamente</strong> de
-                qualquer responsabilidade em relação a devoluções, reembolsos
-                ou problemas relacionados à organização do evento. Para dúvidas
-                sobre reembolso,{" "}
+                <strong>plataforma Evenplace se isenta completamente</strong> de qualquer responsabilidade em relação a
+                devoluções, reembolsos ou problemas relacionados à organização do evento. Para dúvidas sobre reembolso,{" "}
                 <strong>contate diretamente o organizador</strong>.
               </p>
             </div>
@@ -286,13 +222,12 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
               type="checkbox"
               id="terms"
               checked={agreeToTerms}
-              onChange={(e) => setAgreeToTerms(e.target.checked)}
+              onChange={e => setAgreeToTerms(e.target.checked)}
             />
             <label htmlFor="terms">
-              Concordo com a <strong>política de reembolso</strong> e com os{" "}
-              <strong>termos do evento</strong> estabelecidos pelo gestor.
-              Entendo que <strong>Evenplace não é responsável</strong> por
-              qualquer questão relacionada a reembolsos.
+              Concordo com a <strong>política de reembolso</strong> e com os <strong>termos do evento</strong>{" "}
+              estabelecidos pelo gestor. Entendo que <strong>Evenplace não é responsável</strong> por qualquer questão
+              relacionada a reembolsos.
             </label>
           </div>
         </div>
@@ -321,9 +256,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
             <button
               onClick={() => {
                 if (selectedTicket && agreeToTerms) {
-                  alert(
-                    `Redirecionando para login com ${quantity} ${selectedTicket.name}(s)...`
-                  );
+                  alert(`Redirecionando para login com ${quantity} ${selectedTicket.name}(s)...`);
                 }
               }}
               disabled={!selectedTicket || !agreeToTerms}
@@ -337,9 +270,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
           {(!selectedTicket || !agreeToTerms) && (
             <p className={styles.helperText}>
               {!selectedTicket && "Selecione um tipo de ingresso"}
-              {selectedTicket &&
-                !agreeToTerms &&
-                "☑️ Concordar com os termos para continuar"}
+              {selectedTicket && !agreeToTerms && "☑️ Concordar com os termos para continuar"}
             </p>
           )}
         </div>
