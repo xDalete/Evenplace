@@ -1,16 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; 
-import {
-  X,
-  AlertCircle,
-  Lock,
-  MapPin,
-  Calendar,
-  Users,
-  Zap
-} from "lucide-react";
+import { useRouter } from "next/navigation";
+import { X, AlertCircle, Lock, MapPin, Calendar, Users, Zap } from "lucide-react";
 import styles from "./EventRegistrationModal.module.scss";
 import { Evento } from "@/lib/Types/EventTypes";
 import { formatCurrency, formatDateWithHours } from "@/lib/utils/format";
@@ -31,15 +23,9 @@ type TicketType = {
   highlight: boolean;
 };
 
-const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({
-  isOpen,
-  onClose,
-  event
-}) => {
+const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen, onClose, event }) => {
   const router = useRouter(); // Hook de navegação
-  const [selectedTicketType, setSelectedTicketType] = useState<number | null>(
-    null
-  );
+  const [selectedTicketType, setSelectedTicketType] = useState<number | null>(null);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [quantity, setQuantity] = useState(1);
 

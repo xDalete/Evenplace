@@ -4,7 +4,7 @@ import { getAxios } from "@/lib/utils/axios";
 
 //TODO: adicionar paginação e filtros
 export const getAllEventos = async () => {
-  const response = await getAxios().get<ArrayResponseType<Evento[]>>(`/eventos`);
+  const response = await getAxios().get<ArrayResponseType<Evento>>(`/eventos`);
 
   return response.data;
 };

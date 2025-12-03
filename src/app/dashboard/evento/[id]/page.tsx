@@ -6,13 +6,13 @@ import Grid from "@/components/common/Grid";
 
 export default async function Evento({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const evento = await getEventoById(id);
+  const { data: evento } = await getEventoById(parseInt(id));
   if (!evento) {
     return <div>Evento não encontrado</div>;
   }
   return (
     <div>
-      {evento.name}
+      {evento.nome}
       <Card>
         <Grid gap="md">
           {[1, 2, 3, 4].map(evento => (

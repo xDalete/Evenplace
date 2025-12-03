@@ -3,13 +3,13 @@
 .signupHeader {
   margin-bottom: variables.$margin-xl;
   width: 100%;
-  
+
   > h1 {
     font-size: (variables.$font-size-md * 2);
     font-weight: bold;
     margin-bottom: variables.$margin-sm;
   }
-  
+
   > h2 {
     font-size: variables.$font-size-lg;
     color: variables.$text-muted;
@@ -28,7 +28,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+
   > * {
     width: 80%;
   }

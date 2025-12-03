@@ -29,4 +29,3 @@ const Textarea: React.FC<TextareaProps> = ({
 );
 
 export default Textarea;
-

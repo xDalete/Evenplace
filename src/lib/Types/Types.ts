@@ -18,25 +18,25 @@ export type ErrCallbackType = (err: { [key: string]: string }) => void;
 export type ErrorResponseType =
   | string
   | {
-      success: boolean
-      message: string
-      code: number
-    }
+      success: boolean;
+      message: string;
+      code: number;
+    };
 
 export type MessageConversionObject = {
-  defaultMessage: string
-  [key: string]: string
-}
+  defaultMessage: string;
+  [key: string]: string;
+};
 
 export type ResponseType<T> = {
-  success: boolean
-  message: string
-  data: T
-}
+  success: boolean;
+  message: string;
+  data: T;
+};
 
 export type ArrayResponseType<T> = {
-  success: boolean
-  message: string
-  data: T[]
-  total?: number
-}
+  success: boolean;
+  message: string;
+  data: T[];
+  total?: number;
+};

@@ -131,9 +131,7 @@ export default function DadosEstatisticosPage() {
                 <div className={styles.statMeta}>
                   <span className={styles.statMetric}>{card.metric}</span>
                   <span
-                    className={
-                      card.changeType === "positive" ? styles.statChangePositive : styles.statChangeNegative
-                    }
+                    className={card.changeType === "positive" ? styles.statChangePositive : styles.statChangeNegative}
                   >
                     {card.change}
                   </span>
@@ -228,5 +226,3 @@ export default function DadosEstatisticosPage() {
     </div>
   );
 }
-
-

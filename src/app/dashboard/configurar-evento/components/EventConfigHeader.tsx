@@ -30,4 +30,3 @@ const EventConfigHeader: React.FC<EventConfigHeaderProps> = ({ onSave, onInsight
 };
 
 export default EventConfigHeader;
-

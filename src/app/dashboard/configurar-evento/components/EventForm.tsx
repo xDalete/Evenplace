@@ -6,15 +6,15 @@ import Textarea from "@/components/common/Textarea";
 import Grid from "@/components/common/Grid";
 import styles from "./EventForm.module.scss";
 import { EventImage } from "./EventImage";
-import { EventWithInfo } from "@/lib/Types/EventTypes";
 import { getEventoById } from "@/api/Evento";
+import { Evento } from "@/lib/Types/EventTypes";
 
 export const EventForm: React.FC = () => {
-  const [eventData, setEventData] = useState<EventWithInfo>();
+  const [eventData, setEventData] = useState<Evento>();
 
   useEffect(() => {
-    getEventoById("1").then(data => {
-      setEventData(data);
+    getEventoById(1).then(response => {
+      setEventData(response.data);
     });
   }, []);
   if (!eventData) {
@@ -32,8 +32,8 @@ export const EventForm: React.FC = () => {
             <Grid item xs={12} sm={6}>
               <Input
                 label="Nome do Evento"
-                value={eventData.name}
-                onChange={e => setEventData({ ...eventData, name: e.target.value })}
+                value={eventData.nome}
+                onChange={e => setEventData({ ...eventData, nome: e.target.value })}
                 fullWidth
               />
             </Grid>
@@ -41,8 +41,8 @@ export const EventForm: React.FC = () => {
               <Input
                 label="Data do Evento"
                 type="date"
-                value={eventData.startDate}
-                onChange={e => setEventData({ ...eventData, startDate: e.target.value })}
+                value={eventData.data}
+                onChange={e => setEventData({ ...eventData, data: e.target.value })}
                 fullWidth
               />
             </Grid>
@@ -50,8 +50,8 @@ export const EventForm: React.FC = () => {
             <Grid item xs={12} sm={6}>
               <Input
                 label="Local do Evento"
-                value={eventData.location}
-                onChange={e => setEventData({ ...eventData, location: e.target.value })}
+                value={eventData.local}
+                onChange={e => setEventData({ ...eventData, local: e.target.value })}
                 fullWidth
               />
             </Grid>
@@ -59,8 +59,8 @@ export const EventForm: React.FC = () => {
               <Input
                 label="Horário do Evento"
                 type="time"
-                value={eventData.attendeesCount}
-                onChange={e => setEventData({ ...eventData, attendeesCount: e.target.value })}
+                value={eventData.horario}
+                onChange={e => setEventData({ ...eventData, horario: e.target.value })}
                 fullWidth
               />
             </Grid>
@@ -70,9 +70,9 @@ export const EventForm: React.FC = () => {
 
       <Textarea
         label="Descrição do Evento"
-        value={eventData.description}
+        value={eventData.descricao}
         placeholder="INSIRA UMA DESCRIÇÃO"
-        onChange={e => setEventData({ ...eventData, description: e.target.value })}
+        onChange={e => setEventData({ ...eventData, descricao: e.target.value })}
         fullWidth
       />
 
@@ -80,32 +80,32 @@ export const EventForm: React.FC = () => {
         <Grid item xs={12} sm={6} md={3}>
           <Input
             label="Valor do Ingresso"
-            value={eventData.ticketsPrice}
-            onChange={e => setEventData({ ...eventData, ticketsPrice: parseFloat(e.target.value) })}
+            value={eventData.valor_ingresso}
+            onChange={e => setEventData({ ...eventData, valor_ingresso: parseFloat(e.target.value) })}
             fullWidth
           />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Input
             label="Quantidade de Vagas Totais"
-            value={eventData.attendeesLimit}
-            onChange={e => setEventData({ ...eventData, attendeesLimit: parseInt(e.target.value) })}
+            value={eventData.quantidade_vagas}
+            onChange={e => setEventData({ ...eventData, quantidade_vagas: parseInt(e.target.value) })}
             fullWidth
           />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Input
             label="Vagas disponíveis"
-            value={eventData.attendeesCount}
-            onChange={e => setEventData({ ...eventData, attendeesCount: parseInt(e.target.value) })}
+            value={eventData.vagas_disponiveis}
+            onChange={e => setEventData({ ...eventData, vagas_disponiveis: parseInt(e.target.value) })}
             fullWidth
           />
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
           <Input
             label="Meta de Vendas"
-            value={eventData.ticketsAvailable}
-            onChange={e => setEventData({ ...eventData, ticketsAvailable: parseInt(e.target.value) })}
+            value={eventData.meta_vendas}
+            onChange={e => setEventData({ ...eventData, meta_vendas: parseInt(e.target.value) })}
             fullWidth
           />
         </Grid>

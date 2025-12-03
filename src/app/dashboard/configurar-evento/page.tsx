@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import EventConfigHeader from "@/app/dashboard/configurar-evento/components/EventConfigHeader";
 import EventForm from "@/app/dashboard/configurar-evento/components/EventForm";
 //import SeatAllocation from "@/components/Evento/SeatAllocation";
@@ -35,4 +35,3 @@ export default function ConfigurarEvento() {
     </div>
   );
 }
-

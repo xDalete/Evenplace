@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from "chart.js";
@@ -11,13 +11,7 @@ const data = {
     {
       label: "Traffic Share",
       data: [45, 30, 15, 7, 3],
-      backgroundColor: [
-        "#3B82F6",
-        "#10B981",
-        "#F59E0B",
-        "#EF4444",
-        "#8B5CF6"
-      ],
+      backgroundColor: ["#3B82F6", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6"],
       borderColor: "rgba(128,128,128, 0.1)",
       borderWidth: 4,
       hoverOffset: 12

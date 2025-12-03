@@ -32,7 +32,7 @@ export enum SexoEnum {
   MASCULINO = "masculino",
   FEMININO = "feminino",
   OUTRO = "outro"
-};
+}
 
 export type RoleEnum = {
   ORGANIZADOR: "organizador";

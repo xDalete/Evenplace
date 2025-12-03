@@ -7,7 +7,7 @@ import styles from "./Home.module.scss";
 import { useEffect, useState } from "react";
 import { getAllEventos } from "@/api/Evento";
 // CORREÇÃO 1: Importamos 'Evento' em vez de 'EventWithInfo'
-import { Evento } from "@/lib/Types/EventTypes"; 
+import { Evento } from "@/lib/Types/EventTypes";
 import Container from "@/components/common/Container";
 import Loading from "@/components/common/Loading";
 
@@ -58,7 +58,7 @@ export default function Home() {
           </Grid>
         ) : (
           <Container className={styles.loadingContainer}>
-            <Loading/>
+            <Loading />
           </Container>
         )}
       </Card>

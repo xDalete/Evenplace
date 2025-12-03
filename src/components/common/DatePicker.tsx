@@ -1,6 +1,5 @@
-
 const DatePicker = () => {
-  return ;
-}
+  return;
+};
 
 export default DatePicker;

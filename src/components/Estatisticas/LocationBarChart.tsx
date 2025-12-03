@@ -53,20 +53,17 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
 
 const LocationBarChart: React.FC<LocationBarChartProps> = ({ className }) => {
   return (
-    <div 
-      className={className} 
-      style={{ 
-        width: "100%", 
+    <div
+      className={className}
+      style={{
+        width: "100%",
         height: 300,
         minWidth: 0,
         minHeight: 0
       }}
     >
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart 
-          data={mockData} 
-          margin={{ top: 10, right: 10, left: 0, bottom: 10 }}
-        >
+        <BarChart data={mockData} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="city" angle={-45} textAnchor="end" height={80} />
           <YAxis />

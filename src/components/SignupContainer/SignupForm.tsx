@@ -73,7 +73,7 @@ export default function SignupForm() {
           type="text"
           placeholder="Seu nome"
           value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          onChange={e => setFormData({ ...formData, name: e.target.value })}
           error={errors.name}
         />
         <Input
@@ -82,7 +82,7 @@ export default function SignupForm() {
           type="email"
           placeholder="seu.email@exemplo.com"
           value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          onChange={e => setFormData({ ...formData, email: e.target.value })}
           error={errors.email}
         />
         <Input
@@ -91,7 +91,7 @@ export default function SignupForm() {
           type="password"
           placeholder="Crie uma senha forte"
           value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          onChange={e => setFormData({ ...formData, password: e.target.value })}
           error={errors.password}
           helperText="Mínimo 6 caracteres"
         />
@@ -101,7 +101,7 @@ export default function SignupForm() {
           type="password"
           placeholder="Repita sua senha"
           value={formData.confirmPassword}
-          onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+          onChange={e => setFormData({ ...formData, confirmPassword: e.target.value })}
           error={errors.confirmPassword}
         />
 
@@ -110,7 +110,7 @@ export default function SignupForm() {
             type="checkbox"
             id="terms"
             checked={formData.acceptTerms}
-            onChange={(e) => setFormData({ ...formData, acceptTerms: e.target.checked })}
+            onChange={e => setFormData({ ...formData, acceptTerms: e.target.checked })}
           />
           <label htmlFor="terms">
             Concordo com os <strong>Termos de Serviço</strong> e <strong>Política de Privacidade</strong>

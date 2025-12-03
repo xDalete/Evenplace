@@ -8,9 +8,7 @@ export default function Signup() {
       <div>
         <SignupContainer />
       </div>
-      <div className={`${styles.signupImageContainer}`}>
-        {/* <SignupSideImage className={styles.signupImage} /> */}
-      </div>
+      <div className={`${styles.signupImageContainer}`}>{/* <SignupSideImage className={styles.signupImage} /> */}</div>
     </div>
   );
 }
