@@ -19,7 +19,7 @@ type CardEventoProps = {
 const CardEvento: React.FC<CardEventoProps> = ({ evento }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const { nome, local, data, horario, status, quantidade_vagas, vagas_disponiveis, valor_ingresso, descricao } = evento;
+  const { nome, local, data, horario, quantidade_vagas, vagas_disponiveis, valor_ingresso } = evento;
 
   return (
     <>
@@ -55,7 +55,7 @@ const CardEvento: React.FC<CardEventoProps> = ({ evento }) => {
         </Card>
       </div>
 
-      <EventRegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} event={evento} />
+      <EventRegistrationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} evento={evento} />
     </>
   );
 };
