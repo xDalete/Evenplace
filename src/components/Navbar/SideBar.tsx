@@ -36,7 +36,7 @@ const Sidebar: React.FC = () => {
           <SideBarItem icon={<Icon icon={LuChartBar} />} label={"Visualização de Eventos"} href="/dashboard" />
           <SideBarItem icon={<Icon icon={LuSettings} />} label={"Configurar Eventos"} href="/dashboard/configurar-evento" />
           <SideBarItem icon={<Icon icon={LuDollarSign} />} label={"Ingressos"} href="#" />
-          <SideBarItem icon={<Icon icon={LuTrendingUp} />} label={"Dados Estatísticos"} href="#" />
+          <SideBarItem icon={<Icon icon={LuTrendingUp} />} label={"Dados Estatísticos"} href="/dashboard/dados-estatisticos" />
           <SideBarItem icon={<Icon icon={LuFileText} />} label={"Relatório"} href="#" />
         </SideBarSection>
         <Divider margin="md" />
