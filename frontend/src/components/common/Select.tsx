@@ -1,28 +1,29 @@
 import React from "react";
+
 import styles from "./Select.module.scss";
 
 export interface Option {
-  value: string | number;
   label: string;
+  value: number | string;
 }
 
 export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
-  options: Option[];
   error?: boolean;
-  helperText?: string;
   fullWidth?: boolean;
-  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  placeholder?: string;
+  helperText?: string;
   label?: string;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  options: Option[];
+  placeholder?: string;
 }
 
 const Select: React.FC<SelectProps> = ({
-  label,
-  options,
   error,
-  helperText,
   fullWidth = false,
+  helperText,
+  label,
   onChange,
+  options,
   placeholder,
   ...rest
 }) => (
@@ -35,7 +36,7 @@ const Select: React.FC<SelectProps> = ({
     >
       {placeholder && <option value="">{placeholder}</option>}
       {options.map(option => (
-        <option key={option.value} value={option.value} className={styles.option}>
+        <option className={styles.option} key={option.value} value={option.value}>
           {option.label}
         </option>
       ))}

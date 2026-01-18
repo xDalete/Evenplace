@@ -1,25 +1,27 @@
 import React from "react";
-import styles from "./Grid.module.scss";
+
 import { ColumnSize, Sizes } from "@/lib/Types/Types";
 
-type GridProps = {
-  item?: false;
-  gap?: Sizes;
-  children: React.ReactNode;
-  className?: string;
-};
+import styles from "./Grid.module.scss";
+
 type GridItemProps = React.HTMLAttributes<HTMLDivElement> & {
   item: true;
-  xs?: ColumnSize;
-  sm?: ColumnSize;
-  md?: ColumnSize;
   lg?: ColumnSize;
+  md?: ColumnSize;
+  sm?: ColumnSize;
   xl?: ColumnSize;
+  xs?: ColumnSize;
+};
+type GridProps = {
+  children: React.ReactNode;
+  className?: string;
+  gap?: Sizes;
+  item?: false;
 };
 
-const Grid: React.FC<GridProps | GridItemProps> = ({ children, className = "", ...rest }) => {
+const Grid: React.FC<GridItemProps | GridProps> = ({ children, className = "", ...rest }) => {
   if (rest.item) {
-    const { xs = 12, sm, md, lg, xl } = rest;
+    const { lg, md, sm, xl, xs = 12 } = rest;
     const classes = [
       styles.gridItem,
       xs != undefined ? styles[`cols-xs-${xs}`] : "",

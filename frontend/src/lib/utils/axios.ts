@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import auth from "@/lib/configs/auth";
 
 const getAxios = () => {
@@ -7,10 +8,10 @@ const getAxios = () => {
     // The api base url is set in next.config.ts rewrites
     // baseURL: process.env.API_URL,
     baseURL: "/api",
-    timeout: 10000,
     headers: {
       "Content-Type": "application/json"
-    }
+    },
+    timeout: 10000
   });
 
   if (token) {

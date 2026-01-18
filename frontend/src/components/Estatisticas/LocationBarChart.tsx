@@ -26,7 +26,7 @@ const mockData: LocationData[] = [
 
 type CustomTooltipProps = {
   active?: boolean;
-  payload?: { value: number; payload: LocationData }[];
+  payload?: { payload: LocationData; value: number; }[];
 };
 
 const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
@@ -38,9 +38,9 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) => {
       style={{
         background: "white",
         borderRadius: 8,
-        padding: "6px 10px",
         boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
-        fontSize: 12
+        fontSize: 12,
+        padding: "6px 10px"
       }}
     >
       <div>
@@ -56,19 +56,19 @@ const LocationBarChart: React.FC<LocationBarChartProps> = ({ className }) => {
     <div
       className={className}
       style={{
-        width: "100%",
         height: 300,
+        minHeight: 0,
         minWidth: 0,
-        minHeight: 0
+        width: "100%"
       }}
     >
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={mockData} margin={{ top: 10, right: 10, left: 0, bottom: 10 }}>
+      <ResponsiveContainer height="100%" width="100%">
+        <BarChart data={mockData} margin={{ bottom: 10, left: 0, right: 10, top: 10 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="city" angle={-45} textAnchor="end" height={80} />
+          <XAxis angle={-45} dataKey="city" height={80} textAnchor="end" />
           <YAxis />
           <Tooltip content={<CustomTooltip />} />
-          <Bar dataKey="inscritos" radius={[8, 8, 0, 0]} fill="#5046FF" />
+          <Bar dataKey="inscritos" fill="#5046FF" radius={[8, 8, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

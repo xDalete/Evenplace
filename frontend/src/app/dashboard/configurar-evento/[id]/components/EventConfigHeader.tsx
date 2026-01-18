@@ -1,6 +1,8 @@
 import React from "react";
 import { LuArrowLeft } from "react-icons/lu";
+
 import Icon from "@/components/common/Icon";
+
 import styles from "./EventConfigHeader.module.scss";
 
 interface EventConfigHeaderProps {

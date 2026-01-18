@@ -1,58 +1,62 @@
-/* components/common/ImageFileInput.module.scss */
-.container {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+@use "@/styles/Variables.scss" as variables;
 
-  .label {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 8px;
-    color: #333;
-
-    .icon {
-      margin-right: 8px;
-      color: #555;
-    }
-  }
-
-  .input {
-    display: none; // Hidden, use custom label
-  }
-
-  .uploadLabel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border: 2px dashed #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: border-color 0.3s;
-    background: #f9f9f9;
-
-    &:hover {
-      border-color: #007bff;
-      background: #f0f8ff;
-    }
-
-    .uploadIcon {
-      margin-right: 8px;
-      color: #007bff;
-    }
-  }
-
-  .preview {
-    max-width: 200px;
-    max-height: 200px;
-    margin-top: 10px;
-    border-radius: 4px;
-    object-fit: cover;
-  }
-
+.inputContainer {
   &.fullWidth {
     width: 100%;
+  }
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  color: variables.$text;
+  font-weight: variables.$font-weight-semibold;
+  margin-bottom: variables.$margin-sm;
+  display: block;
+  width: 100%;
+}
+
+.input {
+  display: none;
+}
+
+.uploadLabel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 10/7;
+  border: 2px dashed variables.$border;
+  border-radius: variables.$border-radius;
+  position: relative;
+  &:hover {
+    border-color:  variables.$primary;
+  }
+}
+
+.preview {
+  border-radius: variables.$border-radius;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: variables.$border-radius;
+  color: variables.$text-on-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity variables.$transition-duration variables.$transition-ease;
+  &:hover {
+    opacity: 1;
   }
 }

@@ -1,20 +1,21 @@
 import React, { HtmlHTMLAttributes, TextareaHTMLAttributes } from "react";
+
 import styles from "./Textarea.module.scss";
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  label?: string;
   error?: string;
-  helperText?: string;
-  TextareaContainerProps?: HtmlHTMLAttributes<HTMLDivElement>;
   fullWidth?: boolean;
+  helperText?: string;
+  label?: string;
+  TextareaContainerProps?: HtmlHTMLAttributes<HTMLDivElement>;
 }
 
 const Textarea: React.FC<TextareaProps> = ({
-  label,
   error,
-  helperText,
-  TextareaContainerProps,
   fullWidth = false,
+  helperText,
+  label,
+  TextareaContainerProps,
   ...props
 }) => (
   <div className={`${styles.textareaContainer} ${fullWidth ? styles.fullWidth : ""}`} {...TextareaContainerProps}>

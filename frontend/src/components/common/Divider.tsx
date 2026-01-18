@@ -1,6 +1,8 @@
 import React from "react";
-import styles from "./Divider.module.scss";
+
 import { Sizes } from "@/lib/Types/Types";
+
+import styles from "./Divider.module.scss";
 
 type DividerProps = {
   className?: string;

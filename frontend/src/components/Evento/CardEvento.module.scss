@@ -29,9 +29,10 @@
 }
 
 .eventImage {
+  display: block;
   border-radius: variables.$border-radius;
   width: 100% !important;
-  height: auto !important;
+  height: 100%;
   aspect-ratio: 10/7;
   object-fit: cover;
 }
@@ -53,6 +54,7 @@
   margin-bottom: variables.$margin-sm;
   flex-wrap: wrap;
   row-gap: variables.$margin-sm;
+  height: 100%;
 
   > div {
     display: flex;

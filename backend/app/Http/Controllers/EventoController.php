@@ -34,13 +34,16 @@ class EventoController extends Controller
         $builder = Evento::queryAllByStatus();
 
         $builder->when(!!$request->query('nome'), callback: function (Builder $query) use ($request): Builder {
-            return $query->where(fn (Builder $query): Builder =>
+            return $query->where(
+                fn(Builder $query): Builder =>
                 $query->whereLike('nome', '%' . $request->query('nome') . '%')
                     ->orWhereLike('descricao', '%' . $request->query('nome') . '%')
             );
         });
 
-        $builder->when(!!$request->query('status'), fn (Builder $query): Builder =>
+        $builder->when(
+            !!$request->query('status'),
+            fn(Builder $query): Builder =>
             $query->whereIn('status', explode(',', $request->query('status')))
         );
 
@@ -83,11 +86,10 @@ class EventoController extends Controller
                 'status' => $status->value,
             ]);
 
-            $fileName = "{$evento->id}-"
-                . str_replace(' ', '-', $request->get('nome'))
+            $fileName = "{$evento->id}-" . md5_file(request()->file('banner')->path())
                 . ".{$request->get('banner')->extension()}";
 
-            if (!Storage::putFileAs('/banners', $request->get('banner'), $fileName)) {
+            if (!Storage::disk('public')->putFileAs('/banners', $request->get('banner'), $fileName)) {
                 throw new Exception('Não foi possível realizar o upload do banner');
             }
 
@@ -186,15 +188,14 @@ class EventoController extends Controller
                 ], Response::HTTP_OK);
             }
 
-            if (!Storage::delete("/banners/{$evento->banner}")) {
+            if (!Storage::disk('public')->delete("/banners/{$evento->banner}")) {
                 throw new Exception('Não foi possível deletar o banner antigo.');
             }
 
-            $fileName = "{$evento->id}-"
-                . str_replace(' ', '-', $evento->nome)
+            $fileName = "{$evento->id}-" . md5_file(request()->file('banner')->path())
                 . ".{$request->get('banner')->extension()}";
 
-            if (!Storage::putFileAs('/banners', $request->get('banner'), $fileName)) {
+            if (!Storage::disk('public')->putFileAs('/banners', $request->get('banner'), $fileName)) {
                 throw new Exception('Não foi possível realizar o upload do banner.');
             }
 
@@ -234,14 +235,14 @@ class EventoController extends Controller
     #[Get('/banner/{banner}', withoutMiddleware: ['auth:sanctum', 'abilities:organizador'])]
     public function banner(string $banner): JsonResponse|Response
     {
-        if (!Storage::exists('banners/' . $banner)) {
+        if (!Storage::disk('public')->exists('banners/' . $banner)) {
             return response()->json([
                 'message' => 'Este banner não pôde ser encontrado.',
                 'status' => Response::HTTP_NOT_FOUND,
             ], Response::HTTP_NOT_FOUND);
         }
 
-        return response(Storage::get('banners/' . $banner))
-            ->header('Content-Type', Storage::mimeType('banners/' . $banner));
+        return response(Storage::disk('public')->get('banners/' . $banner))
+            ->header('Content-Type', Storage::disk('public')::mimeType('banners/' . $banner));
     }
 }

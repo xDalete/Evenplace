@@ -1,11 +1,11 @@
 //TODO: Type this config object
 const AuthConfig = {
-  meEndpoint: "/auth/me",
   loginEndpoint: "/auth/login",
+  meEndpoint: "/auth/me",
+  onTokenExpiration: "refreshToken", // logout | refreshToken
   registerEndpoint: "/jwt/register",
   storageTokenKeyName: "accessToken",
-  userDataKeyName: "userData",
-  onTokenExpiration: "refreshToken" // logout | refreshToken
+  userDataKeyName: "userData"
 };
 
 export default AuthConfig;

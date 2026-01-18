@@ -1,17 +1,28 @@
-import { use, useEffect, useState } from "react";
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import React from "react"; // ← Make sure to import React
 
 import { getEventoById } from "@/api/Evento";
-import { DoughnutChart } from "@/components/charts/DoughnutChart";
 import Card from "@/components/common/Card";
-import Container from "@/components/common/Container";
-import Grid from "@/components/common/Grid";
 import Loading from "@/components/common/Loading";
 import { Evento } from "@/lib/Types/EventTypes";
 
-export default function EventoPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+import EventConfigHeader from "./components/EventConfigHeader";
+import EventForm from "./components/EventForm";
+import styles from "./ConfigurarEvento.module.scss";
+
+export default function ConfigurarEvento({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = React.use(params);
   const [loading, setLoading] = useState(true);
   const [evento, setEvento] = useState<Evento | undefined>(undefined);
+
+  const router = useRouter();
+
+  const handleBack = () => {
+    router.back();
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -34,23 +45,15 @@ export default function EventoPage({ params }: { params: Promise<{ id: string }>
   }
 
   if (!evento) {
+    //TODO: Mostrar mensagem de erro mais amigável
     return <div>Evento não encontrado</div>;
   }
+
   return (
-    <div>
-      {evento.nome}
-      <Card>
-        <Grid gap="md">
-          {[1, 2, 3, 4].map(evento => (
-            <Grid item key={evento} md={4} sm={6} xl={3} xs={12}>
-              <Card bgColor="light">
-                <Container style={{ aspectRatio: "1" }}>
-                  <DoughnutChart />
-                </Container>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+    <div className={styles.pageContainer}>
+      <Card className={styles.contentCard}>
+        <EventConfigHeader onBack={handleBack} />
+        <EventForm evento={evento} loading={loading} />
       </Card>
     </div>
   );

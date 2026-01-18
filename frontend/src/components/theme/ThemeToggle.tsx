@@ -1,43 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
-import styles from "./ThemeToggle.module.scss";
-import { Themes } from "@/lib/Types/Types";
-import Icon from "../common/Icon";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
-const THEME_KEY = "theme";
+import useTheme from "@/lib/hooks/useTheme";
+
+import Icon from "../common/Icon";
+import styles from "./ThemeToggle.module.scss";
+
 
 const ThemeToggle: React.FC = () => {
-  const [theme, setTheme] = useState<Themes>("light");
-  const [isMounted, setIsMounted] = useState(false);
+  const [theme, setTheme] = useTheme();
 
-  useEffect(() => {
-    setIsMounted(true);
-    const stored = localStorage.getItem(THEME_KEY);
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = stored === "dark" || stored === "light" ? stored : prefersDark ? "dark" : "light";
-    setTheme(initialTheme);
-    document.documentElement.setAttribute("data-theme", initialTheme);
-    localStorage.setItem(THEME_KEY, initialTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    setTheme(prev => {
-      const newTheme = prev === "light" ? "dark" : "light";
-      document.documentElement.setAttribute("data-theme", newTheme);
-      localStorage.setItem(THEME_KEY, newTheme);
-      return newTheme;
-    });
-  };
-
-  if (!isMounted) {
-    return (
-      <button className={styles.ThemeToggle}>
-        <Icon icon={MdOutlineLightMode} size={16} />
-      </button>
-    );
-  }
+  const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
 
   return (
     <div className={styles.ThemeToggle} onClick={toggleTheme}>

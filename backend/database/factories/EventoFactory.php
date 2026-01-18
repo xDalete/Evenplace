@@ -30,7 +30,7 @@ class EventoFactory extends Factory
             'vagas_disponiveis' => $quantidadeVagas,
             'meta_vendas' => fake()->numberBetween(10, $quantidadeVagas),
             'status' => fake()->randomElement(EventoStatusEnum::values()),
-            'banner' => fake()->imageUrl(),
+            'banner' => fake()->image( storage_path('app\public\banners') , 640, 480, null, false),
         ];
     }
 }

@@ -1,31 +1,33 @@
 "use client";
 
-import React, { useState } from "react";
+import { AlertCircle, Calendar, Lock, MapPin, Users, X, Zap } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { X, AlertCircle, Lock, MapPin, Calendar, Users, Zap } from "lucide-react";
-import styles from "./EventRegistrationModal.module.scss";
+import React, { useState } from "react";
+
 import { Evento } from "@/lib/Types/EventTypes";
 import { formatCurrency, formatDateWithHours } from "@/lib/utils/format";
 
+import styles from "./EventRegistrationModal.module.scss";
+
 interface EventRegistrationModalProps {
+  event?: Evento;
   isOpen: boolean;
   onClose: () => void;
-  event?: Evento;
 }
 
 type TicketType = {
+  badge: null | string;
+  description: string;
+  highlight: boolean;
   id: number;
   name: string;
   price: number;
-  description: string;
   quantity: number;
-  badge: string | null;
-  highlight: boolean;
 };
 
-const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen, onClose, event }) => {
+const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ event, isOpen, onClose }) => {
   const router = useRouter(); // Hook de navegação
-  const [selectedTicketType, setSelectedTicketType] = useState<number | null>(null);
+  const [selectedTicketType, setSelectedTicketType] = useState<null | number>(null);
   const [agreeToTerms, setAgreeToTerms] = useState(false);
   const [quantity, setQuantity] = useState(1);
 
@@ -33,31 +35,31 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
 
   const ticketTypes: TicketType[] = [
     {
+      badge: null,
+      description: "Acesso completo ao evento",
+      highlight: false,
       id: 1,
       name: "Ingresso Inteira",
       price: event.valor_ingresso || 40.0,
-      description: "Acesso completo ao evento",
-      quantity: event.vagas_disponiveis || 100,
-      badge: null,
-      highlight: false
+      quantity: event.vagas_disponiveis || 100
     },
     {
+      badge: "ECONOMIA",
+      description: "Estudante, idoso, PCD",
+      highlight: false,
       id: 2,
       name: "Meia Entrada",
       price: (event.valor_ingresso || 40.0) / 2,
-      description: "Estudante, idoso, PCD",
-      quantity: event.vagas_disponiveis || 100,
-      badge: "ECONOMIA",
-      highlight: false
+      quantity: event.vagas_disponiveis || 100
     },
     {
+      badge: "PREMIUM",
+      description: "Acesso prioritário + área exclusiva",
+      highlight: true,
       id: 3,
       name: "Ingresso VIP",
       price: (event.valor_ingresso || 40.0) * 1.5,
-      description: "Acesso prioritário + área exclusiva",
-      quantity: Math.floor((event.vagas_disponiveis || 100) * 0.2),
-      badge: "PREMIUM",
-      highlight: true
+      quantity: Math.floor((event.vagas_disponiveis || 100) * 0.2)
     }
   ];
 
@@ -74,7 +76,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
 
       <div className={styles.modalContainer}>
         <div className={styles.header}>
-          <img src="/image1.jpg" alt={event.nome} className={styles.headerImage} />
+          <img alt={event.nome} className={styles.headerImage} src="/image1.jpg" />
 
           <div className={styles.headerOverlay} />
 
@@ -95,7 +97,7 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
                 </div>
               </div>
 
-              <button onClick={onClose} className={styles.closeButton}>
+              <button className={styles.closeButton} onClick={onClose}>
                 <X size={24} />
               </button>
             </div>
@@ -134,15 +136,15 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
             <div className={styles.ticketsGrid}>
               {ticketTypes.map(ticket => (
                 <button
+                  className={`${styles.ticketCard} ${
+                    selectedTicketType === ticket.id ? styles.selected : ""
+                  } ${ticket.highlight ? styles.highlight : ""} ${ticket.quantity === 0 ? styles.disabled : ""}`}
+                  disabled={ticket.quantity === 0}
                   key={ticket.id}
                   onClick={() => {
                     setSelectedTicketType(ticket.id);
                     setQuantity(1);
                   }}
-                  disabled={ticket.quantity === 0}
-                  className={`${styles.ticketCard} ${
-                    selectedTicketType === ticket.id ? styles.selected : ""
-                  } ${ticket.highlight ? styles.highlight : ""} ${ticket.quantity === 0 ? styles.disabled : ""}`}
                 >
                   <div className={styles.ticketCardGradient} />
 
@@ -174,20 +176,20 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
             <div className={styles.quantitySection}>
               <label>Quantidade de Ingressos</label>
               <div className={styles.quantityControl}>
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className={styles.quantityButton}>
+                <button className={styles.quantityButton} onClick={() => setQuantity(Math.max(1, quantity - 1))}>
                   −
                 </button>
                 <input
+                  className={styles.quantityInput}
+                  max={selectedTicket.quantity}
+                  min="1"
+                  onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
                   type="number"
                   value={quantity}
-                  onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  min="1"
-                  max={selectedTicket.quantity}
-                  className={styles.quantityInput}
                 />
                 <button
-                  onClick={() => setQuantity(Math.min(selectedTicket.quantity, quantity + 1))}
                   className={styles.quantityButton}
+                  onClick={() => setQuantity(Math.min(selectedTicket.quantity, quantity + 1))}
                 >
                   +
                 </button>
@@ -219,10 +221,10 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
           {/* Terms */}
           <div className={styles.termsContainer}>
             <input
-              type="checkbox"
-              id="terms"
               checked={agreeToTerms}
+              id="terms"
               onChange={e => setAgreeToTerms(e.target.checked)}
+              type="checkbox"
             />
             <label htmlFor="terms">
               Concordo com a <strong>política de reembolso</strong> e com os <strong>termos do evento</strong>{" "}
@@ -250,18 +252,18 @@ const EventRegistrationModal: React.FC<EventRegistrationModalProps> = ({ isOpen,
           )}
 
           <div className={styles.buttonGroup}>
-            <button onClick={onClose} className={styles.buttonSecondary}>
+            <button className={styles.buttonSecondary} onClick={onClose}>
               Voltar
             </button>
             <button
+              className={styles.buttonPrimary}
+              disabled={!selectedTicket || !agreeToTerms}
               onClick={() => {
                 if (selectedTicket && agreeToTerms) {
                   // Lógica adicionada: Redirecionar para login
                   router.push("/login");
                 }
               }}
-              disabled={!selectedTicket || !agreeToTerms}
-              className={styles.buttonPrimary}
             >
               <Lock size={20} />
               Continuar com Login

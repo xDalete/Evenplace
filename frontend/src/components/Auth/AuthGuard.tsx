@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 import { useAuth } from "@/lib/hooks/useAuth";
-import Loading from "../common/Loading";
+
 import Container from "../common/Container";
+import Loading from "../common/Loading";
 import styles from "./AuthGuard.module.scss";
 
 interface Props {
@@ -12,7 +14,7 @@ interface Props {
 }
 
 const AuthGuard = ({ children }: Props) => {
-  const { user, loading } = useAuth();
+  const { loading, user } = useAuth();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -20,8 +22,6 @@ const AuthGuard = ({ children }: Props) => {
     if (!loading && !user && pathname.includes("/dashboard")) {
       router.push("/login");
     }
-    console.log(loading, user, pathname);
-    
   }, [user, loading, router, pathname]);
 
   if (loading)

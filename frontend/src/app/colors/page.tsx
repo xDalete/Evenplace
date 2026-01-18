@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 import styles from "./Colors.module.scss";
 
 export default function ColorsPage() {
@@ -6,7 +7,7 @@ export default function ColorsPage() {
     <div className={`${styles.container}`}>
       <Head>
         <title>Color Palette</title>
-        <meta name="description" content="Display of defined color palette" />
+        <meta content="Display of defined color palette" name="description" />
       </Head>
       <main className={`${styles.main}`}>
         <h1 className={`${styles.title}`}>Color Palette</h1>

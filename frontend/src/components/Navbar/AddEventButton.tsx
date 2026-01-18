@@ -1,7 +1,8 @@
 import React from "react";
 import { LuPlus } from "react-icons/lu";
-import styles from "./AddEventButton.module.scss";
+
 import Icon from "../common/Icon";
+import styles from "./AddEventButton.module.scss";
 
 const AddEventButton: React.FC = () => {
   return (

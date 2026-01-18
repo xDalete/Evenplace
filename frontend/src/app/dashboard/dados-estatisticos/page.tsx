@@ -1,76 +1,78 @@
+import { LuFilter, LuSearch, LuTrendingUp } from "react-icons/lu";
+
 import Card from "@/components/common/Card";
 import Container from "@/components/common/Container";
 import Grid from "@/components/common/Grid";
 import LocationBarChart from "@/components/Estatisticas/LocationBarChart";
-import { LuFilter, LuSearch, LuTrendingUp } from "react-icons/lu";
+
 import styles from "./DadosEstatisticos.module.scss";
 
-type StatCard = {
-  title: string;
-  value: string;
-  metric: string;
-  change: string;
-  changeType: "positive" | "negative";
+type Segment = {
+  color: string;
+  label: string;
+  percentage: string;
+  value: number;
 };
 
-type Segment = {
-  label: string;
-  value: number;
-  percentage: string;
-  color: string;
+type StatCard = {
+  change: string;
+  changeType: "negative" | "positive";
+  metric: string;
+  title: string;
+  value: string;
 };
 
 const statsCards: StatCard[] = [
   {
-    title: "Idade média de inscritos",
-    value: "18 - 24 anos",
-    metric: "2345",
     change: "AUMENTO DE 30%",
-    changeType: "positive"
+    changeType: "positive",
+    metric: "2345",
+    title: "Idade média de inscritos",
+    value: "18 - 24 anos"
   },
   {
-    title: "Gênero",
-    value: "Masculino",
-    metric: "3345",
     change: "AUMENTO DE 18%",
-    changeType: "positive"
+    changeType: "positive",
+    metric: "3345",
+    title: "Gênero",
+    value: "Masculino"
   },
   {
-    title: "Locais menos visitados",
-    value: "Jequitinhonha",
-    metric: "845",
     change: "DIMINUIÇÃO DE 15%",
-    changeType: "negative"
+    changeType: "negative",
+    metric: "845",
+    title: "Locais menos visitados",
+    value: "Jequitinhonha"
   },
   {
-    title: "Interesse do momento",
-    value: "Músicas Sertanejo",
-    metric: "123",
     change: "AUMENTO DE 63%",
-    changeType: "positive"
+    changeType: "positive",
+    metric: "123",
+    title: "Interesse do momento",
+    value: "Músicas Sertanejo"
   },
   {
-    title: "Engajamento total",
-    value: "Anúncios no Facebook",
-    metric: "21",
     change: "DIMINUIÇÃO DE 21%",
-    changeType: "negative"
+    changeType: "negative",
+    metric: "21",
+    title: "Engajamento total",
+    value: "Anúncios no Facebook"
   }
 ];
 
 const interestSegments: Segment[] = [
-  { label: "Pagode", value: 212, percentage: "16.3%", color: "#7224F2" },
-  { label: "Rock", value: 123, percentage: "11.1%", color: "#111827" },
-  { label: "Forró", value: 234, percentage: "29.4%", color: "#6B7280" },
-  { label: "Axé", value: 218, percentage: "19.0%", color: "#9A95EF" },
-  { label: "Indie", value: 265, percentage: "24.2%", color: "#6366F1" }
+  { color: "#7224F2", label: "Pagode", percentage: "16.3%", value: 212 },
+  { color: "#111827", label: "Rock", percentage: "11.1%", value: 123 },
+  { color: "#6B7280", label: "Forró", percentage: "29.4%", value: 234 },
+  { color: "#9A95EF", label: "Axé", percentage: "19.0%", value: 218 },
+  { color: "#6366F1", label: "Indie", percentage: "24.2%", value: 265 }
 ];
 
 const ageSegments: Segment[] = [
-  { label: "18 - 24 anos", value: 2345, percentage: "57.8%", color: "#4E46E5" },
-  { label: "25 - 34 anos", value: 1342, percentage: "33.1%", color: "#6B7280" },
-  { label: "35 - 44 anos", value: 245, percentage: "6.0%", color: "#817BFF" },
-  { label: "44+ anos", value: 124, percentage: "3.1%", color: "#181945" }
+  { color: "#4E46E5", label: "18 - 24 anos", percentage: "57.8%", value: 2345 },
+  { color: "#6B7280", label: "25 - 34 anos", percentage: "33.1%", value: 1342 },
+  { color: "#817BFF", label: "35 - 44 anos", percentage: "6.0%", value: 245 },
+  { color: "#181945", label: "44+ anos", percentage: "3.1%", value: 124 }
 ];
 
 const buildGradient = (segments: Segment[]) => {
@@ -104,7 +106,7 @@ export default function DadosEstatisticosPage() {
         <div className={styles.actions}>
           <label className={styles.search}>
             <LuSearch />
-            <input type="text" placeholder="Pesquisar" />
+            <input placeholder="Pesquisar" type="text" />
           </label>
 
           <div className={styles.enrolled}>
@@ -119,11 +121,11 @@ export default function DadosEstatisticosPage() {
         </div>
       </header>
 
-      <Grid gap="md" className={styles.contentGrid}>
-        <Grid item xs={12} md={4}>
+      <Grid className={styles.contentGrid} gap="md">
+        <Grid item md={4} xs={12}>
           <div className={styles.sideCards}>
             {statsCards.map(card => (
-              <Card key={card.title} className={styles.statCard}>
+              <Card className={styles.statCard} key={card.title}>
                 <div>
                   <span className={styles.statTitle}>{card.title}</span>
                   <p className={styles.statValue}>{card.value}</p>
@@ -141,7 +143,7 @@ export default function DadosEstatisticosPage() {
           </div>
         </Grid>
 
-        <Grid item xs={12} md={8}>
+        <Grid item md={8} xs={12}>
           <Container className={styles.dataPanel}>
             <Card className={styles.histogramCard}>
               <div className={styles.sectionHeader}>
@@ -153,8 +155,8 @@ export default function DadosEstatisticosPage() {
               </div>
             </Card>
 
-            <Grid gap="md" className={styles.donutGrid}>
-              <Grid item xs={12} md={6}>
+            <Grid className={styles.donutGrid} gap="md">
+              <Grid item md={6} xs={12}>
                 <Card className={styles.donutCard}>
                   <div className={styles.sectionHeader}>
                     <h3>Interesse geral dos inscritos</h3>
@@ -172,7 +174,7 @@ export default function DadosEstatisticosPage() {
 
                     <div className={styles.legend}>
                       {interestSegments.map(segment => (
-                        <div key={segment.label} className={styles.legendItem}>
+                        <div className={styles.legendItem} key={segment.label}>
                           <span className={styles.legendDot} style={{ backgroundColor: segment.color }} />
                           <div>
                             <p>{segment.label}</p>
@@ -187,7 +189,7 @@ export default function DadosEstatisticosPage() {
                 </Card>
               </Grid>
 
-              <Grid item xs={12} md={6}>
+              <Grid item md={6} xs={12}>
                 <Card className={styles.donutCard}>
                   <div className={styles.sectionHeader}>
                     <h3>Idade geral dos inscritos</h3>
@@ -205,7 +207,7 @@ export default function DadosEstatisticosPage() {
 
                     <div className={styles.legend}>
                       {ageSegments.map(segment => (
-                        <div key={segment.label} className={styles.legendItem}>
+                        <div className={styles.legendItem} key={segment.label}>
                           <span className={styles.legendDot} style={{ backgroundColor: segment.color }} />
                           <div>
                             <p>{segment.label}</p>

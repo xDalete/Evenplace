@@ -1,15 +1,17 @@
-import React from "react";
 import Link, { LinkProps } from "next/link";
-import styles from "./CustomLink.module.scss";
+import React from "react";
+
 import { Sizes } from "@/lib/Types/Types";
 
+import styles from "./CustomLink.module.scss";
+
 interface CustomLinkProps extends LinkProps {
-  className?: string;
   children: React.ReactNode;
+  className?: string;
   size?: Sizes;
 }
 
-const CustomLink: React.FC<CustomLinkProps> = ({ size = "md", children, className, ...rest }) => {
+const CustomLink: React.FC<CustomLinkProps> = ({ children, className, size = "md", ...rest }) => {
   return (
     <Link className={`${styles.customLink} ${styles[`size-${size}`]} ${className}`} {...rest}>
       {children}

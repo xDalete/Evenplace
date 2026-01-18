@@ -1,26 +1,24 @@
 "use client";
-// ** React Imports
-import { createContext, useEffect, useState, ReactNode } from "react";
-
 // ** Next Import
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+// ** React Imports
+import { createContext, ReactNode, useEffect, useState } from "react";
 
+import { getUserData, login } from "@/api/Auth";
 // ** Config
 import authConfig from "@/lib/configs/auth";
-
 // ** Types
 import { AuthValuesType, LoginParams, UserDataType } from "@/lib/Types/AuthTypes";
-import { getUserData, login } from "@/api/Auth";
 import { ErrCallbackType } from "@/lib/Types/Types";
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
-  user: null,
   loading: true,
-  setUser: () => null,
-  setLoading: () => Boolean,
   login: () => Promise.resolve(),
-  logout: () => Promise.resolve()
+  logout: () => Promise.resolve(),
+  setLoading: () => Boolean,
+  setUser: () => null,
+  user: null
 };
 
 const AuthContext = createContext(defaultProvider);
@@ -31,7 +29,7 @@ type Props = {
 
 const AuthProvider = ({ children }: Props) => {
   // ** States
-  const [user, setUser] = useState<UserDataType | null>(defaultProvider.user);
+  const [user, setUser] = useState<null | UserDataType>(defaultProvider.user);
   const [loading, setLoading] = useState<boolean>(defaultProvider.loading);
 
   // ** Hooks
@@ -72,8 +70,6 @@ const AuthProvider = ({ children }: Props) => {
   const handleLogin = (params: LoginParams, errorCallback?: ErrCallbackType) => {
     login(params)
       .then(async response => {
-        console.log(response);
-
         if (params.rememberMe) {
           window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.access_token);
           window.localStorage.setItem(authConfig.userDataKeyName, JSON.stringify(response.data));
@@ -100,12 +96,12 @@ const AuthProvider = ({ children }: Props) => {
   };
 
   const values = {
-    user,
     loading,
-    setUser,
-    setLoading,
     login: handleLogin,
-    logout: handleLogout
+    logout: handleLogout,
+    setLoading,
+    setUser,
+    user
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

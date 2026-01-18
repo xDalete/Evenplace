@@ -1,6 +1,6 @@
-import SignupContainer from "./SignupContainer";
 //import SignupSideImage from "../Evento/SignupSideImage";
 import styles from "./Signup.module.scss";
+import SignupContainer from "./SignupContainer";
 
 export default function Signup() {
   return (

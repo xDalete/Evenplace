@@ -1,27 +1,28 @@
 import { StringfiedDate } from "./Types";
 
 export enum EventoStatusEnum {
-  PROXIMO = "proximo",
   EM_ANDAMENTO = "em_andamento",
-  FINALIZADO = "finalizado"
+  FINALIZADO = "finalizado",
+  PROXIMO = "proximo"
 }
 
 export type Evento = {
-  id: number;
-  nome: string;
+  banner: string;
+  createdAt: StringfiedDate;
   //TODO: mudar para startDate e endDate aqui e no backend
   data: string;
-  local: string;
-  horario: string;
   descricao: string;
-  valor_ingresso: number;
-  quantidade_vagas: number;
-  vagas_disponiveis: number;
+  horario: string;
+  id: string;
+  local: string;
   meta_vendas?: number;
+  nome: string;
+  quantidade_vagas: number;
   status: EventoStatusEnum;
-  createdAt: StringfiedDate;
   updatedAt: StringfiedDate;
+  vagas_disponiveis: number;
   vagas_pagas?: number;
   vagas_pendentes?: number;
+  valor_ingresso: number;
   //organizerId: number;
 };

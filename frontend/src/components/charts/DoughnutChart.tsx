@@ -1,38 +1,38 @@
 "use client";
+import { ArcElement, Chart as ChartJS, ChartOptions, Legend, Tooltip } from "chart.js";
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const data = {
-  labels: ["Desktop", "Mobile", "Tablet", "Smart TV", "Others"],
   datasets: [
     {
-      label: "Traffic Share",
-      data: [45, 30, 15, 7, 3],
       backgroundColor: ["#3B82F6", "#10B981", "#F59E0B", "#EF4444", "#8B5CF6"],
       borderColor: "rgba(128,128,128, 0.1)",
       borderWidth: 4,
-      hoverOffset: 12
+      data: [45, 30, 15, 7, 3],
+      hoverOffset: 12,
+      label: "Traffic Share"
     }
-  ]
+  ],
+  labels: ["Desktop", "Mobile", "Tablet", "Smart TV", "Others"]
 };
 
 const options: ChartOptions<"doughnut"> = {
-  responsive: true,
+  cutout: "65%",
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      position: "bottom" as const,
       labels: {
-        padding: 20,
-        usePointStyle: true,
-        pointStyle: "circle",
         font: {
           size: 14
-        }
-      }
+        },
+        padding: 20,
+        pointStyle: "circle",
+        usePointStyle: true
+      },
+      position: "bottom" as const
     },
     tooltip: {
       callbacks: {
@@ -45,7 +45,7 @@ const options: ChartOptions<"doughnut"> = {
       }
     }
   },
-  cutout: "65%"
+  responsive: true
 };
 
 export function DoughnutChart() {

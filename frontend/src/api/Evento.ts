@@ -9,19 +9,23 @@ export const getAllEventos = async () => {
   return response.data;
 };
 
-export const getEventoById = async (id: number) => {
+export const getEventoById = async (id: string) => {
   const response = await getAxios().get<ResponseType<Evento>>(`/eventos/${id}`);
 
   return response.data;
 };
 
-export const createEvento = async (data: Partial<Evento>) => {
-  const response = await getAxios().post<ResponseType<Evento>>(`/eventos`, data);
+export const createEvento = async (data: FormData) => {
+  const response = await getAxios().post<ResponseType<Evento>>(`/eventos`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data"
+    }
+  });
 
   return response.data;
 };
 
-export const updateEvento = async (id: number, data: FormData) => {
+export const updateEvento = async (id: string, data: FormData) => {
   const response = await getAxios().put<ResponseType<Evento>>(`/eventos/${id}`, data, {
     headers: {
       "Content-Type": "multipart/form-data"

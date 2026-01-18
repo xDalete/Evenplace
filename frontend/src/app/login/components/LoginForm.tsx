@@ -1,14 +1,16 @@
 "use client";
 
-import Button from "@/components/common/Button";
-import Input from "@/components/common/Input";
-import styles from "./LoginForm.module.scss";
-import CustomLink from "@/components/common/CustomLink";
-import { useAuth } from "@/lib/hooks/useAuth";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+import Button from "@/components/common/Button";
+import CustomLink from "@/components/common/CustomLink";
+import Input from "@/components/common/Input";
+import { useAuth } from "@/lib/hooks/useAuth";
+
+import styles from "./LoginForm.module.scss";
 
 const loginSchema = z.object({
   email: z.string().min(1, "O email é obrigatório").email("Email inválido"),
@@ -21,9 +23,9 @@ export default function Login() {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const {
-    register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
+    register,
     setError
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema)
@@ -42,37 +44,37 @@ export default function Login() {
   //TODO: adicionar lembrar-me
   return (
     <div>
-      <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form className={styles.loginForm} noValidate onSubmit={handleSubmit(onSubmit)}>
         <Input
           {...register("email")}
-          label="Email"
-          type="email"
-          placeholder="exemplo@gmail.com"
-          fullWidth
-          error={errors.email?.message}
           disabled={isLoading}
+          error={errors.email?.message}
+          fullWidth
+          label="Email"
+          placeholder="exemplo@gmail.com"
+          type="email"
         />
 
         <Input
           {...register("password")}
-          label="Senha"
-          type="password"
-          placeholder="••••••••"
-          fullWidth
-          error={errors.password?.message || errors.root?.message}
           disabled={isLoading}
+          error={errors.password?.message || errors.root?.message}
+          fullWidth
+          label="Senha"
+          placeholder="••••••••"
+          type="password"
         />
 
-        <CustomLink href="/esqueci-minha-senha" className={styles.forgotPassword}>
+        <CustomLink className={styles.forgotPassword} href="/esqueci-minha-senha">
           Esqueci minha senha
         </CustomLink>
 
-        <Button type="submit" variant="primary" fullWidth loading={isLoading} disabled={isLoading}>
+        <Button disabled={isLoading} fullWidth loading={isLoading} type="submit" variant="primary">
           Login
         </Button>
       </form>
 
-      <CustomLink href="/cadastro" className={styles.createAccount}>
+      <CustomLink className={styles.createAccount} href="/cadastro">
         Não tenho uma conta
       </CustomLink>
     </div>

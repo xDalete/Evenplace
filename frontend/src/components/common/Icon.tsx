@@ -1,20 +1,22 @@
-import { Variants } from "@/lib/Types/Types";
 import React from "react";
 import { IconType } from "react-icons";
+
+import { Variants } from "@/lib/Types/Types";
+
 import styles from "./Icon.module.scss";
 
 interface IconProps extends React.HTMLAttributes<HTMLElement> {
+  className?: string;
+  color?: string | Variants;
   icon: IconType;
   size?: number | string;
-  color?: Variants | string;
-  className?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ icon: IconComponent, size = 24, color = "", className = "" }) => {
+const Icon: React.FC<IconProps> = ({ className = "", color = "", icon: IconComponent, size = 24 }) => {
   return typeof styles[color] !== "undefined" ? (
-    <IconComponent size={size} className={`${styles[color]} ${className}`} />
+    <IconComponent className={`${styles[color]} ${className}`} size={size} />
   ) : (
-    <IconComponent size={size} className={`${className}`} color={color} />
+    <IconComponent className={`${className}`} color={color} size={size} />
   );
 };
 

@@ -1,15 +1,17 @@
 "use client";
-import CardEvento from "@/components/Evento/CardEvento";
-import Grid from "@/components/common/Grid";
-import Card from "@/components/common/Card";
-import CardCriarEvento from "@/components/Evento/CardCriarEvento";
-import styles from "./Home.module.scss";
 import { useEffect, useState } from "react";
+
 import { getAllEventos } from "@/api/Evento";
+import Card from "@/components/common/Card";
+import Container from "@/components/common/Container";
+import Grid from "@/components/common/Grid";
+import Loading from "@/components/common/Loading";
+import CardCriarEvento from "@/components/Evento/CardCriarEvento";
+import CardEvento from "@/components/Evento/CardEvento";
 // CORREÇÃO 1: Importamos 'Evento' em vez de 'EventWithInfo'
 import { Evento } from "@/lib/Types/EventTypes";
-import Container from "@/components/common/Container";
-import Loading from "@/components/common/Loading";
+
+import styles from "./Home.module.scss";
 
 export default function Home() {
   // CORREÇÃO 2: Definimos o estado como uma lista de 'Evento' (Português)
@@ -20,7 +22,6 @@ export default function Home() {
       .then(response => {
         // Agora o TypeScript aceita, pois response.data deve ser do tipo Evento[]
         setEventos(response.data);
-        console.log(response.data);
       })
       .catch(error => {
         console.error("Erro ao buscar eventos:", error);
@@ -50,7 +51,7 @@ export default function Home() {
         {eventos.length > 0 ? (
           <Grid className={styles.gridContainer} gap="md">
             {eventos.map(item => (
-              <Grid item xs={12} sm={6} md={4} xl={3} key={item.id}>
+              <Grid item key={item.id} md={4} sm={6} xl={3} xs={12}>
                 {/* CORREÇÃO 3: O componente espera a prop 'evento' */}
                 <CardEvento evento={item} />
               </Grid>

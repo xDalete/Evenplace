@@ -1,66 +1,72 @@
 "use client";
 
-import React, { useState } from "react";
-import { FaImage, FaUpload } from "react-icons/fa";
+import React, { useEffect, useMemo } from "react";
+import { FaUpload } from "react-icons/fa";
+
+import Icon from "./Icon";
+import Image from "./Image";
 import styles from "./ImageFileInput.module.scss"; // Create this SCSS file for styling
 
 interface ImageFileInputProps {
-  label?: string;
-  name: string;
-  value?: File | null;
-  onChange: (file: File | null) => void;
   accept?: string;
   fullWidth?: boolean;
+  initialPreviewUrl?: string;
+  label?: string;
+  name: string;
+  onChange: (file: File | null) => void;
   preview?: boolean;
+  value?: File | null;
 }
 
 const ImageFileInput: React.FC<ImageFileInputProps> = ({
-  label = "Image",
-  name,
-  value,
-  onChange,
   accept = "image/*",
   fullWidth = true,
+  initialPreviewUrl,
+  label = "Image",
+  name,
+  onChange,
   preview = true,
+  value
 }) => {
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null;
     onChange(file);
-
-    if (file && preview) {
-      const url = URL.createObjectURL(file);
-      setPreviewUrl(url);
-
-      // Cleanup on unmount
-      return () => URL.revokeObjectURL(url);
-    } else {
-      setPreviewUrl(null);
-    }
   };
 
+  const previewUrl = useMemo(() => {
+    if (!preview) return null;
+    if (!value) return initialPreviewUrl;
+    return URL.createObjectURL(value);
+  }, [preview, value, initialPreviewUrl]);
+
+  useEffect(() => {
+    if (!previewUrl) return;
+    return () => {
+      URL.revokeObjectURL(previewUrl);
+    };
+  }, [previewUrl]);
+
   return (
-    <div className={`${styles.container} ${fullWidth ? styles.fullWidth : ""}`}>
-      <label htmlFor={name} className={styles.label}>
-        <FaImage className={styles.icon} />
-        {label}
-      </label>
+    <div className={`${styles.inputContainer} ${fullWidth ? styles.fullWidth : ""}`}>
+      {label && <label className={`${styles.label}`}>{label}</label>}
+
       <input
-        id={name}
-        type="file"
-        name={name}
         accept={accept}
-        onChange={handleFileChange}
         className={styles.input}
-      />
-      <label htmlFor={name} className={styles.uploadLabel}>
-        <FaUpload className={styles.uploadIcon} />
-        Choose Image
+        id={name}
+        name={name}
+        onChange={handleFileChange}
+        type="file"
+      ></input>
+      <label className={styles.uploadLabel} htmlFor={name}>
+        {preview && previewUrl && (
+          <Image alt="Preview" className={styles.preview} height={1000} src={previewUrl} width={700} />
+        )}
+        <div className={styles.overlay}>
+          <Icon icon={FaUpload} />
+          Upload image
+        </div>
       </label>
-      {preview && previewUrl && (
-        <img src={previewUrl} alt="Preview" className={styles.preview} />
-      )}
     </div>
   );
 };

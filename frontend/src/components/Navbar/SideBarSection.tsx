@@ -1,12 +1,13 @@
 import React from "react";
+
 import styles from "./SideBarSection.module.scss";
 
 interface SidebarSectionProps {
-  title: string;
   children?: React.ReactNode;
+  title: string;
 }
 
-const SideBarSection: React.FC<SidebarSectionProps> = ({ title, children }) => {
+const SideBarSection: React.FC<SidebarSectionProps> = ({ children, title }) => {
   return (
     <div className={styles.section}>
       <h3 className={styles.sectionTitle}>{title}</h3>
